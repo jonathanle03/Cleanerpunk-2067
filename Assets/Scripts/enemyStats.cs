@@ -2,22 +2,18 @@ using UnityEngine;
 
 public class enemyStats : MonoBehaviour
 {
-    
-    [SerializeField] int _enemyHealth = 10;
+    // This class is very similar to playerStats but simplified since the enemy won't do as much.
+    // Basically just tracks the hp. 
+
+
+    private int _enemyHealth;
     [SerializeField] int _maxEnemyHealth = 10;
 
     [SerializeField] int _enemyAttack = 1;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _enemyHealth = _maxEnemyHealth; 
     }
 
     public int getHealth()
