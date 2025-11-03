@@ -6,6 +6,8 @@ public enum CardRarity { Common, Uncommon, Rare }
 public enum CardTarget { Enemy, AllEnemies, Self, None }
 
 [CreateAssetMenu(fileName = "Card", menuName = "Cards/Card Data")]
+
+[System.Serializable]
 public class CardData : ScriptableObject
 {
     [Header("Basic Info")]
@@ -20,4 +22,13 @@ public class CardData : ScriptableObject
     public int cost;
     public int damage;
     public List<CardEffect> effects;
+
+    public void doEffect(Player player, Enemy enemy)
+    {
+        foreach (CardEffect effect in effects)
+        {
+            effect.Execute(this, player, enemy);
+
+        }
+    }
 }

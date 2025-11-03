@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class Card
 {
     public CardData data { get; private set; }
