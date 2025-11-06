@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72ee8b402ab37b4488d3f11d1044918, type: 3}
   m_Name: Deal Damage to Player
   m_EditorClassIdentifier: 
+  target: 2

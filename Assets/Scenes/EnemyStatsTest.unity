@@ -328,8 +328,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   health: 100
-  attack: 100
-  defense: 100
+  attack: 5
+  defense: 30
   currentMana: 0
 --- !u!114 &417510764
 MonoBehaviour:
@@ -1152,8 +1152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Triangle
   health: 100
-  attack: 100
-  defense: 100
+  attack: 5
+  defense: 30
   enemyHealth: {fileID: 1702472439}
   enemyButton: {fileID: 897324094}
 --- !u!212 &1489961024
