@@ -16,15 +16,11 @@ public class Player : MonoBehaviour
     private int selectedCard;
     private int usedCards;
 
-<<<<<<< Updated upstream
-    [SerializeField] public GameObject[] selectList = new GameObject[3];
-=======
     [SerializeField] public GameObject[] enemyList = new GameObject[3];
     [Header("Stats")]
     [SerializeField] public int health = 100;
     [SerializeField] public int attack = 100;
     [SerializeField] public int defense = 100;
->>>>>>> Stashed changes
 
     public const int maxMana = 9;
     public int currentMana;
@@ -75,8 +71,6 @@ public class Player : MonoBehaviour
         usedCards++;
 
     }
-<<<<<<< Updated upstream
-=======
 
     public void takeDamage(float cardPower, int enemyAttack)
     {
@@ -113,5 +107,4 @@ public class Player : MonoBehaviour
         usedCards = 0;
         currentMana = maxMana;
     }
->>>>>>> Stashed changes
 }
