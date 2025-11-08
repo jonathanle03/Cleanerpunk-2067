@@ -19,6 +19,6 @@ MonoBehaviour:
   rarity: 0
   target: 0
   cost: 1
-  power: 5
+  damage: 5
   effects:
   - {fileID: 11400000, guid: 7752a759965dcb44295713d6b19468de, type: 2}
