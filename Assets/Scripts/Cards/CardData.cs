@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum CardType { Offensive, Defensive, Support }
 public enum CardRarity { Common, Uncommon, Rare }
-public enum CardTarget { Enemy, AllEnemies, Self, None }
+public enum CardTarget { Enemy, AllEnemies, Player, None }
 
 [CreateAssetMenu(fileName = "Card", menuName = "Cards/Card Data")]
 
@@ -20,7 +20,7 @@ public class CardData : ScriptableObject
 
     [Header("Gameplay Info")]
     public int cost;
-    public int damage;
+    public float power;
     public List<CardEffect> effects;
 
     public void doEffect(Player player, Enemy enemy)
@@ -28,7 +28,6 @@ public class CardData : ScriptableObject
         foreach (CardEffect effect in effects)
         {
             effect.Execute(this, player, enemy);
-
         }
     }
 }

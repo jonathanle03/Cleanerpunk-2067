@@ -12,7 +12,7 @@ public class Stats : MonoBehaviour
     [SerializeField] TextMeshProUGUI EnemyHealthText;
     [SerializeField] int playerHealth;
 
-    [SerializeField] int cardDamage = 20;
+    //[SerializeField] int cardDamage = 20;
     [SerializeField] GameObject passButton;
     [SerializeField] GameObject attackButton;
     private float timer = 0f;
