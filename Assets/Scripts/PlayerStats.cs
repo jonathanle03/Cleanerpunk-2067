@@ -29,6 +29,11 @@ public class PlayerStats : MonoBehaviour
     }
     public List<CardData> getDeck()
     {
-        return playerDeck;
+        List<CardData> newList = new List<CardData>();
+        foreach (CardData c in playerDeck)
+        {
+            newList.Add(c);
+        }
+        return newList;
     }
 }
