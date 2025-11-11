@@ -737,15 +737,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDeck:
   - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
   - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
   - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
   - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
 --- !u!4 &417510765
 Transform:
   m_ObjectHideFlags: 0
