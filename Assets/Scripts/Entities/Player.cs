@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -32,6 +33,10 @@ public class Player : MonoBehaviour
     [SerializeField] public int maxhealth = 100;
     public int currentHealth;
     [SerializeField] TextMeshProUGUI playerHealthText;
+    [SerializeField] public int attack = 100;
+    [SerializeField] public int defense = 100;
+
+    [SerializeField] public int health = 100;
     [SerializeField] public int attack = 100;
     [SerializeField] public int defense = 100;
 
@@ -162,5 +167,17 @@ public class Player : MonoBehaviour
             passButton.SetActive(false);
         }
         deathScreen.SetActive(true);
+    }
+
+    public void takeDamage(float cardPower, int enemyAttack)
+    {
+        int incomingDmg = Mathf.CeilToInt(cardPower * enemyAttack * 100f / (100f + defense));
+        health -= incomingDmg;
+        Debug.Log($"Player takes {incomingDmg} damage");
+        
+        if (health < 0)
+        {
+            Debug.Log($"Player is dead");
+        }
     }
 }

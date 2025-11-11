@@ -1,13 +1,16 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public CardData enemyCard;
 
     public string enemyName;
-    public int health;
-    public int enemyAttack = 5;
+    [SerializeField] public int health;
+    [SerializeField] public int attack;
+    [SerializeField] public int defense;
     [SerializeField] TextMeshProUGUI enemyHealth;
     [SerializeField] public GameObject enemyButton;
 
@@ -17,9 +20,10 @@ public class Enemy : MonoBehaviour
     {
         enemyHealth.text = "Health: " + health;
     }
-    public void TakeDamage(int amount)
+    public void TakeDamage(float cardPower, int playerAttack)
     {
-        health -= amount;
+        int incomingDmg = Mathf.CeilToInt(cardPower * playerAttack * 100f / (100f + defense));
+        health -= incomingDmg;
         enemyHealth.text = "Health: " + health;
         //Debug.Log($"{enemyName} takes {amount} damage");
         
