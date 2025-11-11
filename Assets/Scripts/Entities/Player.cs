@@ -33,8 +33,6 @@ public class Player : MonoBehaviour
     [SerializeField] public int maxhealth = 100;
     public int currentHealth;
     [SerializeField] TextMeshProUGUI playerHealthText;
-    [SerializeField] public int attack = 100;
-    [SerializeField] public int defense = 100;
 
     [SerializeField] public int health = 100;
     [SerializeField] public int attack = 100;
@@ -42,7 +40,7 @@ public class Player : MonoBehaviour
 
     public const int maxMana = 9;
     public int currentMana;
-    
+
     void Start()
     {
         currentHealth = maxhealth;
@@ -51,7 +49,7 @@ public class Player : MonoBehaviour
 
         deck = stats.getDeck();
 
-        for(int i = 0; i < 6;  i++)
+        for (int i = 0; i < 6; i++)
         {
             //Debug.Log("index: " + i);
             hand[i] = deck[0];
@@ -69,17 +67,17 @@ public class Player : MonoBehaviour
 
     public void useCard(int pick)
     {
-        if(currentMana >= hand[pick].cost)
+        if (currentMana >= hand[pick].cost)
         {
             selectedCard = pick;
             currentMana -= hand[pick].cost;
             if (hand[pick].target == CardTarget.Enemy)
             {
-                for(int i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     enemyManager.enemyButtons[i].SetActive(true);
                 }
-                
+
                 chosenCard = pick;
             }
         }
@@ -107,7 +105,7 @@ public class Player : MonoBehaviour
         currentHealth -= incomingDmg;
         playerHealthText.text = "Health: " + currentHealth;
         Debug.Log($"Player takes {incomingDmg} damage");
-        
+
         if (currentHealth < 0)
         {
             Debug.Log($"Player is dead");
@@ -117,8 +115,8 @@ public class Player : MonoBehaviour
 
     void drawCard()
     {
-        int cardDrawn = Random.Range(0, deck.Count - 1);
-        for(int i = 0; i < hand.Length; i++)
+        int cardDrawn = UnityEngine.Random.Range(0, deck.Count - 1);
+        for (int i = 0; i < hand.Length; i++)
         {
             if (hand[i] == null)
             {
@@ -131,11 +129,11 @@ public class Player : MonoBehaviour
 
     public void fillHand()
     {
-        for(int i = 0; i < usedCards; i++)
+        for (int i = 0; i < usedCards; i++)
         {
             drawCard();
         }
-        for(int i = 0;i < hand.Length; i++)
+        for (int i = 0; i < hand.Length; i++)
         {
             if (hand[i] != null)
             {
@@ -161,23 +159,11 @@ public class Player : MonoBehaviour
     public void playerDead()
     {
         playerHealthText.text = "Health: 0";
-        for(int i = 0; i < hand.Length; i++)
+        for (int i = 0; i < hand.Length; i++)
         {
             cardButtons[i].SetActive(false);
             passButton.SetActive(false);
         }
         deathScreen.SetActive(true);
-    }
-
-    public void takeDamage(float cardPower, int enemyAttack)
-    {
-        int incomingDmg = Mathf.CeilToInt(cardPower * enemyAttack * 100f / (100f + defense));
-        health -= incomingDmg;
-        Debug.Log($"Player takes {incomingDmg} damage");
-        
-        if (health < 0)
-        {
-            Debug.Log($"Player is dead");
-        }
     }
 }
