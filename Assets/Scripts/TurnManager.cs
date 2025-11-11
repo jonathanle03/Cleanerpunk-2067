@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
+    /*
     // Tracking which character's turn it is 
     private bool playerTurn;
 
@@ -153,5 +154,5 @@ public class TurnManager : MonoBehaviour
         }
 
         return;
-    }
+    } */
 }
