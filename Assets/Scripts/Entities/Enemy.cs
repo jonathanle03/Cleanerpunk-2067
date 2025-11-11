@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+
 public class Enemy : MonoBehaviour
 {
     public string enemyName;

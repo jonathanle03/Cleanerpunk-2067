@@ -27,7 +27,7 @@ public class CardData : ScriptableObject
     {
         foreach (CardEffect effect in effects)
         {
-            effect.Execute(this, player, enemy, effect.target);
+            effect.Execute(this, player, enemy);
         }
     }
 }
