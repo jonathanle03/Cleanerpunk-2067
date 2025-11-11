@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerStats : MonoBehaviour
 {
      private static PlayerStats instance;
-     [SerializeField] CardData[] card = new CardData[20];
+     //[SerializeField] CardData[] card = new CardData[20];
      [SerializeField] List<CardData> playerDeck = new List<CardData>();       
         
         void Awake()
@@ -23,12 +23,17 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        playerDeck.Add(card[0]);
+       // playerDeck.Add(card[0]);
         
         Debug.Log("" + playerDeck.ToString());
     }
     public List<CardData> getDeck()
     {
-        return playerDeck;
+        List<CardData> newList = new List<CardData>();
+        foreach (CardData c in playerDeck)
+        {
+            newList.Add(c);
+        }
+        return newList;
     }
 }

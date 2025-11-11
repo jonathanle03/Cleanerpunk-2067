@@ -5,12 +5,16 @@ using Unity.VisualScripting;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] public CardData enemyCard;
+
     public string enemyName;
     [SerializeField] public int health;
     [SerializeField] public int attack;
     [SerializeField] public int defense;
     [SerializeField] TextMeshProUGUI enemyHealth;
     [SerializeField] public GameObject enemyButton;
+
+    public bool isDead;
 
     private void Start()
     {
@@ -21,11 +25,11 @@ public class Enemy : MonoBehaviour
         int incomingDmg = Mathf.CeilToInt(cardPower * playerAttack * 100f / (100f + defense));
         health -= incomingDmg;
         enemyHealth.text = "Health: " + health;
-        Debug.Log($"{enemyName} takes {incomingDmg} damage");
+        //Debug.Log($"{enemyName} takes {amount} damage");
         
         if (health < 0)
         {
-            Debug.Log($"{enemyName} is dead");
+            //Debug.Log($"{enemyName} is dead");
         }
     }
 }
