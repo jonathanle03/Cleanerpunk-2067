@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -32,16 +33,40 @@ public class EnemyManager : MonoBehaviour
         {
             for (int i = 0; i < enemies.Length; i++)
             {
-                if (enemies[i].GetComponent<Enemy>().isDead == false)
+                Enemy enemy = enemies[i].GetComponent<Enemy>();
+                if (!enemy.isDead)
                 {
-                    Enemy enemy = enemies[i].GetComponent<Enemy>();
-                    enemy.enemyCard.doEffect(enemy, player);
-                    // player.TakeDamage(enemies[i].GetComponent<Enemy>().enemyCard.power, enemies[i].GetComponent<Enemy>().attack);
-                    enemies[i].GetComponent<Enemy>().RandomCard();
+                    foreach (StatusEffect effect in enemy.statusEffects)
+                    {
+                        effect.OnTurnStart(enemy);
+                    }
+
+                    if (enemy.moveable)
+                    {
+                        enemy.enemyCard.doEffect(enemy, player);
+                        enemies[i].GetComponent<Enemy>().RandomCard();
+                    }
+
+                    for (int j = enemy.statusEffects.Count - 1; j >= 0; --j)
+                    {
+                        enemy.statusEffects[j].OnTurnEnd(enemy);
+                    }
                 }
             }
 
-            player.playerTurn = true;
+            foreach(StatusEffect effect in player.statusEffects)
+            {
+                effect.OnTurnStart(player);
+            }
+
+            if (player.moveable == true)
+            {
+                player.playerTurn = true;
+            }
+            else
+            {
+                player.fillHand();
+            }
         }
     }
 

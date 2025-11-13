@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a7c5dea9ea9647bd9ba7dfb10ea15, type: 3}
   m_Name: HeavyBonk
   m_EditorClassIdentifier: 
-  cardName: 
-  description: 
+  cardName: Heavy Bonk
+  description: Deal 1x moderate Impact damage to a single enemy target.
   art: {fileID: 0}
   type: 0
   rarity: 0
   target: 0
-  cost: 0
-  power: 0
-  effects: []
+  cost: 2
+  power: 2.4
+  effects:
+  - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
+  statusEffects: []

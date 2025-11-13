@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class Enemy : Entity
 {
@@ -20,7 +21,7 @@ public class Enemy : Entity
         maxHealth = enemyData.maxHealth;
         attack = enemyData.attack;
         defense = enemyData.defense;
-        deck.AddRange(enemyData.cards);
+        deck = new List<CardData>(enemyData.cards);
 
         currentHealth = maxHealth;
         healthText.text = "Health: " + currentHealth;

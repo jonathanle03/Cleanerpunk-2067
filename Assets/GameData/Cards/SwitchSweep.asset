@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SwitchSweep
   m_EditorClassIdentifier: 
   cardName: Switch Sweep
-  description: 
+  description: Deal 2x light Ballistic damage to all enemy targets.
   art: {fileID: 0}
   type: 0
   rarity: 0
@@ -23,3 +23,4 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
   - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
+  statusEffects: []

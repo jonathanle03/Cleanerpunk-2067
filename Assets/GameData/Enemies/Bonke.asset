@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3be94c422bd25a4db58bdea4c0b11bc, type: 3}
   m_Name: Bonke
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: Bonke
   art: {fileID: 0}
-  maxHealth: 0
-  attack: 0
-  defense: 0
-  cards: []
+  maxHealth: 200
+  attack: 10
+  defense: 5
+  cards:
+  - {fileID: 11400000, guid: e06e666bc58b7b2478415160260fea8a, type: 2}

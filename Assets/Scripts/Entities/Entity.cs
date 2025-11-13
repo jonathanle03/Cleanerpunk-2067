@@ -15,10 +15,18 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] public TextMeshProUGUI healthText;
     [SerializeField] public List<CardData> deck = new List<CardData>();
 
+    public bool moveable = true;
+    public List<StatusEffect> statusEffects = new List<StatusEffect>();
+
     public void TakeDamage(float cardPower, int incomingAttack)
     {
-        int incomingDmg = Mathf.CeilToInt(cardPower * incomingAttack * 100f / (100f + defense));
-        currentHealth -= incomingDmg;
+        float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
+        foreach (StatusEffect effect in statusEffects)
+        {
+            incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
+        }
+        
+        currentHealth -= Mathf.CeilToInt(incomingDmg);
         healthText.text = "Health: " + currentHealth;
         Debug.Log($"{entityName} takes {incomingDmg} damage");
 
@@ -27,6 +35,18 @@ public abstract class Entity : MonoBehaviour
             Debug.Log($"{entityName} is dead");
             EntityDead();
         }
+    }
+
+    public void ApplyStatusEffect(StatusEffect effect)
+    {
+        statusEffects.Add(effect);
+        effect.ApplyEffect(this);
+    }
+
+    public void RemoveStatusEffect(StatusEffect effect)
+    {
+        statusEffects.Remove(effect);
+        effect.OnExpire(this);
     }
 
     public abstract void EntityDead();

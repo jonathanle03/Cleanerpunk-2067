@@ -21,6 +21,7 @@ public class CardData : ScriptableObject
     public int cost;
     public float power;
     public List<CardEffect> effects;
+    public List<StatusEffect> statusEffects;
 
     public void doEffect(Entity attacker, Entity target)
     {

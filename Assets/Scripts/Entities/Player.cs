@@ -107,6 +107,11 @@ public class Player : Entity
 
     public void fillHand()
     {
+        for (int i = statusEffects.Count - 1; i >= 0; --i)
+        {
+            statusEffects[i].OnTurnEnd(this);
+        }
+
         for (int i = 0; i < usedCards; i++)
         {
             drawCard();
