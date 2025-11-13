@@ -3,33 +3,29 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Entity
 {
-    [SerializeField] public CardData enemyCard;
-
-    public string enemyName;
-    [SerializeField] public int health;
-    [SerializeField] public int attack;
-    [SerializeField] public int defense;
-    [SerializeField] TextMeshProUGUI enemyHealth;
+    [Header("Enemy Specific Info")]
+    public CardData enemyCard;
     [SerializeField] public GameObject enemyButton;
 
     public bool isDead;
 
     private void Start()
     {
-        enemyHealth.text = "Health: " + health;
+        currentHealth = maxHealth;
+        healthText.text = "Health: " + currentHealth;
+        RandomCard();
     }
-    public void TakeDamage(float cardPower, int playerAttack)
+
+    public override void EntityDead()
     {
-        int incomingDmg = Mathf.CeilToInt(cardPower * playerAttack * 100f / (100f + defense));
-        health -= incomingDmg;
-        enemyHealth.text = "Health: " + health;
-        //Debug.Log($"{enemyName} takes {amount} damage");
-        
-        if (health < 0)
-        {
-            //Debug.Log($"{enemyName} is dead");
-        }
+        isDead = true;
+        enemyButton.SetActive(false);
+    }
+
+    public void RandomCard()
+    {
+        enemyCard = deck[Random.Range(0, deck.Count)];
     }
 }

@@ -21,7 +21,7 @@ public class EnemyManager : MonoBehaviour
     {
         for (int i = 0; i < enemies.Length; i++)
         {
-            if (enemies[i] != null && enemies[i].GetComponent<Enemy>().health <= 0)
+            if (enemies[i] != null && enemies[i].GetComponent<Enemy>().currentHealth <= 0)
             {
                 enemies[i].SetActive(false);
                 enemies[i].GetComponent<Enemy>().isDead = true;
@@ -34,9 +34,11 @@ public class EnemyManager : MonoBehaviour
             {
                 if (enemies[i].GetComponent<Enemy>().isDead == false)
                 {
-                    player.takeDamage(enemies[i].GetComponent<Enemy>().enemyCard.power, enemies[i].GetComponent<Enemy>().attack);
+                    Enemy enemy = enemies[i].GetComponent<Enemy>();
+                    enemy.enemyCard.doEffect(enemy, player);
+                    // player.TakeDamage(enemies[i].GetComponent<Enemy>().enemyCard.power, enemies[i].GetComponent<Enemy>().attack);
+                    enemies[i].GetComponent<Enemy>().RandomCard();
                 }
-
             }
 
             player.playerTurn = true;
