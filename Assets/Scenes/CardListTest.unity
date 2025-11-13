@@ -920,7 +920,10 @@ MonoBehaviour:
   attack: 10
   defense: 10
   healthText: {fileID: 1973048034}
-  deck: []
+  deck:
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  enemyData: {fileID: 0}
+  art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   enemyButton: {fileID: 716252116}
   isDead: 0
@@ -2097,7 +2100,10 @@ MonoBehaviour:
   attack: 10
   defense: 10
   healthText: {fileID: 1641661811}
-  deck: []
+  deck:
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  enemyData: {fileID: 0}
+  art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   enemyButton: {fileID: 1616071162}
   isDead: 0
@@ -2901,7 +2907,10 @@ MonoBehaviour:
   attack: 10
   defense: 10
   healthText: {fileID: 1702472439}
-  deck: []
+  deck:
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  enemyData: {fileID: 0}
+  art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   enemyButton: {fileID: 897324094}
   isDead: 0

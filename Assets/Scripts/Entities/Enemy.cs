@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 public class Enemy : Entity
 {
     [Header("Enemy Specific Info")]
+    [SerializeField] public EnemyData enemyData;
+    public Sprite art;
     public CardData enemyCard;
     [SerializeField] public GameObject enemyButton;
 
@@ -13,6 +15,13 @@ public class Enemy : Entity
 
     private void Start()
     {
+        entityName = enemyData.enemyName;
+        art = enemyData.art;
+        maxHealth = enemyData.maxHealth;
+        attack = enemyData.attack;
+        defense = enemyData.defense;
+        deck.AddRange(enemyData.cards);
+
         currentHealth = maxHealth;
         healthText.text = "Health: " + currentHealth;
         RandomCard();
