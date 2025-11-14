@@ -3,10 +3,9 @@ using UnityEngine;
 
 public enum CardType { Offensive, Defensive, Support }
 public enum CardRarity { Common, Uncommon, Rare }
-public enum CardTarget { Enemy, AllEnemies, Player, None }
+public enum CardTarget { Enemy, AllEnemies, Self }
 
 [CreateAssetMenu(fileName = "Card", menuName = "Cards/Card Data")]
-
 [System.Serializable]
 public class CardData : ScriptableObject
 {
@@ -22,12 +21,14 @@ public class CardData : ScriptableObject
     public int cost;
     public float power;
     public List<CardEffect> effects;
+    public List<StatusEffect> targetStatusEffects;
+    public List<StatusEffect> selfStatusEffects;
 
-    public void doEffect(Player player, Enemy enemy)
+    public void doEffect(Entity attacker, Entity target)
     {
         foreach (CardEffect effect in effects)
         {
-            effect.Execute(this, player, enemy);
+            effect.Execute(this, attacker, target);
         }
     }
 }
