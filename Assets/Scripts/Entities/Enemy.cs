@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         int incomingDmg = Mathf.CeilToInt(cardPower * playerAttack * 100f / (100f + defense));
         health -= incomingDmg;
         enemyHealth.text = "Health: " + health;
-        //Debug.Log($"{enemyName} takes {amount} damage");
+        Debug.Log($"{enemyName} takes {incomingDmg} damage");
         
         if (health < 0)
         {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine.UI;
+using UnityEngine.Timeline;
 
 public class Player : MonoBehaviour
 {
@@ -29,13 +30,16 @@ public class Player : MonoBehaviour
     private int selectedCard;
     private int usedCards;
 
+    [SerializeField] public CardData basicAttackCard;
+    private bool usedBasicAttack = false;
+
     [Header("Stats")]
     [SerializeField] public int maxhealth = 100;
     public int currentHealth;
     [SerializeField] TextMeshProUGUI playerHealthText;
 
     [SerializeField] public int health = 100;
-    [SerializeField] public int attack = 100;
+    [SerializeField] public int attack = 50;
     [SerializeField] public int defense = 100;
 
     public const int maxMana = 9;
@@ -81,22 +85,43 @@ public class Player : MonoBehaviour
                 chosenCard = pick;
             }
         }
+        usedBasicAttack = false;
+    }
+
+    public void basicAttack()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            enemyManager.enemyButtons[i].SetActive(true);
+        }
+        usedBasicAttack = true;
     }
 
     public void enemySelect(int pick)
     {
         //Debug.Log("card selected: " + selectedCard + " enemy selected: " + pick);
-        hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
-        for (int i = 0; i < 3; i++)
+        if (usedBasicAttack == false)
         {
-            enemyManager.enemyButtons[i].SetActive(false);
+            hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
+            for (int i = 0; i < 3; i++)
+            {
+                enemyManager.enemyButtons[i].SetActive(false);
+            }
+            discards.Add(hand[selectedCard]);
+
+            cardButtons[chosenCard].SetActive(false);
+            hand[selectedCard] = null;
+            usedCards++;
         }
-        discards.Add(hand[selectedCard]);
-
-        cardButtons[chosenCard].SetActive(false);
-        hand[selectedCard] = null;
-        usedCards++;
-
+        if (usedBasicAttack == true)
+        {
+            basicAttackCard.doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
+            for (int i = 0; i < 3; i++)
+            {
+                enemyManager.enemyButtons[i].SetActive(false);
+            }
+            fillHand();
+        }
     }
 
     public void takeDamage(float cardPower, int enemyAttack)
