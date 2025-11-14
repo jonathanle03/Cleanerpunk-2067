@@ -687,6 +687,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96869c163fa098b4893131dfbb3c56dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityName: Player
+  maxHealth: 100
+  currentHealth: 0
+  attack: 10
+  defense: 10
+  healthText: {fileID: 1205337630}
+  deck: []
+  moveable: 1
+  statusEffects: []
   deathScreen: {fileID: 1008799942}
   energyText: {fileID: 1809298036}
   cardButtons:
@@ -708,7 +717,6 @@ MonoBehaviour:
   enemy: {fileID: 1489961023}
   enemyManager: {fileID: 1528466904}
   playerTurn: 1
-  deck: []
   hand:
   - {fileID: 0}
   - {fileID: 0}
@@ -717,11 +725,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   discards: []
-  maxhealth: 100
-  currentHealth: 0
-  playerHealthText: {fileID: 1205337630}
-  attack: 100
-  defense: 100
   currentMana: 0
 --- !u!114 &417510764
 MonoBehaviour:
@@ -900,7 +903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &501576391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,11 +916,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b31b692c6eb1747b67a668c4c7f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityName: Triangle 2
+  maxHealth: 100
+  currentHealth: 0
+  attack: 10
+  defense: 10
+  healthText: {fileID: 1973048034}
+  deck:
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  moveable: 1
+  statusEffects: []
+  enemyData: {fileID: 11400000, guid: 353257b514229bd48a049e8528d24eae, type: 2}
+  art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
-  enemyName: 
-  health: 100
-  enemyAttack: 5
-  enemyHealth: {fileID: 1973048034}
   enemyButton: {fileID: 716252116}
   isDead: 0
 --- !u!212 &501576392
@@ -2074,7 +2085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1138716119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,11 +2098,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b31b692c6eb1747b67a668c4c7f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityName: Triangle 0
+  maxHealth: 100
+  currentHealth: 0
+  attack: 10
+  defense: 10
+  healthText: {fileID: 1641661811}
+  deck:
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  moveable: 1
+  statusEffects: []
+  enemyData: {fileID: 11400000, guid: 602726f5433cc5b49bbc0cec83be18e9, type: 2}
+  art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
-  enemyName: 
-  health: 100
-  enemyAttack: 5
-  enemyHealth: {fileID: 1641661811}
   enemyButton: {fileID: 1616071162}
   isDead: 0
 --- !u!212 &1138716120
@@ -2888,11 +2907,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b31b692c6eb1747b67a668c4c7f7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityName: Triangle 0
+  maxHealth: 100
+  currentHealth: 0
+  attack: 10
+  defense: 10
+  healthText: {fileID: 1702472439}
+  deck:
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  moveable: 1
+  statusEffects: []
+  enemyData: {fileID: 11400000, guid: 3f8766d33c29ac648a7ffea29fec36b8, type: 2}
+  art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
-  enemyName: 
-  health: 100
-  enemyAttack: 5
-  enemyHealth: {fileID: 1702472439}
   enemyButton: {fileID: 897324094}
   isDead: 0
 --- !u!212 &1489961024
