@@ -24,6 +24,9 @@ public class Enemy : Entity
         isBoss = enemyData.isBoss;
         deck = new List<CardData>(enemyData.cards);
 
+        SpriteRenderer thisrender = GetComponent<SpriteRenderer>();
+        thisrender.sprite = art; 
+
         currentHealth = maxHealth;
         healthText.text = "Health: " + currentHealth;
         RandomCard();
