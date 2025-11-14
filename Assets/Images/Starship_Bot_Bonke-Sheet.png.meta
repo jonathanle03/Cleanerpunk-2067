@@ -1,0 +1,847 @@
+fileFormatVersion: 2
+guid: e89decd278c31a147a4bdb1fa26efe6e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6716284123241043736
+    second: Starship_Bot_Bonke-Sheet_0
+  - first:
+      213: -335610316802892070
+    second: Starship_Bot_Bonke-Sheet_1
+  - first:
+      213: -4964121839078347671
+    second: Starship_Bot_Bonke-Sheet_2
+  - first:
+      213: 4761501886758541608
+    second: Starship_Bot_Bonke-Sheet_3
+  - first:
+      213: 3836911636258656231
+    second: Starship_Bot_Bonke-Sheet_4
+  - first:
+      213: -3254353020375192027
+    second: Starship_Bot_Bonke-Sheet_5
+  - first:
+      213: 526375534187832679
+    second: Starship_Bot_Bonke-Sheet_6
+  - first:
+      213: -1547328267336296346
+    second: Starship_Bot_Bonke-Sheet_7
+  - first:
+      213: 494738478902615064
+    second: Starship_Bot_Bonke-Sheet_8
+  - first:
+      213: 6157626284671976031
+    second: Starship_Bot_Bonke-Sheet_9
+  - first:
+      213: -8021861668492760717
+    second: Starship_Bot_Bonke-Sheet_10
+  - first:
+      213: 2108267334122612647
+    second: Starship_Bot_Bonke-Sheet_11
+  - first:
+      213: 8633665579703749600
+    second: Starship_Bot_Bonke-Sheet_12
+  - first:
+      213: -7425998406260929707
+    second: Starship_Bot_Bonke-Sheet_13
+  - first:
+      213: 7710101489854729497
+    second: Starship_Bot_Bonke-Sheet_14
+  - first:
+      213: -2935656284620418954
+    second: Starship_Bot_Bonke-Sheet_15
+  - first:
+      213: 7529442297757757252
+    second: Starship_Bot_Bonke-Sheet_16
+  - first:
+      213: -1895129393065773261
+    second: Starship_Bot_Bonke-Sheet_17
+  - first:
+      213: -4255872407875847504
+    second: Starship_Bot_Bonke-Sheet_18
+  - first:
+      213: 3708388633467821454
+    second: Starship_Bot_Bonke-Sheet_19
+  - first:
+      213: -8421998367362567705
+    second: Starship_Bot_Bonke-Sheet_20
+  - first:
+      213: 5081664314400934503
+    second: Starship_Bot_Bonke-Sheet_21
+  - first:
+      213: 6461471051719610548
+    second: Starship_Bot_Bonke-Sheet_22
+  - first:
+      213: 6135817231178182732
+    second: Starship_Bot_Bonke-Sheet_23
+  - first:
+      213: -7614796924083814847
+    second: Starship_Bot_Bonke-Sheet_24
+  - first:
+      213: 4872902124650257299
+    second: Starship_Bot_Bonke-Sheet_25
+  - first:
+      213: -2257947442600520305
+    second: Starship_Bot_Bonke-Sheet_26
+  - first:
+      213: -6915149681027898300
+    second: Starship_Bot_Bonke-Sheet_27
+  - first:
+      213: -4730735827717615035
+    second: Starship_Bot_Bonke-Sheet_28
+  - first:
+      213: 4535804653889223618
+    second: Starship_Bot_Bonke-Sheet_29
+  - first:
+      213: -7314578602985511782
+    second: Starship_Bot_Bonke-Sheet_30
+  - first:
+      213: 2570370086952096573
+    second: Starship_Bot_Bonke-Sheet_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5120
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 817d06063d8053d50800000000000000
+      internalID: 6716284123241043736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 5120
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aded10ce13ca75bf0800000000000000
+      internalID: -335610316802892070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 5120
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96ce9f70d75eb1bb0800000000000000
+      internalID: -4964121839078347671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 5120
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 829589d0db0441240800000000000000
+      internalID: 4761501886758541608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 5120
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ef82c9edc27f3530800000000000000
+      internalID: 3836911636258656231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 6400
+        y: 5120
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52e21d69b2736d2d0800000000000000
+      internalID: -3254353020375192027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3840
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 765e8bd62cf0e4700800000000000000
+      internalID: 526375534187832679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 3840
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 668df729329c68ae0800000000000000
+      internalID: -1547328267336296346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 3840
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81c15bb760aadd600800000000000000
+      internalID: 494738478902615064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 3840
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f524b7d3b78447550800000000000000
+      internalID: 6157626284671976031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 3840
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 379aa2c605f9ca090800000000000000
+      internalID: -8021861668492760717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 6400
+        y: 3840
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a720f568f1124d10800000000000000
+      internalID: 2108267334122612647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2560
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eb42c30a11f0d770800000000000000
+      internalID: 8633665579703749600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 2560
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b433c4bcd81f890800000000000000
+      internalID: -7425998406260929707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 2560
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91d40058478cffa60800000000000000
+      internalID: 7710101489854729497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 2560
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6709e84b9247247d0800000000000000
+      internalID: -2935656284620418954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 2560
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44fe6aa80e3fd7860800000000000000
+      internalID: 7529442297757757252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 6400
+        y: 2560
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 337b9ea9bd523b5e0800000000000000
+      internalID: -1895129393065773261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ba7c27f79a10f4c0800000000000000
+      internalID: -4255872407875847504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1280
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8d12f270d7d67330800000000000000
+      internalID: 3708388633467821454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 1280
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e13f664b1d0f1b80800000000000000
+      internalID: -8421998367362567705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1280
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a85a725c2b58640800000000000000
+      internalID: 5081664314400934503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 1280
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0973cefa1cba950800000000000000
+      internalID: 6461471051719610548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 6400
+        y: 1280
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c40b817434dc62550800000000000000
+      internalID: 6135817231178182732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14e3f3fda8ec25690800000000000000
+      internalID: -7614796924083814847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b56052aa600a340800000000000000
+      internalID: 4872902124650257299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Starship_Bot_Bonke-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 1280
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f855b4a93c82aa0e0800000000000000
+      internalID: -2257947442600520305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 68e2cff89394f2045b1e5181cca75e2a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Starship_Bot_Bonke-Sheet_0: 6716284123241043736
+      Starship_Bot_Bonke-Sheet_1: -335610316802892070
+      Starship_Bot_Bonke-Sheet_10: -8021861668492760717
+      Starship_Bot_Bonke-Sheet_11: 2108267334122612647
+      Starship_Bot_Bonke-Sheet_12: 8633665579703749600
+      Starship_Bot_Bonke-Sheet_13: -7425998406260929707
+      Starship_Bot_Bonke-Sheet_14: 7710101489854729497
+      Starship_Bot_Bonke-Sheet_15: -2935656284620418954
+      Starship_Bot_Bonke-Sheet_16: 7529442297757757252
+      Starship_Bot_Bonke-Sheet_17: -1895129393065773261
+      Starship_Bot_Bonke-Sheet_18: -4255872407875847504
+      Starship_Bot_Bonke-Sheet_19: 3708388633467821454
+      Starship_Bot_Bonke-Sheet_2: -4964121839078347671
+      Starship_Bot_Bonke-Sheet_20: -8421998367362567705
+      Starship_Bot_Bonke-Sheet_21: 5081664314400934503
+      Starship_Bot_Bonke-Sheet_22: 6461471051719610548
+      Starship_Bot_Bonke-Sheet_23: 6135817231178182732
+      Starship_Bot_Bonke-Sheet_24: -7614796924083814847
+      Starship_Bot_Bonke-Sheet_25: 4872902124650257299
+      Starship_Bot_Bonke-Sheet_26: -2257947442600520305
+      Starship_Bot_Bonke-Sheet_3: 4761501886758541608
+      Starship_Bot_Bonke-Sheet_4: 3836911636258656231
+      Starship_Bot_Bonke-Sheet_5: -3254353020375192027
+      Starship_Bot_Bonke-Sheet_6: 526375534187832679
+      Starship_Bot_Bonke-Sheet_7: -1547328267336296346
+      Starship_Bot_Bonke-Sheet_8: 494738478902615064
+      Starship_Bot_Bonke-Sheet_9: 6157626284671976031
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
