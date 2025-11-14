@@ -30,7 +30,7 @@ public class cardReader : MonoBehaviour
         
     }
 
-    void setCard()
+    public void setCard()
     {
         cardName.text = card.cardName;
         description.text = card.description;

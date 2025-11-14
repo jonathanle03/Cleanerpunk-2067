@@ -157,7 +157,8 @@ public class Player : Entity
         for (int i = 0; i < hand.Length; i++)
         {
             //Debug.Log(hand[i].cardName);
-            buttonText[i].text = hand[i].cardName;
+            cardButtons[i].GetComponent<cardReader>().card = hand[i];
+            cardButtons[i].GetComponent<cardReader>().setCard(); 
         }
     }
 
