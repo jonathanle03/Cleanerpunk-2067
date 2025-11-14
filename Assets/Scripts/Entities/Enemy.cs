@@ -1,26 +1,35 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] public CardData enemyCard;
+
     public string enemyName;
-    public int health;
+    [SerializeField] public int health;
+    [SerializeField] public int attack;
+    [SerializeField] public int defense;
     [SerializeField] TextMeshProUGUI enemyHealth;
     [SerializeField] public GameObject enemyButton;
+
+    public bool isDead;
 
     private void Start()
     {
         enemyHealth.text = "Health: " + health;
     }
-    public void TakeDamage(int amount)
+    public void TakeDamage(float cardPower, int playerAttack)
     {
-        health -= amount;
+        int incomingDmg = Mathf.CeilToInt(cardPower * playerAttack * 100f / (100f + defense));
+        health -= incomingDmg;
         enemyHealth.text = "Health: " + health;
-        Debug.Log($"{enemyName} takes {amount} damage");
+        //Debug.Log($"{enemyName} takes {amount} damage");
         
         if (health < 0)
         {
-            Debug.Log($"{enemyName} is dead");
+            //Debug.Log($"{enemyName} is dead");
         }
     }
 }

@@ -50,33 +50,45 @@ public class TurnBasedCombat : MonoBehaviour
 
     void PlayerAttack()
     {
+        // Makes sure player can't attack out of turn 
         if(!isPlayerTurn)
         {
             return;
         }
 
-      
+      // If isPlayerTurn == true, lower enemy health
             _enemyHealth -= 2;
 
+        // If the enemy dies in this attack (should be negative inclusive incase there's an overkill)...
             if (_enemyHealth <= 0)
             {
+                //Reset the health to 0 (don't want to display a negative number) (unless?) 
                 _enemyHealth = 0;
+                // Update UI to reflect the hp change 
                 UpdateUI();
+
+                //Disable the attack button permanently 
                 attackButton.interactable = false;
                 Debug.Log("Enemy defeated!");
                 return;
             }
 
+            //If enemy doesn't die, disable player turn 
             isPlayerTurn = false;
+            // Update UI to reflect hp changes
             UpdateUI();
+            // Invoke is just calling a method with a slight time delay (method = EnemyAttack, time delay = 1f (1 second)) 
             Invoke(nameof(EnemyAttack), 1f);
     }
 
     void EnemyAttack()
     {
- 
+            
+            // Lower player health
             _playerHealth -= 1; 
 
+
+            // Same as in PlayerAttack- check if player is dead, then do the same things but for the player
             if (_playerHealth <= 0)
             {
                 _playerHealth = 0;
@@ -86,11 +98,13 @@ public class TurnBasedCombat : MonoBehaviour
                 return; 
             }
 
+            // If player isn't dead, return player control
             isPlayerTurn = true;
             UpdateUI(); 
     }
 
-
+    
+    // This method just contains everything needed to update the health values on the UI 
     void UpdateUI()
     {
         playerHealthText.text = _playerHealth + " / " + _maxPlayerHealth;
