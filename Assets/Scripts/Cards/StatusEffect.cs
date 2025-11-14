@@ -4,6 +4,8 @@ public class StatusEffect : ScriptableObject
 {
     public string effectName;
     public int duration;
+    public float effectPower;
+    [Range(0f, 1f)]
     public float applicationChance;
 
     public virtual void ApplyEffect(Entity target) { }

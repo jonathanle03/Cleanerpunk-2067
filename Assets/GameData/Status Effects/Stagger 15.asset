@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 255d517f4f546f54f8fcbe8f94c537a7, type: 3}
-  m_Name: Stagger30
+  m_Name: Stagger 15
   m_EditorClassIdentifier: 
   effectName: Stagger
   duration: 1
-  applicationChance: 0.3
+  effectPower: 0
+  applicationChance: 0.15

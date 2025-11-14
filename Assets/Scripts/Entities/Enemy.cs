@@ -21,11 +21,17 @@ public class Enemy : Entity
         maxHealth = enemyData.maxHealth;
         attack = enemyData.attack;
         defense = enemyData.defense;
+        isBoss = enemyData.isBoss;
         deck = new List<CardData>(enemyData.cards);
 
         currentHealth = maxHealth;
         healthText.text = "Health: " + currentHealth;
         RandomCard();
+    }
+
+    private void Update()
+    {
+        healthText.text = "Health: " + currentHealth;
     }
 
     public override void EntityDead()

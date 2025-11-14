@@ -12,6 +12,7 @@ public abstract class Entity : MonoBehaviour
     public int defense;
 
     [Header("Additional Info")]
+    public bool isBoss;
     [SerializeField] public TextMeshProUGUI healthText;
     [SerializeField] public List<CardData> deck = new List<CardData>();
 
@@ -39,12 +40,14 @@ public abstract class Entity : MonoBehaviour
 
     public void ApplyStatusEffect(StatusEffect effect)
     {
-        statusEffects.Add(effect);
+        StatusEffect instance = Instantiate(effect);
+        statusEffects.Add(instance);
         effect.ApplyEffect(this);
     }
 
     public void RemoveStatusEffect(StatusEffect effect)
     {
+        StatusEffect instance = Instantiate(effect);
         statusEffects.Remove(effect);
         effect.OnExpire(this);
     }

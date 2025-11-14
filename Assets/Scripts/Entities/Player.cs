@@ -55,6 +55,7 @@ public class Player : Entity
     private void Update()
     {
         energyText.text = "Energy: " + currentMana;
+        healthText.text = "Health: " + currentHealth;
     }
 
     public void useCard(int pick)
@@ -71,6 +72,27 @@ public class Player : Entity
                 }
 
                 chosenCard = pick;
+            }
+            else if (hand[pick].target == CardTarget.AllEnemies)
+            {
+                for (int i = 0; i < enemyManager.enemies.Length; i++)
+                {
+                    hand[pick].doEffect(this, enemyManager.enemies[i].GetComponent<Enemy>());
+                }
+                discards.Add(hand[pick]);
+
+                cardButtons[pick].SetActive(false);
+                hand[pick] = null;
+                usedCards++;
+            }
+            else if (hand[pick].target == CardTarget.Self)
+            {
+                hand[pick].doEffect(this, this);
+                discards.Add(hand[pick]);
+
+                cardButtons[pick].SetActive(false);
+                hand[pick] = null;
+                usedCards++;
             }
         }
     }

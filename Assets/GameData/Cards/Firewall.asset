@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 918a7c5dea9ea9647bd9ba7dfb10ea15, type: 3}
-  m_Name: SwitchSweep
+  m_Name: Firewall
   m_EditorClassIdentifier: 
-  cardName: Switch Sweep
-  description: Deal 2x light Ballistic damage to all enemy targets.
+  cardName: Firewall
+  description: Raise the user's DEF/SHD by 50% for 3 turns.
   art: {fileID: 0}
-  type: 0
-  rarity: 0
-  target: 0
-  cost: 2
-  power: 1.2
+  type: 1
+  rarity: 2
+  target: 2
+  cost: 4
+  power: 0
   effects:
-  - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
-  - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
-  statusEffects: []
+  - {fileID: 11400000, guid: 7dc71b124b85ccf44afbc9baa7b1c43c, type: 2}
+  targetStatusEffects: []
+  selfStatusEffects:
+  - {fileID: 11400000, guid: 37209fdc5f4cdcd489c8f47055811dbb, type: 2}

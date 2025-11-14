@@ -22,6 +22,5 @@ MonoBehaviour:
   power: 1
   effects:
   - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
-  - {fileID: 11400000, guid: 86022e2b631a559459dbc25900b5f55e, type: 2}
-  statusEffects:
-  - {fileID: 11400000, guid: 0200636a5a4686741bd8971179859b15, type: 2}
+  targetStatusEffects: []
+  selfStatusEffects: []
