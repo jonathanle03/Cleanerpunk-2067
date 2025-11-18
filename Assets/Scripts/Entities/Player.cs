@@ -60,6 +60,7 @@ public class Player : Entity
 
     public void useCard(int pick)
     {
+        Debug.Log("use card activated, pick number: " + pick); 
         if (currentMana >= hand[pick].cost)
         {
             selectedCard = pick;
