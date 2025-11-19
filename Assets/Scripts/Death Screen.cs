@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
+    [SerializeField] public PlayerStats playerStats;
+    [SerializeField] public Player player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +16,10 @@ public class DeathScreen : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void deathButton()
+    {
+        SceneManager.LoadScene(0);
     }
 }

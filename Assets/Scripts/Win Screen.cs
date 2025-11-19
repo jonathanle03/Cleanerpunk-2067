@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WinScreen : MonoBehaviour
 {
@@ -66,5 +67,10 @@ public class WinScreen : MonoBehaviour
         playerStats.currency += 50;
         spareButtons[pick].SetActive(false);
         scrapButtons[pick].SetActive(false);
+    }
+
+    public void toShop()
+    {
+        SceneManager.LoadScene(2);
     }
 }
