@@ -24,7 +24,7 @@ public class Player : Entity
 
 
     [Header("Cards")]
-    [SerializeField] CardData[] hand = new CardData[6];
+    [SerializeField] CardData[] hand = new CardData[10];
     [SerializeField] List<CardData> discards = new List<CardData>();
     private int selectedCard;
     private int usedCards;
