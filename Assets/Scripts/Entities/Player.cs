@@ -60,7 +60,7 @@ public class Player : Entity
 
     public void useCard(int pick)
     {
-        Debug.Log("use card activated, pick number: " + pick); 
+        Debug.Log("use card activated, pick number: " + pick);
         if (currentMana >= hand[pick].cost)
         {
             selectedCard = pick;
@@ -134,6 +134,7 @@ public class Player : Entity
         {
             statusEffects[i].OnTurnEnd(this);
         }
+        uiController.UpdateStatusUI(statusEffects);
 
         for (int i = 0; i < usedCards; i++)
         {
@@ -159,7 +160,7 @@ public class Player : Entity
         {
             //Debug.Log(hand[i].cardName);
             cardButtons[i].GetComponent<cardReader>().card = hand[i];
-            cardButtons[i].GetComponent<cardReader>().setCard(); 
+            cardButtons[i].GetComponent<cardReader>().setCard();
         }
     }
 

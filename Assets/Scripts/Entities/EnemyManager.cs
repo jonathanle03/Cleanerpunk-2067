@@ -50,11 +50,12 @@ public class EnemyManager : MonoBehaviour
                     for (int j = enemy.statusEffects.Count - 1; j >= 0; --j)
                     {
                         enemy.statusEffects[j].OnTurnEnd(enemy);
+                        enemy.uiController.UpdateStatusUI(enemy.statusEffects);
                     }
                 }
             }
 
-            foreach(StatusEffect effect in player.statusEffects)
+            foreach (StatusEffect effect in player.statusEffects)
             {
                 effect.OnTurnStart(player);
             }
