@@ -7,6 +7,11 @@ public class PlayerStats : MonoBehaviour
      private static PlayerStats instance;
      //[SerializeField] CardData[] card = new CardData[20];
      [SerializeField] public List<CardData> playerDeck = new List<CardData>();
+
+     public int maxHealth;
+     public int defense;
+     public int maxEnergy;
+     public int attack;
      public int currency;
         
         void Awake()
@@ -24,6 +29,10 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        maxHealth = 100;
+        defense = 10;
+        maxEnergy = 9;
+        attack = 10;
        // playerDeck.Add(card[0]);
         
         Debug.Log("" + playerDeck.ToString());

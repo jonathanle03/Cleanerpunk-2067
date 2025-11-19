@@ -20,6 +20,7 @@ public class CardData : ScriptableObject
     [Header("Gameplay Info")]
     public int cost;
     public float power;
+    public int maxCooldown;
     public List<CardEffect> effects;
     public List<StatusEffect> targetStatusEffects;
     public List<StatusEffect> selfStatusEffects;
