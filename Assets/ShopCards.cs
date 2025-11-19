@@ -16,7 +16,7 @@ public class ShopCards : MonoBehaviour
         for (int i = 0; i < cards.Length; i++)
         {
             System.Random r = new System.Random();
-            Card card = gameObject.AddComponent<Card>();
+            CardOld card = gameObject.AddComponent<CardOld>();
             card.name = "mouse";
             card.cost = r.Next(1, 10);
             ButtonTest b = gameObject.AddComponent<ButtonTest>();

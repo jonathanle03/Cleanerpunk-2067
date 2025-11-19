@@ -26,6 +26,7 @@ public class Player : Entity
     [Header("Cards")]
     [SerializeField] CardData[] hand = new CardData[6];
     [SerializeField] List<CardData> discards = new List<CardData>();
+    [SerializeField] List<int> cooldowns = new List<int>();
     private int selectedCard;
     private int usedCards;
 
@@ -80,7 +81,8 @@ public class Player : Entity
                 {
                     hand[pick].doEffect(this, enemyManager.enemies[i].GetComponent<Enemy>());
                 }
-                discards.Add(hand[pick]);
+                discardCard(hand[pick]);
+                //discards.Add(hand[pick]);
 
                 cardButtons[pick].SetActive(false);
                 hand[pick] = null;
@@ -89,7 +91,8 @@ public class Player : Entity
             else if (hand[pick].target == CardTarget.Self)
             {
                 hand[pick].doEffect(this, this);
-                discards.Add(hand[pick]);
+                discardCard(hand[pick]);
+                //discards.Add(hand[pick]);
 
                 cardButtons[pick].SetActive(false);
                 hand[pick] = null;
@@ -106,12 +109,31 @@ public class Player : Entity
         {
             enemyManager.enemyButtons[i].SetActive(false);
         }
-        discards.Add(hand[selectedCard]);
+        discardCard(hand[selectedCard]);
+        //discards.Add(hand[selectedCard]);
 
         cardButtons[chosenCard].SetActive(false);
         hand[selectedCard] = null;
         usedCards++;
 
+    }
+
+    void discardCard(CardData card)
+    {
+        for (int i = cooldowns.Count - 1; i >= 0; i--)
+        {
+            cooldowns[i] -= 1;
+
+            if (cooldowns[i] <= 0)
+            {
+                cooldowns.RemoveAt(i);
+                CardData restoredCard = discards[i];
+                deck.Add(restoredCard);
+                discards.RemoveAt(i);
+            }
+        }
+        discards.Add(card);
+        cooldowns.Add(card.maxCooldown);
     }
 
     void drawCard()

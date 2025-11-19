@@ -13,10 +13,10 @@ public class CardDB : MonoBehaviour
 
     }
 
-    public Card giveCard()
+    public CardOld giveCard()
     {
         System.Random r = new System.Random();
-        Card card = gameObject.AddComponent<Card>();
+        CardOld card = gameObject.AddComponent<CardOld>();
         card.name = "mouse";
         card.cost = r.Next(1, 10);
         card.name = "Kabuto";

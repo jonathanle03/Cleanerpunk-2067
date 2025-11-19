@@ -7,7 +7,7 @@ public class ButtonTest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public TMP_Text cost_display;
     public TMP_Text quantity_display;
-    public Card card;
+    public CardOld card;
     public ShopCards shop;
     public void Start()
     {
