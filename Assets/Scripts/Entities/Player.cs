@@ -5,8 +5,9 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
+    [Header("UI Elements")]
     [SerializeField] GameObject deathScreen;
     [SerializeField] TextMeshProUGUI energyText;
     [SerializeField] GameObject[] cardButtons = new GameObject[6];
@@ -23,28 +24,19 @@ public class Player : MonoBehaviour
 
 
     [Header("Cards")]
-    [SerializeField] List<CardData> deck = new List<CardData>();
     [SerializeField] CardData[] hand = new CardData[6];
     [SerializeField] List<CardData> discards = new List<CardData>();
     private int selectedCard;
     private int usedCards;
 
     [Header("Stats")]
-    [SerializeField] public int maxhealth = 100;
-    public int currentHealth;
-    [SerializeField] TextMeshProUGUI playerHealthText;
-
-    [SerializeField] public int health = 100;
-    [SerializeField] public int attack = 100;
-    [SerializeField] public int defense = 100;
-
     public const int maxMana = 9;
     public int currentMana;
 
     void Start()
     {
-        currentHealth = maxhealth;
-        playerHealthText.text = "Health: " + currentHealth;
+        currentHealth = maxHealth;
+        healthText.text = "Health: " + currentHealth;
         currentMana = maxMana;
 
         deck = stats.getDeck();
@@ -63,10 +55,12 @@ public class Player : MonoBehaviour
     private void Update()
     {
         energyText.text = "Energy: " + currentMana;
+        healthText.text = "Health: " + currentHealth;
     }
 
     public void useCard(int pick)
     {
+        Debug.Log("use card activated, pick number: " + pick); 
         if (currentMana >= hand[pick].cost)
         {
             selectedCard = pick;
@@ -79,6 +73,27 @@ public class Player : MonoBehaviour
                 }
 
                 chosenCard = pick;
+            }
+            else if (hand[pick].target == CardTarget.AllEnemies)
+            {
+                for (int i = 0; i < enemyManager.enemies.Length; i++)
+                {
+                    hand[pick].doEffect(this, enemyManager.enemies[i].GetComponent<Enemy>());
+                }
+                discards.Add(hand[pick]);
+
+                cardButtons[pick].SetActive(false);
+                hand[pick] = null;
+                usedCards++;
+            }
+            else if (hand[pick].target == CardTarget.Self)
+            {
+                hand[pick].doEffect(this, this);
+                discards.Add(hand[pick]);
+
+                cardButtons[pick].SetActive(false);
+                hand[pick] = null;
+                usedCards++;
             }
         }
     }
@@ -99,20 +114,6 @@ public class Player : MonoBehaviour
 
     }
 
-    public void takeDamage(float cardPower, int enemyAttack)
-    {
-        int incomingDmg = Mathf.CeilToInt(cardPower * enemyAttack * 100f / (100f + defense));
-        currentHealth -= incomingDmg;
-        playerHealthText.text = "Health: " + currentHealth;
-        Debug.Log($"Player takes {incomingDmg} damage");
-
-        if (currentHealth < 0)
-        {
-            Debug.Log($"Player is dead");
-            playerDead();
-        }
-    }
-
     void drawCard()
     {
         int cardDrawn = UnityEngine.Random.Range(0, deck.Count - 1);
@@ -129,6 +130,11 @@ public class Player : MonoBehaviour
 
     public void fillHand()
     {
+        for (int i = statusEffects.Count - 1; i >= 0; --i)
+        {
+            statusEffects[i].OnTurnEnd(this);
+        }
+
         for (int i = 0; i < usedCards; i++)
         {
             drawCard();
@@ -152,13 +158,14 @@ public class Player : MonoBehaviour
         for (int i = 0; i < hand.Length; i++)
         {
             //Debug.Log(hand[i].cardName);
-            buttonText[i].text = hand[i].cardName;
+            cardButtons[i].GetComponent<cardReader>().card = hand[i];
+            cardButtons[i].GetComponent<cardReader>().setCard(); 
         }
     }
 
-    public void playerDead()
+    public override void EntityDead()
     {
-        playerHealthText.text = "Health: 0";
+        healthText.text = "Health: 0";
         for (int i = 0; i < hand.Length; i++)
         {
             cardButtons[i].SetActive(false);
