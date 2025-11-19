@@ -6,7 +6,8 @@ public class PlayerStats : MonoBehaviour
 {
      private static PlayerStats instance;
      //[SerializeField] CardData[] card = new CardData[20];
-     [SerializeField] List<CardData> playerDeck = new List<CardData>();       
+     [SerializeField] public List<CardData> playerDeck = new List<CardData>();
+     public int currency;
         
         void Awake()
         {

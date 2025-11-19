@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Blicky
   art: {fileID: 6018467448584526690, guid: 5a543cfd4be6ca04ab50136e777a8d0a, type: 3}
-  maxHealth: 200
+  maxHealth: 1
   attack: 10
   defense: 5
   isBoss: 0

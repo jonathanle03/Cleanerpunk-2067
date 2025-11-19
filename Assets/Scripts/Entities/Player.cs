@@ -32,7 +32,6 @@ public class Player : Entity
     [Header("Stats")]
     public const int maxMana = 9;
     public int currentMana;
-
     void Start()
     {
         currentHealth = maxHealth;
