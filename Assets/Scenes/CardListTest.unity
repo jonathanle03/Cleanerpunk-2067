@@ -1382,6 +1382,7 @@ MonoBehaviour:
   deck:
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   moveable: 1
+  staggerCD: 0
   statusEffects: []
   uiController: {fileID: 0}
   enemyData: {fileID: 11400000, guid: 353257b514229bd48a049e8528d24eae, type: 2}
@@ -3252,6 +3253,7 @@ MonoBehaviour:
   deck:
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   moveable: 1
+  staggerCD: 0
   statusEffects: []
   uiController: {fileID: 0}
   enemyData: {fileID: 11400000, guid: 602726f5433cc5b49bbc0cec83be18e9, type: 2}
@@ -4096,6 +4098,7 @@ MonoBehaviour:
   healthText: {fileID: 1205337630}
   deck: []
   moveable: 1
+  staggerCD: 0
   statusEffects: []
   uiController: {fileID: 0}
   deathScreen: {fileID: 1008799942}
@@ -4455,6 +4458,7 @@ MonoBehaviour:
   deck:
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   moveable: 1
+  staggerCD: 0
   statusEffects: []
   uiController: {fileID: 0}
   enemyData: {fileID: 11400000, guid: 3f8766d33c29ac648a7ffea29fec36b8, type: 2}

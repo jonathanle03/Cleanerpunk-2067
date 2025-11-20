@@ -52,6 +52,11 @@ public class EnemyManager : MonoBehaviour
                         enemy.statusEffects[j].OnTurnEnd(enemy);
                         enemy.uiController.UpdateStatusUI(enemy.statusEffects);
                     }
+
+                    if (enemy.staggerCD > 0)
+                    {
+                        enemy.staggerCD--;
+                    }
                 }
             }
 

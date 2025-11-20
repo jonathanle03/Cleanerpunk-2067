@@ -163,6 +163,11 @@ public class Player : Entity
             statusEffects[i].OnTurnEnd(this);
         }
 
+        if (staggerCD > 0)
+        {
+            staggerCD--;
+        }
+
         for (int i = 0; i < usedCards; i++)
         {
             drawCard();
