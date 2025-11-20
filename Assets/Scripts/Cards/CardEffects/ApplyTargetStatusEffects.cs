@@ -9,6 +9,10 @@ public class ApplyTargetStatusEffectsEffect : CardEffect
         {
             if (Random.value <= statusEffect.applicationChance)
             {
+                if (target is Player && ((Player) target).isInvisible)
+                {
+                    continue;
+                }
                 target.ApplyStatusEffect(statusEffect);
             }
         }
