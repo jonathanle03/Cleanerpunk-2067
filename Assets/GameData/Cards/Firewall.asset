@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Firewall
   description: Raise the user's DEF/SHD by 50% for 3 turns.
-  art: {fileID: 0}
+  art: {fileID: 8778175453553022843, guid: 4e60589a4ffcbde408b247ab33f97ffb, type: 3}
   type: 1
   rarity: 2
   target: 2

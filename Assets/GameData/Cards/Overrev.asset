@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Overrev
   description: +50% ATK (2 turns), 15% chance to Stagger self
-  art: {fileID: 0}
+  art: {fileID: -6480904020101821236, guid: 2ac60940adfd66b468e637dacb49be4e, type: 3}
   type: 2
   rarity: 2
   target: 2
