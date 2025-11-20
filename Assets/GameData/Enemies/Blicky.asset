@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Blicky
   m_EditorClassIdentifier: 
   enemyName: Blicky
-  art: {fileID: 0}
-  maxHealth: 200
+  art: {fileID: 6018467448584526690, guid: 5a543cfd4be6ca04ab50136e777a8d0a, type: 3}
+  maxHealth: 1
   attack: 10
   defense: 5
+  isBoss: 0
   cards:
   - {fileID: 11400000, guid: 23571b39d3c81874eb9f2e3cd4cdfdb5, type: 2}

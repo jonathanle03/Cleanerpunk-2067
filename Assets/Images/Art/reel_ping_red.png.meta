@@ -1,0 +1,676 @@
+fileFormatVersion: 2
+guid: 1b0eed4da4c9dfd4b983faf8426d4b4e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1805330215109071478
+    second: reel_ping_red_0
+  - first:
+      213: 4868109475188778713
+    second: reel_ping_red_1
+  - first:
+      213: -4853199784191001158
+    second: reel_ping_red_2
+  - first:
+      213: 9161410388628088387
+    second: reel_ping_red_3
+  - first:
+      213: -8648308085271909794
+    second: reel_ping_red_4
+  - first:
+      213: 969906981290421425
+    second: reel_ping_red_5
+  - first:
+      213: 2411686706070528685
+    second: reel_ping_red_6
+  - first:
+      213: -6748086695486937389
+    second: reel_ping_red_7
+  - first:
+      213: -6682501215766850417
+    second: reel_ping_red_8
+  - first:
+      213: 6049488204513417498
+    second: reel_ping_red_9
+  - first:
+      213: -7411130019221143087
+    second: reel_ping_red_10
+  - first:
+      213: 9120086175605724295
+    second: reel_ping_red_11
+  - first:
+      213: -1191705589525790485
+    second: reel_ping_red_12
+  - first:
+      213: 2992027533161999294
+    second: reel_ping_red_13
+  - first:
+      213: -5511506010803746583
+    second: reel_ping_red_14
+  - first:
+      213: -325873184141183107
+    second: reel_ping_red_15
+  - first:
+      213: 8445787587219121653
+    second: reel_ping_red_16
+  - first:
+      213: -6964058661246840293
+    second: reel_ping_red_17
+  - first:
+      213: 5185901262045915323
+    second: reel_ping_red_18
+  - first:
+      213: 3318469767410447327
+    second: reel_ping_red_19
+  - first:
+      213: 5527748412557315706
+    second: reel_ping_red_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: reel_ping_red_0
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 32
+        width: 43
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8de4220cbd22f6e0800000000000000
+      internalID: -1805330215109071478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 94
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d6275c76cffe8340800000000000000
+      internalID: 4868109475188778713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 94
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abdfa477288f5acb0800000000000000
+      internalID: -4853199784191001158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 94
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34620cf853ed32f70800000000000000
+      internalID: 9161410388628088387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_4
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 94
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5aaa3dfd990bf780800000000000000
+      internalID: -8648308085271909794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_5
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 94
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bcacfcb24dc57d00800000000000000
+      internalID: 969906981290421425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_6
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 74
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da2add01848087120800000000000000
+      internalID: 2411686706070528685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_7
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 66
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d626f147eaf952a0800000000000000
+      internalID: -6748086695486937389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 74
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f84d917bc8cf243a0800000000000000
+      internalID: -6682501215766850417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_9
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 66
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1910fe687914f350800000000000000
+      internalID: 6049488204513417498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_10
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 59
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d1071c6380662990800000000000000
+      internalID: -7411130019221143087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_11
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 59
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7841ee17e0e019e70800000000000000
+      internalID: 9120086175605724295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_12
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 51
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be0c77b8416367fe0800000000000000
+      internalID: -1191705589525790485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_13
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 43
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebb2f406031d58920800000000000000
+      internalID: 2992027533161999294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_14
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 51
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8cc900c723383b0800000000000000
+      internalID: -5511506010803746583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_15
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 43
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d777079c0144a7bf0800000000000000
+      internalID: -325873184141183107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_16
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 23
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f569981017753570800000000000000
+      internalID: 8445787587219121653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_17
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 23
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1256657b81ba5f90800000000000000
+      internalID: -6964058661246840293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_18
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 23
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb82f74c8b508f740800000000000000
+      internalID: 5185901262045915323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_19
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 23
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd37f54eba29d0e20800000000000000
+      internalID: 3318469767410447327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reel_ping_red_20
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 23
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7e453ad4e186bc40800000000000000
+      internalID: 5527748412557315706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      reel_ping_red_0: -1805330215109071478
+      reel_ping_red_1: 4868109475188778713
+      reel_ping_red_10: -7411130019221143087
+      reel_ping_red_11: 9120086175605724295
+      reel_ping_red_12: -1191705589525790485
+      reel_ping_red_13: 2992027533161999294
+      reel_ping_red_14: -5511506010803746583
+      reel_ping_red_15: -325873184141183107
+      reel_ping_red_16: 8445787587219121653
+      reel_ping_red_17: -6964058661246840293
+      reel_ping_red_18: 5185901262045915323
+      reel_ping_red_19: 3318469767410447327
+      reel_ping_red_2: -4853199784191001158
+      reel_ping_red_20: 5527748412557315706
+      reel_ping_red_3: 9161410388628088387
+      reel_ping_red_4: -8648308085271909794
+      reel_ping_red_5: 969906981290421425
+      reel_ping_red_6: 2411686706070528685
+      reel_ping_red_7: -6748086695486937389
+      reel_ping_red_8: -6682501215766850417
+      reel_ping_red_9: 6049488204513417498
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

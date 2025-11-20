@@ -20,7 +20,9 @@ MonoBehaviour:
   target: 0
   cost: 2
   power: 1.2
+  maxCooldown: 1
   effects:
   - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
   - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
-  statusEffects: []
+  targetStatusEffects: []
+  selfStatusEffects: []

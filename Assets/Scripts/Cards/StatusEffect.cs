@@ -3,6 +3,7 @@ using UnityEngine;
 public class StatusEffect : ScriptableObject
 {
     public string effectName;
+    public Sprite icon;
     public int duration;
     public float effectPower;
     [Range(0f, 1f)]
