@@ -21,6 +21,7 @@ public class Player : Entity
     [SerializeField] EnemyManager enemyManager;
 
     public bool playerTurn = true;
+    public bool isInvisible = false;
 
 
     [Header("Cards")]
