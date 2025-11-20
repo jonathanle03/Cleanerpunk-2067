@@ -65,8 +65,14 @@ public class Player : Entity
         Debug.Log("use card activated, pick number: " + pick); 
         if (currentMana >= hand[pick].cost)
         {
+
+            for(int k = 0; k < 6; k++)
+            {
+                cardButtons[k].SetActive(false);
+            }
+            
             selectedCard = pick;
-            currentMana -= hand[pick].cost;
+            //currentMana -= hand[pick].cost;
             if (hand[pick].target == CardTarget.Enemy)
             {
                 for (int i = 0; i < 3; i++)
@@ -108,10 +114,19 @@ public class Player : Entity
     public void enemySelect(int pick)
     {
         //Debug.Log("card selected: " + selectedCard + " enemy selected: " + pick);
+        currentMana -= hand[selectedCard].cost;
         hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
         for (int i = 0; i < 3; i++)
         {
             enemyManager.enemyButtons[i].SetActive(false);
+        }
+        for(int k = 0; k < 6; k++)
+        {
+            if (hand[k] != null)
+            {
+                cardButtons[k].SetActive(true);
+
+            }
         }
 
         discards.Add(hand[selectedCard]);
@@ -175,7 +190,7 @@ public class Player : Entity
             }
         }
         usedCards = 0;
-        currentMana = maxMana;
+        currentMana += 2;
         nameCards();
         changeCooldowns();
         playerTurn = false;

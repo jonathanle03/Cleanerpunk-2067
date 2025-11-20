@@ -953,7 +953,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   maxHealth: 100
   defense: 10
-  maxEnergy: 9
+  maxEnergy: 4
   attack: 10
   currency: 0
 --- !u!4 &417510765
@@ -1988,7 +1988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1654916705252344525, guid: c42f9646038feca4f9c037cb35d43a4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -77.87357
+      value: -112
       objectReference: {fileID: 0}
     - target: {fileID: 1654916705252344525, guid: c42f9646038feca4f9c037cb35d43a4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3793,7 +3793,7 @@ Transform:
   m_GameObject: {fileID: 1432196599}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 355.5, y: 200, z: -43.9}
+  m_LocalPosition: {x: 355.5, y: 200, z: -86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []

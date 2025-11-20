@@ -6,7 +6,7 @@ public class WinScreen : MonoBehaviour
 {
     [SerializeField] public GameObject winScreenUI;
     [SerializeField] public EnemyManager enemyManager;
-    [SerializeField] public PlayerStats playerStats;
+    public PlayerStats playerStats;
 
     [SerializeField] public GameObject[] spareList = new GameObject[3];
     [SerializeField] public GameObject[] spareButtons = new GameObject[3];
@@ -19,7 +19,7 @@ public class WinScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerStats = GameObject.Find("playerManager").GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
