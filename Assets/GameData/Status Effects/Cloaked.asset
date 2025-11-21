@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802e11f2e076cfc46966d7091bafb6d9, type: 3}
+  m_Name: Cloaked
+  m_EditorClassIdentifier: 
+  effectName: Cloaked
+  icon: {fileID: -8309468100070485270, guid: 35c64e3a7d67b7c40a6d1b7f0d020436, type: 3}
+  duration: 0
+  effectPower: 0
+  applicationChance: 1

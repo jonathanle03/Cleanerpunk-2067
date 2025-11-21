@@ -32,7 +32,14 @@ public class StatusUIController : MonoBehaviour
             }
 
             TextMeshProUGUI text = statusEntries[effect].transform.Find("Text").GetComponent<TextMeshProUGUI>();
-            text.text = effect.duration.ToString();
+            if (effect.duration > 0)
+            {
+                text.text = effect.duration.ToString();
+            }
+            else
+            {
+                text.text = "";
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Reel Ping
   description: Deal 3x light Neural damage to a single enemy target.
-  art: {fileID: 0}
+  art: {fileID: 2800000, guid: 1b0eed4da4c9dfd4b983faf8426d4b4e, type: 3}
   type: 0
   rarity: 0
   target: 0

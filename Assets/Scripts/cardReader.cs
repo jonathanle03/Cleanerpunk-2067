@@ -39,8 +39,9 @@ public class cardReader : MonoBehaviour
         cardName.text = card.cardName;
         description.text = card.description;
         cost.text = card.cost.ToString();
-        
-        switch(card.type)
+        image.texture = card.art;
+
+        switch (card.type)
         {
             case CardType.Offensive:
                 backing.texture = typeBackings[0];
@@ -62,6 +63,5 @@ public class cardReader : MonoBehaviour
                 break;
         }
         
-        //image.texture = card.art;
     }
 }

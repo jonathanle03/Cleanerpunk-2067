@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Screensaver
   art: {fileID: 0}
-  maxHealth: 1
-  attack: 10
+  maxHealth: 50
+  attack: 5
   defense: 5
   isBoss: 0
   cards:
