@@ -2214,7 +2214,7 @@ MonoBehaviour:
   staggerCD: 0
   statusEffects: []
   uiController: {fileID: 0}
-  healthBar: {fileID: 1760313970}
+  healthBar: {fileID: 0}
   healthBarMaxWidth: 0
   healthBarStartPos: {x: 0, y: 0, z: 0}
   enemyData: {fileID: 11400000, guid: 353257b514229bd48a049e8528d24eae, type: 2}
@@ -4565,7 +4565,7 @@ MonoBehaviour:
   staggerCD: 0
   statusEffects: []
   uiController: {fileID: 0}
-  healthBar: {fileID: 237963989}
+  healthBar: {fileID: 0}
   healthBarMaxWidth: 0
   healthBarStartPos: {x: 0, y: 0, z: 0}
   enemyData: {fileID: 11400000, guid: 602726f5433cc5b49bbc0cec83be18e9, type: 2}
@@ -5823,25 +5823,25 @@ MonoBehaviour:
   deathScreen: {fileID: 1008799942}
   energyText: {fileID: 1809298036}
   currentManaIcons:
-  - {fileID: 963442544}
-  - {fileID: 1631347453}
-  - {fileID: 1230090097}
-  - {fileID: 382260536}
-  - {fileID: 1992673723}
-  - {fileID: 1301068071}
-  - {fileID: 1639435822}
-  - {fileID: 1653624756}
-  - {fileID: 1521164769}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   maxManaIcons:
-  - {fileID: 1841403558}
-  - {fileID: 304601330}
-  - {fileID: 388618999}
-  - {fileID: 1311484470}
-  - {fileID: 1618210133}
-  - {fileID: 51434347}
-  - {fileID: 164237862}
-  - {fileID: 1268563280}
-  - {fileID: 2054368866}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardButtons:
   - {fileID: 1804882745}
   - {fileID: 176146724}
@@ -6212,7 +6212,7 @@ MonoBehaviour:
   staggerCD: 0
   statusEffects: []
   uiController: {fileID: 0}
-  healthBar: {fileID: 293986225}
+  healthBar: {fileID: 0}
   healthBarMaxWidth: 0
   healthBarStartPos: {x: 0, y: 0, z: 0}
   enemyData: {fileID: 11400000, guid: 3f8766d33c29ac648a7ffea29fec36b8, type: 2}
