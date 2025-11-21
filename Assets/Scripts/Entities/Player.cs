@@ -84,11 +84,21 @@ public class Player : Entity
             }
             else if (hand[pick].target == CardTarget.AllEnemies)
             {
+                currentMana -= hand[pick].cost;
                 for (int i = 0; i < enemyManager.enemies.Length; i++)
                 {
                     hand[pick].doEffect(this, enemyManager.enemies[i].GetComponent<Enemy>());
                 }
-                
+
+                for (int k = 0; k < 6; k++)
+                {
+                    if(k != pick)
+                    {
+                        cardButtons[k].SetActive(true);
+                    }
+                    
+                }
+
                 discards.Add(hand[pick]);
                 cooldowns.Add(hand[pick].maxCooldown);
 
@@ -98,6 +108,7 @@ public class Player : Entity
             }
             else if (hand[pick].target == CardTarget.Self)
             {
+                currentMana -= hand[pick].cost;
                 hand[pick].doEffect(this, this);
                 
       
@@ -107,6 +118,15 @@ public class Player : Entity
                 cardButtons[pick].SetActive(false);
                 hand[pick] = null;
                 usedCards++;
+
+                for (int k = 0; k < 6; k++)
+                {
+                    if(k != pick)
+                    {
+                        cardButtons[k].SetActive(true);
+                    }
+                    
+                }
             }
         }
     }

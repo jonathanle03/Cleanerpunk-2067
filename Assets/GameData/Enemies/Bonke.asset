@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Bonke
   art: {fileID: 6716284123241043736, guid: e89decd278c31a147a4bdb1fa26efe6e, type: 3}
-  maxHealth: 1
-  attack: 10
+  maxHealth: 50
+  attack: 5
   defense: 5
   isBoss: 0
   cards:
