@@ -14,6 +14,7 @@ public class deckViewer : MonoBehaviour
     [SerializeField] private GameObject deckPanel;
 
     [Header("Data")]
+    [SerializeField]private Player playerDiscardStats;
     private PlayerStats playerStats;
     
     [SerializeField] public EnemyManager enemyManager;
@@ -93,7 +94,7 @@ public class deckViewer : MonoBehaviour
         deckList = playerStats.getDeck();
 
         discardList = new List<CardData>();
-        discardList = playerStats.getDeck();        
+        discardList = playerDiscardStats.discards;
     }
     public void enablePanel(string text, List<CardData> source)
     {
@@ -101,9 +102,7 @@ public class deckViewer : MonoBehaviour
         {
             enemyManager.enemies[i].SetActive(false);
         }
-        deckPanel.SetActive(true);
-        source = new List<CardData>();
-        source = playerStats.getDeck();  
+        deckPanel.SetActive(true); 
         headerText.text = text;
         Populate(source);
         contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
