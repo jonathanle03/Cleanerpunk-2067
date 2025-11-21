@@ -16,6 +16,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] public TextMeshProUGUI healthText;
     [SerializeField] public List<CardData> deck = new List<CardData>();
     public bool moveable = true;
+    public int staggerCD = 0;
     public List<StatusEffect> statusEffects = new List<StatusEffect>();
     public StatusUIController uiController;
 
@@ -47,7 +48,7 @@ public abstract class Entity : MonoBehaviour
     {
         StatusEffect instance = Instantiate(effect);
         statusEffects.Add(instance);
-        effect.ApplyEffect(this);
+        instance.ApplyEffect(this);
         uiController.UpdateStatusUI(statusEffects);
     }
 
@@ -55,7 +56,7 @@ public abstract class Entity : MonoBehaviour
     {
         StatusEffect instance = Instantiate(effect);
         statusEffects.Remove(effect);
-        effect.OnExpire(this);
+        instance.OnExpire(this);
         uiController.UpdateStatusUI(statusEffects);
     }
 
