@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wound
   m_EditorClassIdentifier: 
   effectName: Wound
+  icon: {fileID: 4760619577566495229, guid: 29b93febb6d349b48b7d63871bd5ae1d, type: 3}
   duration: 2
   effectPower: 0
   applicationChance: 0.3
