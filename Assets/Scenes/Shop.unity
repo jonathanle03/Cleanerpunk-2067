@@ -1543,7 +1543,7 @@ MonoBehaviour:
   HPprice: 50
   HPincrease: 10
   MPprice: 100
-  MPincrease: 2
+  MPincrease: 1
   cards:
   - {fileID: 1488493545}
   - {fileID: 514786585}
