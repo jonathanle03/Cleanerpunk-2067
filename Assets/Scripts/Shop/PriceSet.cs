@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PriceSet : MonoBehaviour
 {
+
     [SerializeField] List<CardData> attacks = new List<CardData>();
     [SerializeField] List<CardData> defenses = new List<CardData>();
     [SerializeField] List<CardData> supports = new List<CardData>();
@@ -84,6 +85,7 @@ public class PriceSet : MonoBehaviour
 
     public void toBattle()
     {
+        player.maxMana += 1;
         SceneManager.LoadScene(1);
     }
 }

@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 public class EnemyManager : MonoBehaviour
 {
@@ -9,7 +12,8 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] Player player;
 
-
+    [SerializeField] List<string> textLog = new List<string>();
+    [SerializeField] TextMeshProUGUI textLogText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -50,6 +54,18 @@ public class EnemyManager : MonoBehaviour
 
                     if (enemy.moveable)
                     {
+                        string difference = "";
+                        if(textLog.Count == 3)
+                        {
+                            textLog.RemoveAt(0);
+                            
+                        }
+                        textLog.Add(enemy.entityName + ": " + enemy.enemyCard.name);
+                        for(int k = 0; k < textLog.Count; k++)
+                        {
+                            difference += ("\n" + textLog[k]);
+                        }
+                        textLogText.text = difference;
                         enemy.enemyCard.doEffect(enemy, player);
                         enemies[i].GetComponent<Enemy>().RandomCard();
                     }
