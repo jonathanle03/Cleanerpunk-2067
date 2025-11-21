@@ -11,6 +11,9 @@ public class PriceSet : MonoBehaviour
     [SerializeField] List<CardData> attacks = new List<CardData>();
     [SerializeField] List<CardData> defenses = new List<CardData>();
     [SerializeField] List<CardData> supports = new List<CardData>();
+
+    [SerializeField] int HPprice;
+    [SerializeField] int MPprice; 
     
 
     [SerializeField] List<GameObject> cards = new List<GameObject>();
@@ -83,9 +86,29 @@ public class PriceSet : MonoBehaviour
 
     }
 
+    public void levelHP()
+    {
+        if(player.currency >= HPprice)
+        {
+            player.currency -= HPprice;
+            player.maxHealth += 20;
+            Debug.Log("Upgraded health");
+        }
+    }
+
+    public void levelMp()
+    {
+        if (player.currency >= MPprice)
+        {
+            player.currency -= MPprice;
+            player.maxMana += 1;
+            Debug.Log("Upgraded mana"); 
+        }
+    }
+
     public void toBattle()
     {
-        player.maxMana += 1;
+        //player.maxMana += 1;
         SceneManager.LoadScene(1);
     }
 }
