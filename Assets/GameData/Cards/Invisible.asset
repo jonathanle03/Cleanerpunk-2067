@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 'Places the player in a Cloaked state, allowing them to evade all
     incoming attacks while active.
 
-    Drains 2 MP each turn that the effect is
+    Drains 3 MP each turn that the effect is
     active.
 
     Effect ends when the player ends a turn with insufficient MP to
@@ -25,7 +25,7 @@ MonoBehaviour:
   type: 1
   rarity: 2
   target: 2
-  cost: 2
+  cost: 3
   power: 0
   maxCooldown: 1
   effects:

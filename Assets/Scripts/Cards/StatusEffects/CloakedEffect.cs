@@ -17,14 +17,14 @@ public class CloakedEffect : StatusEffect
         if (target is Player)
         {
             Player player = (Player) target;
-            if (player.currentMana < 2)
+            if (player.currentMana < 3)
             {
                 player.isInvisible = false;
                 player.RemoveStatusEffect(this);
             }
             else
             {
-                player.currentMana -= 2;
+                player.currentMana -= 3;
             }
         }
         else

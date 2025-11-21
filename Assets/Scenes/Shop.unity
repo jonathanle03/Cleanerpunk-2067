@@ -1253,13 +1253,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: 68bb23a0f2f2d7646b5f47a1fba9cd15, type: 2}
   defenses:
   - {fileID: 11400000, guid: 81393ee2e36e03442a7cb874cb0620a3, type: 2}
-  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: e06e666bc58b7b2478415160260fea8a, type: 2}
   supports:
   - {fileID: 11400000, guid: 409db0d3e953ae949800da51472ae0f2, type: 2}
-  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: 6a893435e1b30784b82a4cea662bd5f0, type: 2}
   cards:
   - {fileID: 1488493545}
   - {fileID: 514786585}
