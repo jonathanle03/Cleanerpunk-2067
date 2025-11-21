@@ -1067,7 +1067,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   maxHealth: 100
   defense: 10
-  maxEnergy: 4
+  maxMana: 4
   attack: 10
   currency: 0
 --- !u!4 &417510765
@@ -4158,6 +4158,7 @@ MonoBehaviour:
   - {fileID: 0}
   discards: []
   cooldowns: 
+  maxMana: 0
   currentMana: 0
 --- !u!4 &1424974290
 Transform:
