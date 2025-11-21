@@ -4122,6 +4122,7 @@ MonoBehaviour:
   enemy: {fileID: 1489961023}
   enemyManager: {fileID: 1528466904}
   playerTurn: 1
+  isInvisible: 0
   hand:
   - {fileID: 0}
   - {fileID: 0}

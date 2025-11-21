@@ -12,7 +12,7 @@ public class CardData : ScriptableObject
     [Header("Basic Info")]
     public string cardName;
     [TextArea] public string description;
-    public Sprite art;
+    public Texture art;
     public CardType type;
     public CardRarity rarity;
     public CardTarget target;
