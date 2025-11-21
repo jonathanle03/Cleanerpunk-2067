@@ -1,10 +1,11 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] public GameObject[] enemies = new GameObject[3];
     [SerializeField] public GameObject[] enemyButtons = new GameObject[3];
+    [SerializeField] List<EnemyData> possibleEnemies = new List<EnemyData>();
 
     [SerializeField] Player player;
 
@@ -14,7 +15,13 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Enemy enemy = enemies[i].GetComponent<Enemy>();
+            EnemyData enemyData = possibleEnemies[Random.Range(0, possibleEnemies.Count)];
+            enemy.InitializeEnemy(enemyData);
+            enemy.enemyButton = enemyButtons[i];
+        }
     }
 
     // Update is called once per frame
