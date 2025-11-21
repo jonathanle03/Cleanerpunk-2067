@@ -52,58 +52,34 @@ public class deckViewer : MonoBehaviour
     {
         if(headerText.text == "Deck")
         {
-            ClearContent();
-            deckPanel.SetActive(false);
-            headerText.text = "";
+            disablePanel();
             return;
         }
         else if(headerText.text == "Discard") 
         {
             ClearContent();
-            deckPanel.SetActive(true);
-            deckList = new List<CardData>();
-            deckList = playerStats.getDeck();
-            headerText.text = "Deck";
-            Populate(deckList);
-            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+            enablePanel("Deck", deckList);
             return;
         }    
         else{
-            deckPanel.SetActive(true);
-            deckList = new List<CardData>();
-            deckList = playerStats.getDeck();
-            headerText.text = "Deck";
-            Populate(deckList);
-            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+            enablePanel("Deck", deckList);
         }   
     }
     public void ShowDiscard()
     {
         if(headerText.text == "Discard")
         {
-            deckPanel.SetActive(false);
-            ClearContent();
-            headerText.text = "";
+            disablePanel();
             return;
         } 
         else if(headerText.text == "Deck")
         {
-            deckPanel.SetActive(true);
             ClearContent();
-            discardList = new List<CardData>();
-            discardList = playerStats.getDeck();
-            headerText.text = "Discard";
-            Populate(discardList);
-            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+            enablePanel("Discard", discardList);;
             return;
         }
         else {
-            deckPanel.SetActive(true);
-            discardList = new List<CardData>();
-            discardList = playerStats.getDeck();  
-            headerText.text = "Discard";
-            Populate(discardList);
-            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+           enablePanel("Discard", discardList);
         }
     }
     public void Start()
@@ -119,28 +95,31 @@ public class deckViewer : MonoBehaviour
         discardList = new List<CardData>();
         discardList = playerStats.getDeck();        
     }
-    public void ToggleDeckPanel()
+    public void enablePanel(string text, List<CardData> source)
     {
-        if(!isOpen)
+        for(int i = 0; i < 3; i++)
         {
-            for(int i = 0; i < 3; i++)
-            {
-                enemyManager.enemies[i].SetActive(false);
-            }
-            deckPanel.SetActive(true);
-            isOpen = true;
+            enemyManager.enemies[i].SetActive(false);
         }
-        else 
+        deckPanel.SetActive(true);
+        source = new List<CardData>();
+        source = playerStats.getDeck();  
+        headerText.text = text;
+        Populate(source);
+        contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+    }
+    public void disablePanel()
+    {
+        for(int i = 0; i < 3; i++)
         {
-            for(int i = 0; i < 3; i++)
+            if(enemyManager.enemies[i].GetComponent<Enemy>().isDead == false)
             {
-                if(enemyManager.enemies[i].GetComponent<Enemy>().isDead == false)
-                {
-                    enemyManager.enemies[i].SetActive(true);   
-                }
+                enemyManager.enemies[i].SetActive(true);   
             }
-            deckPanel.SetActive(false);
-            isOpen = false;
         }
+        deckPanel.SetActive(false);
+        ClearContent();
+        headerText.text = "";
+            
     }
 }
