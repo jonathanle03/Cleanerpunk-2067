@@ -1385,7 +1385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 230, y: -79}
+  m_AnchoredPosition: {x: -464, y: -216}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409758484
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDeck:
-  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: 6a893435e1b30784b82a4cea662bd5f0, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   - {fileID: 11400000, guid: 409db0d3e953ae949800da51472ae0f2, type: 2}
@@ -3071,6 +3071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5ec7a997d94a1408c000e11c21ce5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackbutton: {fileID: 1770034766}
+  defenseButton: {fileID: 2076179135}
   winScreenUI: {fileID: 625494738}
   enemyManager: {fileID: 1528466904}
   playerStats: {fileID: 417510764}
@@ -4725,6 +4727,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 1528466904}
+  attackButton: {fileID: 1770034766}
+  defenseButton: {fileID: 2076179135}
 --- !u!1 &1025607781
 GameObject:
   m_ObjectHideFlags: 0
@@ -5896,7 +5900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -39}
+  m_AnchoredPosition: {x: -22, y: -79}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205337630
@@ -8910,7 +8914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -89}
+  m_AnchoredPosition: {x: -377, y: -154}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1820540411 stripped
