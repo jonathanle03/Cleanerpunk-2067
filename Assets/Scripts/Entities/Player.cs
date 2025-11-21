@@ -30,6 +30,13 @@ public class Player : Entity
     private int selectedCard;
     private int usedCards;
 
+    [SerializeField] CardData attackStatic;
+    [SerializeField] CardData defenseStatic;
+    private bool special;
+
+    [SerializeField] GameObject attackStaticButton;
+    [SerializeField] GameObject defenseStaticButton;
+ 
     [Header("Stats")]
     public int maxMana;
     public int currentMana;
@@ -137,29 +144,45 @@ public class Player : Entity
 
     public void enemySelect(int pick)
     {
-        currentMana -= hand[selectedCard].cost;
-        hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
-        for (int i = 0; i < 3; i++)
+        if(special && selectedCard == 6)
         {
-            enemyManager.enemyButtons[i].SetActive(false);
-        }
-        for(int k = 0; k < 6; k++)
-        {
-            if (hand[k] != null)
+            attackStatic.doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
+            attackStaticButton.SetActive(true);
+            defenseStaticButton.SetActive(true);
+            passButton.SetActive(true);
+            for (int k = 0; k < 6; k++)
             {
                 cardButtons[k].SetActive(true);
-
             }
+            fillHand();
+
+        }else
+        {
+            currentMana -= hand[selectedCard].cost;
+                hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
+                for (int i = 0; i < 3; i++)
+                {
+                    enemyManager.enemyButtons[i].SetActive(false);
+                }
+                for(int k = 0; k < 6; k++)
+                {
+                    if (hand[k] != null)
+                    {
+                        cardButtons[k].SetActive(true);
+
+                    }
+                }
+
+                discards.Add(hand[selectedCard]);
+                cooldowns.Add(hand[selectedCard].maxCooldown);
+                //discardCard(hand[selectedCard]);
+
+                cardButtons[chosenCard].SetActive(false);
+                hand[selectedCard] = null;
+                usedCards++;
+
         }
-
-        discards.Add(hand[selectedCard]);
-        cooldowns.Add(hand[selectedCard].maxCooldown);
-        //discardCard(hand[selectedCard]);
-
-        cardButtons[chosenCard].SetActive(false);
-        hand[selectedCard] = null;
-        usedCards++;
-
+        special = false;
     }
 
     void changeCooldowns()
@@ -246,5 +269,31 @@ public class Player : Entity
             passButton.SetActive(false);
         }
         deathScreen.SetActive(true);
+    }
+
+    public void staticAttack()
+    {
+        currentMana += 1;
+        for(int i = 0; i < 3; i++)
+        {
+            enemyManager.enemyButtons[i].SetActive(true);
+        }
+        for(int k = 0; k < 6; k++)
+        {
+            cardButtons[k].SetActive(false);
+        }
+        attackStaticButton.SetActive(false);
+        defenseStaticButton.SetActive(false);
+        passButton.SetActive(false);
+        special = true;
+        selectedCard = 6;
+
+    }
+
+    public void staticDefense()
+    {
+        currentMana += 2;
+        defenseStatic.doEffect(this, this);
+        fillHand();
     }
 }
