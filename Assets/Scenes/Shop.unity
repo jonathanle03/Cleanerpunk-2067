@@ -1540,9 +1540,9 @@ MonoBehaviour:
   supports:
   - {fileID: 11400000, guid: 409db0d3e953ae949800da51472ae0f2, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
-  HPprice: 10
+  HPprice: 50
   HPincrease: 10
-  MPprice: 20
+  MPprice: 100
   MPincrease: 2
   cards:
   - {fileID: 1488493545}
