@@ -16,6 +16,23 @@ public class Enemy : Entity
 
     private void Start()
     {
+        
+    }
+
+    private void Update()
+    {
+        healthText.text = "Health: " + currentHealth;
+    }
+
+    public override void EntityDead()
+    {
+        isDead = true;
+        enemyButton.SetActive(false);
+    }
+
+    public void InitializeEnemy(EnemyData data)
+    {
+        enemyData = data;
         entityName = enemyData.enemyName;
         art = enemyData.art;
         maxHealth = enemyData.maxHealth;
@@ -30,17 +47,6 @@ public class Enemy : Entity
         currentHealth = maxHealth;
         healthText.text = "Health: " + currentHealth;
         RandomCard();
-    }
-
-    private void Update()
-    {
-        healthText.text = "Health: " + currentHealth;
-    }
-
-    public override void EntityDead()
-    {
-        isDead = true;
-        enemyButton.SetActive(false);
     }
 
     public void RandomCard()
