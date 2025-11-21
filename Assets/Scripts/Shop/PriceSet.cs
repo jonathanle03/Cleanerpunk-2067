@@ -85,7 +85,7 @@ public class PriceSet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        balance.text = "Balance: " + player.currency.ToString();
     }
 
     public void buyCard(int pick)
@@ -97,7 +97,6 @@ public class PriceSet : MonoBehaviour
             player.playerDeck.Add(cards[pick].GetComponent<cardReader>().card);
         }
 
-        balance.text = "Balance: " + player.currency.ToString();
 
     }
 
