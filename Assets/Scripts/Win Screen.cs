@@ -41,9 +41,10 @@ public class WinScreen : MonoBehaviour
                 if (check == 3)
                 {
                     winup = true;
-                    gameWin();
                     attackbutton.SetActive(false);
                     defenseButton.SetActive(false);
+                    gameWin();
+                    
                 }
             }
         }
