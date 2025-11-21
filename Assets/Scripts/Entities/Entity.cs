@@ -39,6 +39,7 @@ public abstract class Entity : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Debug.Log($"{entityName} is dead");
             EntityDead();
         }
