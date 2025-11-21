@@ -29,10 +29,10 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        maxHealth = 100;
-        defense = 10;
-        maxEnergy = 4;
-        attack = 10;
+        // maxHealth = 100;
+        // defense = 10;
+        // maxEnergy = 9;
+        // attack = 10;
        // playerDeck.Add(card[0]);
         
         Debug.Log("" + playerDeck.ToString());

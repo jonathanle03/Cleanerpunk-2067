@@ -21,6 +21,7 @@ public class Player : Entity
     [SerializeField] EnemyManager enemyManager;
 
     public bool playerTurn = true;
+    public bool isInvisible = false;
 
 
     [Header("Cards")]
@@ -196,6 +197,11 @@ public class Player : Entity
         for (int i = statusEffects.Count - 1; i >= 0; --i)
         {
             statusEffects[i].OnTurnEnd(this);
+        }
+
+        if (staggerCD > 0)
+        {
+            staggerCD--;
         }
 
         for (int i = 0; i < usedCards; i++)

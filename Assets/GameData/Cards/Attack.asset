@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Attack
   description: Attack
-  art: {fileID: 0}
+  art: {fileID: 2800000, guid: 720a450b2056b814588f4cb883181e0d, type: 3}
   type: 0
   rarity: 0
   target: 0

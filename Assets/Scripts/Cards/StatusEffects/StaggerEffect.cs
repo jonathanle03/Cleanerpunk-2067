@@ -1,13 +1,19 @@
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 
 [CreateAssetMenu(menuName = "Status Effects/Stagger")]
 public class StaggerEffect : StatusEffect
 {
     public override void ApplyEffect(Entity target)
     {
-        target.moveable = false;
-        Debug.Log("stagger");
+        if (target.staggerCD <= 0)
+        {
+            target.staggerCD = 2;
+            target.moveable = false;
+        }
+        else
+        {
+            target.statusEffects.Remove(this);
+        }
     }
 
     public override void OnTurnEnd(Entity target)
