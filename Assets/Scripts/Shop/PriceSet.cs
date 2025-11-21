@@ -85,7 +85,7 @@ public class PriceSet : MonoBehaviour
 
     public void toBattle()
     {
-        player.maxEnergy += 1;
+        player.maxMana += 1;
         SceneManager.LoadScene(1);
     }
 }
