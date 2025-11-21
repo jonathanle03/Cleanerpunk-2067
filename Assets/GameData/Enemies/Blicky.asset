@@ -15,9 +15,11 @@ MonoBehaviour:
   enemyName: Blicky
   art: {fileID: 6018467448584526690, guid: 5a543cfd4be6ca04ab50136e777a8d0a, type: 3}
   maxHealth: 50
-  attack: 7
+  attack: 5
   defense: 5
   isBoss: 0
   cards:
   - {fileID: 11400000, guid: 23571b39d3c81874eb9f2e3cd4cdfdb5, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: 3f8c46a310f22ae4c9c285ce6472d451, type: 2}
