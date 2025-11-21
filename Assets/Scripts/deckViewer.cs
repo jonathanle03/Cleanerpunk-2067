@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.UI;
+using System;
 public class deckViewer : MonoBehaviour
 {
     [Header("UI")]
@@ -18,8 +20,10 @@ public class deckViewer : MonoBehaviour
     [SerializeField] public List<CardData> deckList;
     [SerializeField] public List<CardData> discardList;
     
+    [SerializeField] private RectTransform contentRectTransform;
 
     private bool isOpen;
+    [SerializeField] private bool isDiscardOpen;
     private void ClearContent()
     {
         foreach (Transform child in content)
@@ -46,14 +50,61 @@ public class deckViewer : MonoBehaviour
 
     public void ShowDeck()
     {
-        headerText.text = "Deck";
-        Populate(deckList);
+        if(headerText.text == "Deck")
+        {
+            ClearContent();
+            deckPanel.SetActive(false);
+            headerText.text = "";
+            return;
+        }
+        else if(headerText.text == "Discard") 
+        {
+            ClearContent();
+            deckPanel.SetActive(true);
+            deckList = new List<CardData>();
+            deckList = playerStats.getDeck();
+            headerText.text = "Deck";
+            Populate(deckList);
+            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+            return;
+        }    
+        else{
+            deckPanel.SetActive(true);
+            deckList = new List<CardData>();
+            deckList = playerStats.getDeck();
+            headerText.text = "Deck";
+            Populate(deckList);
+            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+        }   
     }
-
     public void ShowDiscard()
     {
-        headerText.text = "Discard";
-        Populate(discardList);
+        if(headerText.text == "Discard")
+        {
+            deckPanel.SetActive(false);
+            ClearContent();
+            headerText.text = "";
+            return;
+        } 
+        else if(headerText.text == "Deck")
+        {
+            deckPanel.SetActive(true);
+            ClearContent();
+            discardList = new List<CardData>();
+            discardList = playerStats.getDeck();
+            headerText.text = "Discard";
+            Populate(discardList);
+            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+            return;
+        }
+        else {
+            deckPanel.SetActive(true);
+            discardList = new List<CardData>();
+            discardList = playerStats.getDeck();  
+            headerText.text = "Discard";
+            Populate(discardList);
+            contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+        }
     }
     public void Start()
     {
@@ -79,7 +130,7 @@ public class deckViewer : MonoBehaviour
             deckPanel.SetActive(true);
             isOpen = true;
         }
-        else
+        else 
         {
             for(int i = 0; i < 3; i++)
             {
