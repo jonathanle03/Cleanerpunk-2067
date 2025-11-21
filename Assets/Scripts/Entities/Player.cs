@@ -259,15 +259,7 @@ public class Player : Entity
         }
         usedCards = 0;
 
-        if( currentMana < stats.maxMana)
-        {
-            currentMana += 2;
-        }
         
-        if (currentMana > maxMana)
-        {
-            currentMana = maxMana;
-        }
         updateMana();
 
         nameCards();
