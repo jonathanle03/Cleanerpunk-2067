@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Stagger 30
   m_EditorClassIdentifier: 
   effectName: Stagger
+  icon: {fileID: -8540793713715789035, guid: 1e66dc8d4f960484fb514d39824f5c9f, type: 3}
   duration: 1
+  effectPower: 0
   applicationChance: 0.3

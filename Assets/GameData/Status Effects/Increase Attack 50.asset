@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Increase Attack 50
   m_EditorClassIdentifier: 
   effectName: Increase Attack
+  icon: {fileID: 2207691789372904078, guid: 720a450b2056b814588f4cb883181e0d, type: 3}
   duration: 3
   effectPower: 1.5
   applicationChance: 1
