@@ -120,7 +120,7 @@ public class Player : Entity
 
                 for (int k = 0; k < 6; k++)
                 {
-                    if(k != pick)
+                    if(k != pick && hand[k] != null)
                     {
                         cardButtons[k].SetActive(true);
                     }
