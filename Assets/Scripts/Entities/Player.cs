@@ -7,11 +7,10 @@ public class Player : Entity
     [Header("UI Elements")]
     [SerializeField] GameObject deathScreen;
     [SerializeField] TextMeshProUGUI energyText;
+    [SerializeField] GameObject[] currentManaIcons = new GameObject[9];
+    [SerializeField] GameObject[] maxManaIcons = new GameObject[9];
     [SerializeField] GameObject[] cardButtons = new GameObject[6];
     [SerializeField] GameObject passButton;
-    [SerializeField] GameObject healthBar;
-    private float healthBarMaxWidth;
-    private Vector3 healthBarStartPos;
     private int chosenCard;
 
     [Header("Class References")]
@@ -40,6 +39,7 @@ public class Player : Entity
     [Header("Stats")]
     public int maxMana;
     public int currentMana;
+
     void Start()
     {
         stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
@@ -52,6 +52,16 @@ public class Player : Entity
         maxMana = stats.maxMana;
         currentMana = stats.maxMana;
 
+        updateMana();
+        for (int i = 0; i < maxMana; i++)
+        {
+            maxManaIcons[i].SetActive(true);
+        }
+        for (int i = 8; i >= maxMana; i--)
+        {
+            maxManaIcons[i].SetActive(false);
+        }
+
         deck = stats.getDeck();
 
         for (int i = 0; i < 6; i++)
@@ -61,8 +71,8 @@ public class Player : Entity
         }
 
         nameCards();
-
     }
+
     private void Update()
     {
         energyText.text = "Energy: " + currentMana;
@@ -139,6 +149,8 @@ public class Player : Entity
                     
                 }
             }
+
+            updateMana();
         }
     }
 
@@ -159,6 +171,7 @@ public class Player : Entity
         }else
         {
             currentMana -= hand[selectedCard].cost;
+        updateMana();
                 hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
                 for (int i = 0; i < 3; i++)
                 {
@@ -241,11 +254,14 @@ public class Player : Entity
             }
         }
         usedCards = 0;
+
         currentMana += 2;
         if (currentMana > maxMana)
         {
             currentMana = maxMana;
         }
+        updateMana();
+
         nameCards();
         changeCooldowns();
         playerTurn = false;
@@ -257,6 +273,18 @@ public class Player : Entity
         {
             cardButtons[i].GetComponent<cardReader>().card = hand[i];
             cardButtons[i].GetComponent<cardReader>().setCard(); 
+        }
+    }
+
+    public void updateMana()
+    {
+        for (int i = 0; i < currentMana; i++)
+        {
+            currentManaIcons[i].SetActive(true);
+        }
+        for (int i = 8; i >= currentMana; i--)
+        {
+            currentManaIcons[i].SetActive(false);
         }
     }
 
