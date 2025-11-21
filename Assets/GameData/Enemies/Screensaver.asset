@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Screensaver
   m_EditorClassIdentifier: 
   enemyName: Screensaver
-  art: {fileID: 0}
+  art: {fileID: 8770541698877963108, guid: 259748343ee96f540ad76a608e53ede6, type: 3}
   maxHealth: 1
   attack: 5
   defense: 5
