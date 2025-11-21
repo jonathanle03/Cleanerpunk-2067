@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Heavy Bonk
   description: Deal 1x moderate Impact damage to a single enemy target.
-  art: {fileID: 333192429393681985, guid: 730cc02e7009d294a8686a9632079101, type: 3}
+  art: {fileID: 2800000, guid: 730cc02e7009d294a8686a9632079101, type: 3}
   type: 0
   rarity: 1
   target: 0

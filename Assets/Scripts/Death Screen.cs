@@ -3,12 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
-    [SerializeField] public PlayerStats playerStats;
-    [SerializeField] public Player player;
+    [SerializeField] public EnemyManager enemyManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        for(int i = 0; i < 3; i++)
+        {
+            enemyManager.enemies[i].SetActive(false);
+        }
         
     }
 
@@ -18,7 +21,7 @@ public class DeathScreen : MonoBehaviour
         
     }
 
-    void deathButton()
+    public void deathButton()
     {
         SceneManager.LoadScene(0);
     }

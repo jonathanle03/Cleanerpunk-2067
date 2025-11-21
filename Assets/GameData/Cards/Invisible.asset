@@ -21,7 +21,7 @@ MonoBehaviour:
 
     Effect ends when the player ends a turn with insufficient MP to
     sustain the effect.'
-  art: {fileID: 0}
+  art: {fileID: 2800000, guid: 62aa00aac07bd1241b41b95dfe37ff59, type: 3}
   type: 1
   rarity: 2
   target: 2

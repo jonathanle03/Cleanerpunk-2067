@@ -1053,22 +1053,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDeck:
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
-  - {fileID: 11400000, guid: cbd1bfff72206cc4683e40c7dc7dc484, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: 409db0d3e953ae949800da51472ae0f2, type: 2}
+  - {fileID: 11400000, guid: 81393ee2e36e03442a7cb874cb0620a3, type: 2}
+  - {fileID: 11400000, guid: 16df2083ce982b34287b4b55c6e60126, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: 409db0d3e953ae949800da51472ae0f2, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  - {fileID: 11400000, guid: 81393ee2e36e03442a7cb874cb0620a3, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   maxHealth: 100
-  defense: 10
-  maxEnergy: 9
   attack: 10
+  defense: 10
+  maxMana: 4
   currency: 0
 --- !u!4 &417510765
 Transform:
@@ -1920,7 +1920,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 661998738}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1008799946}
+        m_TargetAssemblyTypeName: DeathScreen, Assembly-CSharp
+        m_MethodName: deathButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &661998738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2128,7 +2140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1654916705252344525, guid: c42f9646038feca4f9c037cb35d43a4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -77.87357
+      value: -112
       objectReference: {fileID: 0}
     - target: {fileID: 1654916705252344525, guid: c42f9646038feca4f9c037cb35d43a4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2285,7 +2297,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716252116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2333,8 +2345,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0973}
-  m_SizeDelta: {x: 160, y: 166.22174}
+  m_AnchoredPosition: {x: 0.54986, y: -1.46062}
+  m_SizeDelta: {x: 263.7068, y: 342.52325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &758773038
 GameObject:
@@ -2713,8 +2725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0973}
-  m_SizeDelta: {x: 160, y: 166.22174}
+  m_AnchoredPosition: {x: -0.26183, y: -1.23806}
+  m_SizeDelta: {x: 251.85455, y: 317.3373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897324096
 MonoBehaviour:
@@ -2779,7 +2791,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897324094}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2908,6 +2920,7 @@ GameObject:
   - component: {fileID: 1008799943}
   - component: {fileID: 1008799945}
   - component: {fileID: 1008799944}
+  - component: {fileID: 1008799946}
   m_Layer: 5
   m_Name: DeathScreen
   m_TagString: Untagged
@@ -2974,6 +2987,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008799942}
   m_CullTransparentMesh: 1
+--- !u!114 &1008799946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008799942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e9fc10c6338d44cac89ac549c90714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyManager: {fileID: 1528466904}
 --- !u!1 &1025607781
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,6 +4158,7 @@ MonoBehaviour:
   - {fileID: 0}
   discards: []
   cooldowns: 
+  maxMana: 0
   currentMana: 0
 --- !u!4 &1424974290
 Transform:
@@ -4249,7 +4276,7 @@ Transform:
   m_GameObject: {fileID: 1432196599}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 355.5, y: 200, z: -43.9}
+  m_LocalPosition: {x: 355.5, y: 200, z: -86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5114,7 +5141,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616071162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -5162,8 +5189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0973}
-  m_SizeDelta: {x: 160, y: 166.22174}
+  m_AnchoredPosition: {x: 0.03928, y: -1.3297}
+  m_SizeDelta: {x: 238.52081, y: 327.70804}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1641661810
 GameObject:

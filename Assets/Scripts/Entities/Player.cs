@@ -1,9 +1,6 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
-using UnityEngine.UI;
 
 public class Player : Entity
 {
@@ -32,24 +29,25 @@ public class Player : Entity
     private int usedCards;
 
     [Header("Stats")]
-    public const int maxMana = 9;
+    public int maxMana;
     public int currentMana;
     void Start()
     {
         stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
-
+        maxHealth = stats.maxHealth;
         currentHealth = stats.maxHealth;
         healthText.text = "Health: " + currentHealth;
-        currentMana = stats.maxEnergy;
+        attack = stats.attack;
+        defense = stats.defense;
+        maxMana = stats.maxMana;
+        currentMana = stats.maxMana;
 
         deck = stats.getDeck();
 
         for (int i = 0; i < 6; i++)
         {
-            //Debug.Log("index: " + i);
             hand[i] = deck[0];
             deck.RemoveAt(0);
-            //Debug.Log("filling index: " + i);
         }
 
         nameCards();
@@ -66,8 +64,14 @@ public class Player : Entity
         Debug.Log("use card activated, pick number: " + pick); 
         if (currentMana >= hand[pick].cost)
         {
+
+            for(int k = 0; k < 6; k++)
+            {
+                cardButtons[k].SetActive(false);
+            }
+            
             selectedCard = pick;
-            currentMana -= hand[pick].cost;
+            //currentMana -= hand[pick].cost;
             if (hand[pick].target == CardTarget.Enemy)
             {
                 for (int i = 0; i < 3; i++)
@@ -79,11 +83,21 @@ public class Player : Entity
             }
             else if (hand[pick].target == CardTarget.AllEnemies)
             {
+                currentMana -= hand[pick].cost;
                 for (int i = 0; i < enemyManager.enemies.Length; i++)
                 {
                     hand[pick].doEffect(this, enemyManager.enemies[i].GetComponent<Enemy>());
                 }
-                
+
+                for (int k = 0; k < 6; k++)
+                {
+                    if(k != pick)
+                    {
+                        cardButtons[k].SetActive(true);
+                    }
+                    
+                }
+
                 discards.Add(hand[pick]);
                 cooldowns.Add(hand[pick].maxCooldown);
 
@@ -93,6 +107,7 @@ public class Player : Entity
             }
             else if (hand[pick].target == CardTarget.Self)
             {
+                currentMana -= hand[pick].cost;
                 hand[pick].doEffect(this, this);
                 
       
@@ -102,17 +117,34 @@ public class Player : Entity
                 cardButtons[pick].SetActive(false);
                 hand[pick] = null;
                 usedCards++;
+
+                for (int k = 0; k < 6; k++)
+                {
+                    if(k != pick)
+                    {
+                        cardButtons[k].SetActive(true);
+                    }
+                    
+                }
             }
         }
     }
 
     public void enemySelect(int pick)
     {
-        //Debug.Log("card selected: " + selectedCard + " enemy selected: " + pick);
+        currentMana -= hand[selectedCard].cost;
         hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
         for (int i = 0; i < 3; i++)
         {
             enemyManager.enemyButtons[i].SetActive(false);
+        }
+        for(int k = 0; k < 6; k++)
+        {
+            if (hand[k] != null)
+            {
+                cardButtons[k].SetActive(true);
+
+            }
         }
 
         discards.Add(hand[selectedCard]);
@@ -145,7 +177,7 @@ public class Player : Entity
 
     void drawCard()
     {
-        int cardDrawn = UnityEngine.Random.Range(0, deck.Count - 1);
+        int cardDrawn = Random.Range(0, deck.Count - 1);
         for (int i = 0; i < hand.Length; i++)
         {
             if (hand[i] == null)
@@ -181,7 +213,11 @@ public class Player : Entity
             }
         }
         usedCards = 0;
-        currentMana = maxMana;
+        currentMana += 2;
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
         nameCards();
         changeCooldowns();
         playerTurn = false;
@@ -191,7 +227,6 @@ public class Player : Entity
     {
         for (int i = 0; i < hand.Length; i++)
         {
-            //Debug.Log(hand[i].cardName);
             cardButtons[i].GetComponent<cardReader>().card = hand[i];
             cardButtons[i].GetComponent<cardReader>().setCard(); 
         }

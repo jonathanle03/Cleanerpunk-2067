@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Nano Repair
   description: 'Self: Heal for a moderate amount of HP.'
-  art: {fileID: 7802138324325737769, guid: 207797b809317cb4d876a18477fff4b8, type: 3}
+  art: {fileID: 2800000, guid: 374ea8b4cb295a849ae8b0d1e4ced345, type: 3}
   type: 2
   rarity: 1
   target: 2
   cost: 3
-  power: 0.35
+  power: 3
   maxCooldown: 1
   effects:
   - {fileID: 11400000, guid: 9d9438ded862e9c4fb79788a03e101d4, type: 2}
