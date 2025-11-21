@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; 
+using TMPro;
+using Unity.VisualScripting;
 public class deckViewer : MonoBehaviour
 {
     [Header("UI")]
@@ -11,9 +12,12 @@ public class deckViewer : MonoBehaviour
     [SerializeField] private GameObject deckPanel;
 
     [Header("Data")]
-    [SerializeField] PlayerStats playerStats;
+    private PlayerStats playerStats;
+    
+    [SerializeField] public EnemyManager enemyManager;
     [SerializeField] public List<CardData> deckList;
     [SerializeField] public List<CardData> discardList;
+    
 
     private bool isOpen;
     private void ClearContent()
@@ -53,6 +57,8 @@ public class deckViewer : MonoBehaviour
     }
     public void Start()
     {
+        playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+
         isOpen = false;
         deckPanel.SetActive(isOpen);
 
@@ -66,11 +72,22 @@ public class deckViewer : MonoBehaviour
     {
         if(!isOpen)
         {
+            for(int i = 0; i < 3; i++)
+            {
+                enemyManager.enemies[i].SetActive(false);
+            }
             deckPanel.SetActive(true);
             isOpen = true;
         }
         else
         {
+            for(int i = 0; i < 3; i++)
+            {
+                if(enemyManager.enemies[i].GetComponent<Enemy>().isDead == false)
+                {
+                    enemyManager.enemies[i].SetActive(true);   
+                }
+            }
             deckPanel.SetActive(false);
             isOpen = false;
         }
