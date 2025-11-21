@@ -8,8 +8,10 @@ public class Player : Entity
     [SerializeField] GameObject deathScreen;
     [SerializeField] TextMeshProUGUI energyText;
     [SerializeField] GameObject[] cardButtons = new GameObject[6];
-    [SerializeField] TextMeshProUGUI[] buttonText = new TextMeshProUGUI[6];
     [SerializeField] GameObject passButton;
+    [SerializeField] GameObject healthBar;
+    private float healthBarMaxWidth;
+    private Vector3 healthBarStartPos;
     private int chosenCard;
 
     [Header("Class References")]
@@ -36,7 +38,8 @@ public class Player : Entity
         stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
         maxHealth = stats.maxHealth;
         currentHealth = stats.maxHealth;
-        healthText.text = "Health: " + currentHealth;
+        healthBarMaxWidth = (int)healthBar.GetComponent<Transform>().localScale.x;
+        healthBarStartPos = healthBar.GetComponent<Transform>().localPosition;
         attack = stats.attack;
         defense = stats.defense;
         maxMana = stats.maxMana;
@@ -57,6 +60,8 @@ public class Player : Entity
     {
         energyText.text = "Energy: " + currentMana;
         healthText.text = "Health: " + currentHealth;
+        healthBar.GetComponent<Transform>().localScale = new Vector3((float)currentHealth / maxHealth * healthBarMaxWidth, healthBar.GetComponent<Transform>().localScale.y, healthBar.GetComponent<Transform>().localScale.z);
+        healthBar.GetComponent<Transform>().localPosition = new Vector3(healthBarStartPos.x - (healthBarMaxWidth - healthBar.GetComponent<Transform>().localScale.x) / 2 * healthBar.GetComponent<RectTransform>().rect.width, healthBarStartPos.y, healthBarStartPos.z);
     }
 
     public void useCard(int pick)
