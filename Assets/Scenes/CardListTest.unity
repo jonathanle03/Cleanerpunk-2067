@@ -4784,6 +4784,10 @@ MonoBehaviour:
   - {fileID: 897324094}
   - {fileID: 1616071162}
   - {fileID: 716252116}
+  possibleEnemies:
+  - {fileID: 11400000, guid: 602726f5433cc5b49bbc0cec83be18e9, type: 2}
+  - {fileID: 11400000, guid: 3f8766d33c29ac648a7ffea29fec36b8, type: 2}
+  - {fileID: 11400000, guid: 353257b514229bd48a049e8528d24eae, type: 2}
   player: {fileID: 1424974289}
 --- !u!4 &1528466905
 Transform:

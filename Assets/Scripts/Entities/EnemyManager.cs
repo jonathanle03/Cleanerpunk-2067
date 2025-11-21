@@ -1,20 +1,31 @@
+using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+
 
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] public GameObject[] enemies = new GameObject[3];
     [SerializeField] public GameObject[] enemyButtons = new GameObject[3];
+    [SerializeField] List<EnemyData> possibleEnemies = new List<EnemyData>();
 
     [SerializeField] Player player;
 
-
+    [SerializeField] List<string> textLog = new List<string>();
+    [SerializeField] TextMeshProUGUI textLogText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
     {
-
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Enemy enemy = enemies[i].GetComponent<Enemy>();
+            EnemyData enemyData = possibleEnemies[Random.Range(0, possibleEnemies.Count)];
+            enemy.InitializeEnemy(enemyData);
+            enemy.enemyButton = enemyButtons[i];
+        }
     }
 
     // Update is called once per frame
@@ -43,6 +54,18 @@ public class EnemyManager : MonoBehaviour
 
                     if (enemy.moveable)
                     {
+                        string difference = "";
+                        if(textLog.Count == 3)
+                        {
+                            textLog.RemoveAt(0);
+                            
+                        }
+                        textLog.Add(enemy.entityName + ": " + enemy.enemyCard.name);
+                        for(int k = 0; k < textLog.Count; k++)
+                        {
+                            difference += ("\n" + textLog[k]);
+                        }
+                        textLogText.text = difference;
                         enemy.enemyCard.doEffect(enemy, player);
                         enemies[i].GetComponent<Enemy>().RandomCard();
                     }
