@@ -56,7 +56,7 @@ public class WinScreen : MonoBehaviour
         winScreenUI.SetActive(true);
         for(int i = 0; i < spareList.Length; i++)
         {
-            spareList[i].GetComponent<cardReader>().card = (enemyManager.enemies[i].GetComponent<Enemy>().enemyCard);
+            spareList[i].GetComponent<cardReader>().card = (enemyManager.enemies[i].GetComponent<Enemy>().enemyData.cards[0]);
             spareList[i].GetComponent<cardReader>().setCard();
         }
     }
