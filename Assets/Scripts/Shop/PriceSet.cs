@@ -8,12 +8,16 @@ using UnityEngine.SceneManagement;
 public class PriceSet : MonoBehaviour
 {
 
+    [Header("Possible Shop Cards")]
     [SerializeField] List<CardData> attacks = new List<CardData>();
     [SerializeField] List<CardData> defenses = new List<CardData>();
     [SerializeField] List<CardData> supports = new List<CardData>();
 
+    [Header("Health/Mana Upgrade Stuff")]
     [SerializeField] int HPprice;
-    [SerializeField] int MPprice; 
+    [SerializeField] int HPincrease;
+    [SerializeField] int MPprice;
+    [SerializeField] int MPincrease;
     
 
     [SerializeField] List<GameObject> cards = new List<GameObject>();
@@ -22,10 +26,16 @@ public class PriceSet : MonoBehaviour
 
     private int[] prices = new int[3];
 
+    [Header("Text Attributes")]
     public TextMeshProUGUI balance; 
     public TextMeshProUGUI attackPrice;
     public TextMeshProUGUI defensePrice;
     public TextMeshProUGUI supportPrice;
+    public TextMeshProUGUI HPbutton;
+    public TextMeshProUGUI MPbutton;
+    public TextMeshProUGUI HPtext;
+    public TextMeshProUGUI MPtext; 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,9 +71,14 @@ public class PriceSet : MonoBehaviour
         cards[2].GetComponent<cardReader>().card = supports[randomChoice];
         cards[2].GetComponent<cardReader>().setCard();
 
-        balance.text = "Balance: " + player.currency.ToString(); 
+        balance.text = "Balance: " + player.currency.ToString();
 
 
+        HPtext.text = "+" + HPincrease + " to Health";
+        MPtext.text = "+" + MPincrease + " to Energy"; 
+        
+        HPbutton.text = "Price: " + HPprice;
+        MPbutton.text = "Price: " + MPprice; 
 
     }
 
@@ -91,7 +106,7 @@ public class PriceSet : MonoBehaviour
         if(player.currency >= HPprice)
         {
             player.currency -= HPprice;
-            player.maxHealth += 20;
+            player.maxHealth += HPincrease;
             Debug.Log("Upgraded health");
         }
     }
@@ -101,7 +116,7 @@ public class PriceSet : MonoBehaviour
         if (player.currency >= MPprice)
         {
             player.currency -= MPprice;
-            player.maxMana += 1;
+            player.maxMana += MPincrease;
             Debug.Log("Upgraded mana"); 
         }
     }
