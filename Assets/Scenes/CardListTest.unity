@@ -1066,9 +1066,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 81393ee2e36e03442a7cb874cb0620a3, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   maxHealth: 100
+  attack: 10
   defense: 10
   maxMana: 4
-  attack: 10
   currency: 0
 --- !u!4 &417510765
 Transform:
