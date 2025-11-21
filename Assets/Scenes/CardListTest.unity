@@ -2169,6 +2169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a5ec7a997d94a1408c000e11c21ce5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackbutton: {fileID: 1770034766}
+  defenseButton: {fileID: 2076179135}
   winScreenUI: {fileID: 625494738}
   enemyManager: {fileID: 1528466904}
   playerStats: {fileID: 417510764}
@@ -3267,6 +3269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 1528466904}
+  attackButton: {fileID: 1770034766}
+  defenseButton: {fileID: 2076179135}
 --- !u!1 &1025607781
 GameObject:
   m_ObjectHideFlags: 0
