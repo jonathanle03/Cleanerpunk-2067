@@ -112,17 +112,25 @@ public class PriceSet : MonoBehaviour
 
     public void levelMp()
     {
-        if (player.currency >= MPprice)
+        if (player.maxMana < 9)
         {
-            player.currency -= MPprice;
-            player.maxMana += MPincrease;
-            Debug.Log("Upgraded mana"); 
+            if (player.currency >= MPprice)
+                    {
+                        player.currency -= MPprice;
+                        player.maxMana += MPincrease;
+                        Debug.Log("Upgraded mana"); 
+                    }
         }
+        
     }
 
     public void toBattle()
     {
-        //player.maxMana += 1;
+        if(player.maxMana < 9)
+        {
+            player.maxMana += 1;
+        }
+        
         SceneManager.LoadScene(1);
     }
 }
