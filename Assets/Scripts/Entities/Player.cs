@@ -59,7 +59,7 @@ public class Player : Entity
     private void Update()
     {
         energyText.text = "Energy: " + currentMana;
-        healthText.text = "Health: " + currentHealth;
+        healthText.text = "" + currentHealth;
         healthBar.GetComponent<Transform>().localScale = new Vector3((float)currentHealth / maxHealth * healthBarMaxWidth, healthBar.GetComponent<Transform>().localScale.y, healthBar.GetComponent<Transform>().localScale.z);
         healthBar.GetComponent<Transform>().localPosition = new Vector3(healthBarStartPos.x - (healthBarMaxWidth - healthBar.GetComponent<Transform>().localScale.x) / 2 * healthBar.GetComponent<RectTransform>().rect.width, healthBarStartPos.y, healthBarStartPos.z);
     }
