@@ -214,6 +214,10 @@ public class Player : Entity
         }
         usedCards = 0;
         currentMana += 2;
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
         nameCards();
         changeCooldowns();
         playerTurn = false;
