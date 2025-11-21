@@ -158,6 +158,10 @@ public class Player : Entity
     {
         if(special && selectedCard == 6)
         {
+            if(currentMana < stats.maxMana)
+            {
+                currentMana += 1;
+            }
             attackStatic.doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
             attackStaticButton.SetActive(true);
             defenseStaticButton.SetActive(true);
@@ -255,7 +259,11 @@ public class Player : Entity
         }
         usedCards = 0;
 
-        currentMana += 2;
+        if( currentMana < stats.maxMana)
+        {
+            currentMana += 2;
+        }
+        
         if (currentMana > maxMana)
         {
             currentMana = maxMana;
@@ -301,7 +309,6 @@ public class Player : Entity
 
     public void staticAttack()
     {
-        currentMana += 1;
         for(int i = 0; i < 3; i++)
         {
             enemyManager.enemyButtons[i].SetActive(true);
@@ -320,8 +327,28 @@ public class Player : Entity
 
     public void staticDefense()
     {
-        currentMana += 2;
+        if(currentMana < maxMana)
+        {
+            currentMana += 2;
+        }
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
         defenseStatic.doEffect(this, this);
+        fillHand();
+    }
+
+    public void charge()
+    {
+        if (currentMana < maxMana)
+        {
+            currentMana += 4;
+        }
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
         fillHand();
     }
 }

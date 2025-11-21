@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 409758485}
   - component: {fileID: 409758484}
   m_Layer: 5
-  m_Name: Pass
+  m_Name: Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1434,7 +1434,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1424974289}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: fillHand
+        m_MethodName: charge
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10144,7 +10144,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pass
+  m_text: 'Charge
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4646de12ef37e4e438e74c22a13e0bc3, type: 2}
   m_sharedMaterial: {fileID: -7455458933960760187, guid: 4646de12ef37e4e438e74c22a13e0bc3, type: 2}
