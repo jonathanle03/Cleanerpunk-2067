@@ -21,7 +21,9 @@ public class Enemy : Entity
 
     private void Update()
     {
-        healthText.text = "Health: " + currentHealth;
+        healthText.text = "" + currentHealth;
+        healthBar.GetComponent<Transform>().localScale = new Vector3((float)currentHealth / maxHealth * healthBarMaxWidth, healthBar.GetComponent<Transform>().localScale.y, healthBar.GetComponent<Transform>().localScale.z);
+        healthBar.GetComponent<Transform>().localPosition = new Vector3(healthBarStartPos.x - (healthBarMaxWidth - healthBar.GetComponent<Transform>().localScale.x) / 2 * healthBar.GetComponent<RectTransform>().rect.width, healthBarStartPos.y, healthBarStartPos.z);
     }
 
     public override void EntityDead()
@@ -45,6 +47,8 @@ public class Enemy : Entity
         thisrender.sprite = art; 
 
         currentHealth = maxHealth;
+        healthBarMaxWidth = (int)healthBar.GetComponent<Transform>().localScale.x;
+        healthBarStartPos = healthBar.GetComponent<Transform>().localPosition;
         healthText.text = "Health: " + currentHealth;
         RandomCard();
     }

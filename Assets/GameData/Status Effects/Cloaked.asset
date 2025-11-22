@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cloaked
   m_EditorClassIdentifier: 
   effectName: Cloaked
-  icon: {fileID: -8309468100070485270, guid: 35c64e3a7d67b7c40a6d1b7f0d020436, type: 3}
+  icon: {fileID: 1717514385726509763, guid: e31f31a46e750084cbddd69b7c46736b, type: 3}
   duration: 0
   effectPower: 0
   applicationChance: 1
