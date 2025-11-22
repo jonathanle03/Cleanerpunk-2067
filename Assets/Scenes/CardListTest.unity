@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2034025591}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.0000016132615
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5683,6 +5683,9 @@ MonoBehaviour:
   content: {fileID: 256261317}
   cardItemPrefab: {fileID: 787759956}
   deckPanel: {fileID: 1981036824}
+  winScreenData: {fileID: 671405203}
+  playerDiscardStats: {fileID: 1424974289}
+  playerStats: {fileID: 417510764}
   enemyManager: {fileID: 1528466904}
   deckList: []
   discardList: []
@@ -5977,7 +5980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1629376915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8448,7 +8451,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 25
   m_Viewport: {fileID: 1134190315}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 583916471}
