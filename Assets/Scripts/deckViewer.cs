@@ -109,6 +109,8 @@ public class deckViewer : MonoBehaviour
     {
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
 
+
+        headerText.text = "";
         isOpen = false;
         deckPanel.SetActive(isOpen);
 
@@ -132,7 +134,7 @@ public class deckViewer : MonoBehaviour
         deckPanel.SetActive(true); 
         headerText.text = text;
         Populate(text);
-        contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 425);
+        contentRectTransform.sizeDelta = new Vector2(contentRectTransform.sizeDelta.x, (int) Math.Ceiling(deckList.Count / 3.0) * 500);
     }
     public void disablePanel()
     {
