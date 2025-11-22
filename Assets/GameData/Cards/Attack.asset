@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   cardName: Attack
-  description: Attack a single enemy without ending the turn.
+  description: Attack
   art: {fileID: 2800000, guid: 19bc0e75f2fe7b646926e74269eb906e, type: 3}
   type: 0
   rarity: 0

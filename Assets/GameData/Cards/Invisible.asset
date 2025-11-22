@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: Invisible
   m_EditorClassIdentifier: 
   cardName: Invisible
-  description: Evade all attacks while active. -3 MP/turn while active, ending when
-    player has insufficient MP on turn end.
+  description: 'Places the player in a Cloaked state, allowing them to evade all
+    incoming attacks while active.
+
+    Drains 2 MP each turn that the effect is
+    active.
+
+    Effect ends when the player ends a turn with insufficient MP to
+    sustain the effect.'
   art: {fileID: 2800000, guid: 62aa00aac07bd1241b41b95dfe37ff59, type: 3}
   type: 1
   rarity: 2
   target: 2
-  cost: 3
+  cost: 2
   power: 0
   maxCooldown: 1
   effects:

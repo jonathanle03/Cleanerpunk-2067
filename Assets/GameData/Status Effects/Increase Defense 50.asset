@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Increase Defense 50
   m_EditorClassIdentifier: 
   effectName: Increase Defense
-  icon: {fileID: -5960220575271004801, guid: e31f31a46e750084cbddd69b7c46736b, type: 3}
+  icon: {fileID: -8309468100070485270, guid: 35c64e3a7d67b7c40a6d1b7f0d020436, type: 3}
   duration: 3
   effectPower: 1.5
   applicationChance: 1

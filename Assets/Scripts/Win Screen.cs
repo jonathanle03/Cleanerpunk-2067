@@ -4,9 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class WinScreen : MonoBehaviour
 {
-    [SerializeField] GameObject attackbutton;
-    [SerializeField] GameObject defenseButton;
-
     [SerializeField] public GameObject winScreenUI;
     [SerializeField] public EnemyManager enemyManager;
     public PlayerStats playerStats;
@@ -22,7 +19,6 @@ public class WinScreen : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         playerStats = GameObject.Find("playerManager").GetComponent<PlayerStats>();
     }
 
@@ -41,10 +37,7 @@ public class WinScreen : MonoBehaviour
                 if (check == 3)
                 {
                     winup = true;
-                    attackbutton.SetActive(false);
-                    defenseButton.SetActive(false);
                     gameWin();
-                    
                 }
             }
         }
@@ -56,7 +49,7 @@ public class WinScreen : MonoBehaviour
         winScreenUI.SetActive(true);
         for(int i = 0; i < spareList.Length; i++)
         {
-            spareList[i].GetComponent<cardReader>().card = (enemyManager.enemies[i].GetComponent<Enemy>().enemyData.cards[0]);
+            spareList[i].GetComponent<cardReader>().card = (enemyManager.enemies[i].GetComponent<Enemy>().enemyCard);
             spareList[i].GetComponent<cardReader>().setCard();
         }
     }

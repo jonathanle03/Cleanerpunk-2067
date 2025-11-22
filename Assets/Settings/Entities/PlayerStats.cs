@@ -30,16 +30,6 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("" + playerDeck.ToString());
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Esc down");
-            Application.Quit(); 
-        }
-    }
-
-
     public List<CardData> getDeck()
     {
         List<CardData> newList = new List<CardData>();
@@ -49,6 +39,4 @@ public class PlayerStats : MonoBehaviour
         }
         return newList;
     }
-
- 
 }

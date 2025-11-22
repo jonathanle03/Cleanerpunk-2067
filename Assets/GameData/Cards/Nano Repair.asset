@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nano Repair
   m_EditorClassIdentifier: 
   cardName: Nano Repair
-  description: Heals self for a moderate amount of HP.
+  description: 'Self: Heal for a moderate amount of HP.'
   art: {fileID: 2800000, guid: 374ea8b4cb295a849ae8b0d1e4ced345, type: 3}
   type: 2
   rarity: 1

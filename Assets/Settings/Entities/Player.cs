@@ -7,9 +7,8 @@ public class Player : Entity
     [Header("UI Elements")]
     [SerializeField] GameObject deathScreen;
     [SerializeField] TextMeshProUGUI energyText;
-    [SerializeField] GameObject[] currentManaIcons = new GameObject[9];
-    [SerializeField] GameObject[] maxManaIcons = new GameObject[9];
     [SerializeField] GameObject[] cardButtons = new GameObject[6];
+    [SerializeField] TextMeshProUGUI[] buttonText = new TextMeshProUGUI[6];
     [SerializeField] GameObject passButton;
     private int chosenCard;
 
@@ -29,38 +28,19 @@ public class Player : Entity
     private int selectedCard;
     private int usedCards;
 
-    [SerializeField] CardData attackStatic;
-    [SerializeField] CardData defenseStatic;
-    private bool special;
-
-    [SerializeField] GameObject attackStaticButton;
-    [SerializeField] GameObject defenseStaticButton;
- 
     [Header("Stats")]
     public int maxMana;
     public int currentMana;
-
     void Start()
     {
         stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
         maxHealth = stats.maxHealth;
         currentHealth = stats.maxHealth;
-        healthBarMaxWidth = (int)healthBar.GetComponent<Transform>().localScale.x;
-        healthBarStartPos = healthBar.GetComponent<Transform>().localPosition;
+        healthText.text = "Health: " + currentHealth;
         attack = stats.attack;
         defense = stats.defense;
         maxMana = stats.maxMana;
         currentMana = stats.maxMana;
-
-        updateMana();
-        for (int i = 0; i < maxMana; i++)
-        {
-            maxManaIcons[i].SetActive(true);
-        }
-        for (int i = 8; i >= maxMana; i--)
-        {
-            maxManaIcons[i].SetActive(false);
-        }
 
         deck = stats.getDeck();
 
@@ -71,14 +51,12 @@ public class Player : Entity
         }
 
         nameCards();
-    }
 
+    }
     private void Update()
     {
-        energyText.text = "" + currentMana;
-        healthText.text = "" + currentHealth;
-        healthBar.GetComponent<Transform>().localScale = new Vector3((float)currentHealth / maxHealth * healthBarMaxWidth, healthBar.GetComponent<Transform>().localScale.y, healthBar.GetComponent<Transform>().localScale.z);
-        healthBar.GetComponent<Transform>().localPosition = new Vector3(healthBarStartPos.x - (healthBarMaxWidth - healthBar.GetComponent<Transform>().localScale.x) / 2 * healthBar.GetComponent<RectTransform>().rect.width, healthBarStartPos.y, healthBarStartPos.z);
+        energyText.text = "Energy: " + currentMana;
+        healthText.text = "Health: " + currentHealth;
     }
 
     public void useCard(int pick)
@@ -149,57 +127,34 @@ public class Player : Entity
                     
                 }
             }
-
-            updateMana();
         }
     }
 
     public void enemySelect(int pick)
     {
-        if(special && selectedCard == 6)
+        currentMana -= hand[selectedCard].cost;
+        hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
+        for (int i = 0; i < 3; i++)
         {
-            if(currentMana < stats.maxMana)
-            {
-                currentMana += 1;
-            }
-            attackStatic.doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
-            attackStaticButton.SetActive(true);
-            defenseStaticButton.SetActive(true);
-            passButton.SetActive(true);
-            for (int k = 0; k < 6; k++)
+            enemyManager.enemyButtons[i].SetActive(false);
+        }
+        for(int k = 0; k < 6; k++)
+        {
+            if (hand[k] != null)
             {
                 cardButtons[k].SetActive(true);
+
             }
-            fillHand();
-
-        }else
-        {
-            currentMana -= hand[selectedCard].cost;
-        updateMana();
-                hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
-                for (int i = 0; i < 3; i++)
-                {
-                    enemyManager.enemyButtons[i].SetActive(false);
-                }
-                for(int k = 0; k < 6; k++)
-                {
-                    if (hand[k] != null)
-                    {
-                        cardButtons[k].SetActive(true);
-
-                    }
-                }
-
-                discards.Add(hand[selectedCard]);
-                cooldowns.Add(hand[selectedCard].maxCooldown);
-                //discardCard(hand[selectedCard]);
-
-                cardButtons[chosenCard].SetActive(false);
-                hand[selectedCard] = null;
-                usedCards++;
-
         }
-        special = false;
+
+        discards.Add(hand[selectedCard]);
+        cooldowns.Add(hand[selectedCard].maxCooldown);
+        //discardCard(hand[selectedCard]);
+
+        cardButtons[chosenCard].SetActive(false);
+        hand[selectedCard] = null;
+        usedCards++;
+
     }
 
     void changeCooldowns()
@@ -258,10 +213,11 @@ public class Player : Entity
             }
         }
         usedCards = 0;
-
-        
-        updateMana();
-
+        currentMana += 2;
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
         nameCards();
         changeCooldowns();
         playerTurn = false;
@@ -276,18 +232,6 @@ public class Player : Entity
         }
     }
 
-    public void updateMana()
-    {
-        for (int i = 0; i < currentMana; i++)
-        {
-            currentManaIcons[i].SetActive(true);
-        }
-        for (int i = 8; i >= currentMana; i--)
-        {
-            currentManaIcons[i].SetActive(false);
-        }
-    }
-
     public override void EntityDead()
     {
         healthText.text = "Health: 0";
@@ -297,50 +241,5 @@ public class Player : Entity
             passButton.SetActive(false);
         }
         deathScreen.SetActive(true);
-    }
-
-    public void staticAttack()
-    {
-        for(int i = 0; i < 3; i++)
-        {
-            enemyManager.enemyButtons[i].SetActive(true);
-        }
-        for(int k = 0; k < 6; k++)
-        {
-            cardButtons[k].SetActive(false);
-        }
-        attackStaticButton.SetActive(false);
-        defenseStaticButton.SetActive(false);
-        passButton.SetActive(false);
-        special = true;
-        selectedCard = 6;
-
-    }
-
-    public void staticDefense()
-    {
-        if(currentMana < maxMana)
-        {
-            currentMana += 2;
-        }
-        if (currentMana > maxMana)
-        {
-            currentMana = maxMana;
-        }
-        defenseStatic.doEffect(this, this);
-        fillHand();
-    }
-
-    public void charge()
-    {
-        if (currentMana < maxMana)
-        {
-            currentMana += 4;
-        }
-        if (currentMana > maxMana)
-        {
-            currentMana = maxMana;
-        }
-        fillHand();
     }
 }

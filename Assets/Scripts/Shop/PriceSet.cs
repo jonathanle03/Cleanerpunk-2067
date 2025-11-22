@@ -8,16 +8,9 @@ using UnityEngine.SceneManagement;
 public class PriceSet : MonoBehaviour
 {
 
-    [Header("Possible Shop Cards")]
     [SerializeField] List<CardData> attacks = new List<CardData>();
     [SerializeField] List<CardData> defenses = new List<CardData>();
     [SerializeField] List<CardData> supports = new List<CardData>();
-
-    [Header("Health/Mana Upgrade Stuff")]
-    [SerializeField] int HPprice;
-    [SerializeField] int HPincrease;
-    [SerializeField] int MPprice;
-    [SerializeField] int MPincrease;
     
 
     [SerializeField] List<GameObject> cards = new List<GameObject>();
@@ -26,16 +19,10 @@ public class PriceSet : MonoBehaviour
 
     private int[] prices = new int[3];
 
-    [Header("Text Attributes")]
     public TextMeshProUGUI balance; 
     public TextMeshProUGUI attackPrice;
     public TextMeshProUGUI defensePrice;
     public TextMeshProUGUI supportPrice;
-    public TextMeshProUGUI HPbutton;
-    public TextMeshProUGUI MPbutton;
-    public TextMeshProUGUI HPtext;
-    public TextMeshProUGUI MPtext; 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -71,21 +58,16 @@ public class PriceSet : MonoBehaviour
         cards[2].GetComponent<cardReader>().card = supports[randomChoice];
         cards[2].GetComponent<cardReader>().setCard();
 
-        balance.text = "Balance: " + player.currency.ToString();
+        balance.text = "Balance: " + player.currency.ToString(); 
 
 
-        HPtext.text = "+" + HPincrease + " to Health";
-        MPtext.text = "+" + MPincrease + " to Energy"; 
-        
-        HPbutton.text = "Price: " + HPprice;
-        MPbutton.text = "Price: " + MPprice; 
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        balance.text = "Balance: " + player.currency.ToString();
+        
     }
 
     public void buyCard(int pick)
@@ -97,40 +79,13 @@ public class PriceSet : MonoBehaviour
             player.playerDeck.Add(cards[pick].GetComponent<cardReader>().card);
         }
 
+        balance.text = "Balance: " + player.currency.ToString();
 
-    }
-
-    public void levelHP()
-    {
-        if(player.currency >= HPprice)
-        {
-            player.currency -= HPprice;
-            player.maxHealth += HPincrease;
-            Debug.Log("Upgraded health");
-        }
-    }
-
-    public void levelMp()
-    {
-        if (player.maxMana < 9)
-        {
-            if (player.currency >= MPprice)
-                    {
-                        player.currency -= MPprice;
-                        player.maxMana += MPincrease;
-                        Debug.Log("Upgraded mana"); 
-                    }
-        }
-        
     }
 
     public void toBattle()
     {
-        if(player.maxMana < 9)
-        {
-            player.maxMana += 1;
-        }
-        
+        player.maxMana += 1;
         SceneManager.LoadScene(1);
     }
 }

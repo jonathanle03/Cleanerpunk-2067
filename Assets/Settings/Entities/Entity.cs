@@ -20,11 +20,6 @@ public abstract class Entity : MonoBehaviour
     public List<StatusEffect> statusEffects = new List<StatusEffect>();
     public StatusUIController uiController;
 
-    [Header("UI Elements")]
-    public GameObject healthBar;
-    public float healthBarMaxWidth;
-    public Vector3 healthBarStartPos;
-
     void Awake()
     {
         uiController = GetComponentInChildren<StatusUIController>();
@@ -44,7 +39,6 @@ public abstract class Entity : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
             Debug.Log($"{entityName} is dead");
             EntityDead();
         }
