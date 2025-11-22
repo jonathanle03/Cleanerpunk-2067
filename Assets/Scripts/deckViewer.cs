@@ -108,7 +108,8 @@ public class deckViewer : MonoBehaviour
     public void Start()
     {
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
-
+        
+        headerText.text = "";
         isOpen = false;
         deckPanel.SetActive(isOpen);
 
