@@ -84,7 +84,6 @@ public class Player : Entity
 
     public void useCard(int pick)
     {
-        cancelButton.SetActive(true);
         Debug.Log("use card activated, pick number: " + pick); 
         if (currentMana >= hand[pick].cost)
         {
@@ -98,6 +97,7 @@ public class Player : Entity
             //currentMana -= hand[pick].cost;
             if (hand[pick].target == CardTarget.Enemy)
             {
+                cancelButton.SetActive(true);
                 for (int i = 0; i < 3; i++)
                 {
                     enemyManager.enemyButtons[i].SetActive(true);
@@ -158,6 +158,7 @@ public class Player : Entity
 
     public void enemySelect(int pick)
     {
+        cancelButton.SetActive(false);
         if(special && selectedCard == 6)
         {
             if(currentMana < stats.maxMana)
