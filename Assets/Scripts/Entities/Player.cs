@@ -11,6 +11,7 @@ public class Player : Entity
     [SerializeField] GameObject[] maxManaIcons = new GameObject[9];
     [SerializeField] GameObject[] cardButtons = new GameObject[6];
     [SerializeField] GameObject passButton;
+    [SerializeField] GameObject cancelButton;
     private int chosenCard;
 
     [Header("Class References")]
@@ -83,6 +84,7 @@ public class Player : Entity
 
     public void useCard(int pick)
     {
+        cancelButton.SetActive(true);
         Debug.Log("use card activated, pick number: " + pick); 
         if (currentMana >= hand[pick].cost)
         {
@@ -342,5 +344,18 @@ public class Player : Entity
             currentMana = maxMana;
         }
         fillHand();
+    }
+
+    public void cancelChoice()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            enemyManager.enemyButtons[i].SetActive(false);
+        }
+        for (int k = 0; k < 6; k++)
+        {
+            cardButtons[k].SetActive(true);
+        }
+        cancelButton.SetActive(false);
     }
 }
