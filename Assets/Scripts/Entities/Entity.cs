@@ -30,7 +30,7 @@ public abstract class Entity : MonoBehaviour
         uiController = GetComponentInChildren<StatusUIController>();
     }
 
-    public void TakeDamage(float cardPower, int incomingAttack)
+    virtual public void TakeDamage(float cardPower, int incomingAttack)
     {
         float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
         foreach (StatusEffect effect in statusEffects)

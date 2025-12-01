@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using System.Collections; 
 
 public class Enemy : Entity
 {
@@ -11,6 +12,9 @@ public class Enemy : Entity
     public Sprite art;
     public CardData enemyCard;
     [SerializeField] public GameObject enemyButton;
+
+    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private float _timing; 
 
     public bool isDead;
 
@@ -57,4 +61,36 @@ public class Enemy : Entity
     {
         enemyCard = deck[Random.Range(0, deck.Count)];
     }
+
+
+    override public void TakeDamage(float cardPower, int incomingAttack)
+    {
+        float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
+        foreach (StatusEffect effect in statusEffects)
+        {
+            incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
+        }
+
+        currentHealth -= Mathf.CeilToInt(incomingDmg);
+        healthText.text = "Health: " + currentHealth;
+        Debug.Log($"{entityName} takes {incomingDmg} damage");
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Debug.Log($"{entityName} is dead");
+            EntityDead();
+        }
+
+        StartCoroutine(turnRed()); 
+    }
+
+
+    IEnumerator turnRed()
+    {
+        sprite.color = new Color(1f, 0, 0, 1f);
+        yield return new WaitForSeconds(_timing);
+        sprite.color = Color.white; 
+    }
+
 }

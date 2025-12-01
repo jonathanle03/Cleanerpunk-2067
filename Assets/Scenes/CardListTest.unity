@@ -1932,6 +1932,8 @@ MonoBehaviour:
   art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   enemyButton: {fileID: 716252116}
+  sprite: {fileID: 501576392}
+  _timing: 0.25
   isDead: 0
 --- !u!212 &501576392
 SpriteRenderer:
@@ -5561,6 +5563,8 @@ MonoBehaviour:
   art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   enemyButton: {fileID: 1616071162}
+  sprite: {fileID: 1138716120}
+  _timing: 0.25
   isDead: 0
 --- !u!212 &1138716120
 SpriteRenderer:
@@ -7307,6 +7311,8 @@ MonoBehaviour:
   art: {fileID: 0}
   enemyCard: {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   enemyButton: {fileID: 897324094}
+  sprite: {fileID: 1489961024}
+  _timing: 0.25
   isDead: 0
 --- !u!212 &1489961024
 SpriteRenderer:
@@ -7421,6 +7427,7 @@ MonoBehaviour:
   player: {fileID: 1424974289}
   textLog: []
   textLogText: {fileID: 836485438}
+  timing: 0.5
 --- !u!4 &1528466905
 Transform:
   m_ObjectHideFlags: 0

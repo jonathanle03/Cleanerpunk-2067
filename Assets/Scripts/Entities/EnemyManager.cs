@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,6 +16,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] List<string> textLog = new List<string>();
     [SerializeField] TextMeshProUGUI textLogText;
 
+    [SerializeField] private float timing; 
+
+    private bool _isRunning = false; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -40,67 +44,75 @@ public class EnemyManager : MonoBehaviour
             }
         }
 
-        if (player.playerTurn == false)
+        if (!player.playerTurn && !_isRunning)
         {
-            for (int i = 0; i < enemies.Length; i++)
-            {
-                Enemy enemy = enemies[i].GetComponent<Enemy>();
-                if (!enemy.isDead)
-                {
-                    foreach (StatusEffect effect in enemy.statusEffects)
-                    {
-                        effect.OnTurnStart(enemy);
-                    }
-
-                    if (enemy.moveable)
-                    {
-                        string difference = "";
-                        if(textLog.Count == 3)
-                        {
-                            textLog.RemoveAt(0);
-                            
-                        }
-                        textLog.Add(enemy.entityName + ": " + enemy.enemyCard.name);
-                        for(int k = 0; k < textLog.Count; k++)
-                        {
-                            difference += ("\n" + textLog[k]);
-                        }
-                        textLogText.text = difference;
-                        enemy.enemyCard.doEffect(enemy, player);
-                        enemies[i].GetComponent<Enemy>().RandomCard();
-                    }
-
-                    for (int j = enemy.statusEffects.Count - 1; j >= 0; --j)
-                    {
-                        enemy.statusEffects[j].OnTurnEnd(enemy);
-                        enemy.uiController.UpdateStatusUI(enemy.statusEffects);
-                    }
-
-                    if (enemy.staggerCD > 0)
-                    {
-                        enemy.staggerCD--;
-                    }
-                }
-            }
-
-            foreach (StatusEffect effect in player.statusEffects)
-            {
-                effect.OnTurnStart(player);
-            }
-
-            if (player.moveable == true)
-            {
-                player.playerTurn = true;
-            }
-            else
-            {
-                player.fillHand();
-            }
+            StartCoroutine(EnemyTurn()); 
         }
     }
 
-    void EnemyDied()
-    {
 
+    IEnumerator EnemyTurn()
+    {
+        _isRunning = true; 
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Enemy enemy = enemies[i].GetComponent<Enemy>();
+
+            if (!enemy.isDead)
+            {
+                foreach (StatusEffect effect in enemy.statusEffects)
+                {
+                    effect.OnTurnStart(enemy);
+                }
+
+                if (enemy.moveable)
+                {
+                    string difference = "";
+                    if (textLog.Count == 3)
+                    {
+                        textLog.RemoveAt(0);
+
+                    }
+                    textLog.Add(enemy.entityName + ": " + enemy.enemyCard.name);
+                    for (int k = 0; k < textLog.Count; k++)
+                    {
+                        difference += ("\n" + textLog[k]);
+                    }
+                    textLogText.text = difference;
+                    enemy.enemyCard.doEffect(enemy, player);
+                    
+                    yield return new WaitForSeconds(timing); 
+
+
+                    enemies[i].GetComponent<Enemy>().RandomCard();
+                }
+
+                for (int j = enemy.statusEffects.Count - 1; j >= 0; --j)
+                {
+                    enemy.statusEffects[j].OnTurnEnd(enemy);
+                    enemy.uiController.UpdateStatusUI(enemy.statusEffects);
+                }
+
+                if (enemy.staggerCD > 0)
+                {
+                    enemy.staggerCD--;
+                }
+            }
+        }
+
+        foreach (StatusEffect effect in player.statusEffects)
+        {
+            effect.OnTurnStart(player);
+        }
+
+        if (player.moveable == true)
+        {
+            player.playerTurn = true;
+        }
+        else
+        {
+            player.fillHand();
+        }
+        _isRunning = false;
     }
 }
