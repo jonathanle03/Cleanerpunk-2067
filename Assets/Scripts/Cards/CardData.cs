@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,18 @@ public class CardData : ScriptableObject
     {
         foreach (CardEffect effect in effects)
         {
+            effect.Execute(this, attacker, target);
+        }
+    }
+
+    public IEnumerator doEffectWithDelay(Entity attacker, Entity target)
+    {
+        foreach (CardEffect effect in effects)
+        {
+            if (effect.delayBeforeEffect > 0f)
+            {
+                yield return new WaitForSeconds(effect.delayBeforeEffect);
+            }
             effect.Execute(this, attacker, target);
         }
     }

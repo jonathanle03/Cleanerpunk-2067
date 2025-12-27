@@ -79,8 +79,8 @@ public class EnemyManager : MonoBehaviour
                         difference += ("\n" + textLog[k]);
                     }
                     textLogText.text = difference;
-                    enemy.enemyCard.doEffect(enemy, player);
-                    
+                    yield return StartCoroutine(enemy.enemyCard.doEffectWithDelay(enemy, player));
+
                     yield return new WaitForSeconds(timing); 
 
 

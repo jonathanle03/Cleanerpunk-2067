@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 
@@ -119,7 +120,7 @@ public class Player : Entity
                 // If clicking the same card again, play it
                 if (selectedCard == pick)
                 {
-                    playSelfCard(pick);
+                    StartCoroutine(playSelfCardCoroutine(pick));
                 }
                 else
                 {
@@ -142,7 +143,7 @@ public class Player : Entity
             {
                 currentMana += 1;
             }
-            attackStatic.doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
+            StartCoroutine(attackStatic.doEffectWithDelay(this, enemyManager.enemies[pick].GetComponent<Enemy>()));
             attackStaticButton.SetActive(true);
             defenseStaticButton.SetActive(true);
             passButton.SetActive(true);
@@ -156,31 +157,36 @@ public class Player : Entity
         else if (hand[selectedCard].target == CardTarget.AllEnemies)
         {
             // Play AllEnemies card (any enemy button confirms)
-            playAllEnemiesCard(selectedCard);
+            StartCoroutine(playAllEnemiesCardCoroutine(selectedCard));
         }
         else
         {
             // Single enemy target card
-            currentMana -= hand[selectedCard].cost;
-            updateMana();
-            hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
-            for(int k = 0; k < 6; k++)
-            {
-                if (hand[k] != null)
-                {
-                    cardButtons[k].SetActive(true);
-
-                }
-            }
-
-            discards.Add(hand[selectedCard]);
-            cooldowns.Add(hand[selectedCard].maxCooldown);
-            cardButtons[chosenCard].SetActive(false);
-            hand[selectedCard] = null;
-            usedCards++;
-
+            StartCoroutine(playSingleEnemyCardCoroutine(selectedCard, pick));
         }
         special = false;
+    }
+
+    private IEnumerator playSingleEnemyCardCoroutine(int cardIndex, int enemyIndex)
+    {
+        currentMana -= hand[cardIndex].cost;
+        updateMana();
+
+        yield return StartCoroutine(hand[cardIndex].doEffectWithDelay(this, enemyManager.enemies[enemyIndex].GetComponent<Enemy>()));
+
+        for(int k = 0; k < 6; k++)
+        {
+            if (hand[k] != null)
+            {
+                cardButtons[k].SetActive(true);
+            }
+        }
+
+        discards.Add(hand[cardIndex]);
+        cooldowns.Add(hand[cardIndex].maxCooldown);
+        cardButtons[chosenCard].SetActive(false);
+        hand[cardIndex] = null;
+        usedCards++;
     }
 
     void changeCooldowns()
@@ -306,7 +312,7 @@ public class Player : Entity
         {
             currentMana = maxMana;
         }
-        defenseStatic.doEffect(this, this);
+        StartCoroutine(defenseStatic.doEffectWithDelay(this, this));
         fillHand();
     }
 
@@ -336,7 +342,7 @@ public class Player : Entity
         cancelButton.SetActive(false);
     }
 
-    private void playAllEnemiesCard(int cardIndex)
+    /*private void playAllEnemiesCard(int cardIndex)
     {
         // Consume mana
         currentMana -= hand[cardIndex].cost;
@@ -354,7 +360,43 @@ public class Player : Entity
 
         // Hide cancel button
         cancelButton.SetActive(false);
-        
+
+        // Show remaining cards
+        for (int k = 0; k < 6; k++)
+        {
+            if (k != cardIndex && hand[k] != null)
+            {
+                cardButtons[k].SetActive(true);
+            }
+        }
+
+        // Discard card
+        discards.Add(hand[cardIndex]);
+        cooldowns.Add(hand[cardIndex].maxCooldown);
+        cardButtons[cardIndex].SetActive(false);
+        hand[cardIndex] = null;
+        usedCards++;
+    }*/
+
+    private IEnumerator playAllEnemiesCardCoroutine(int cardIndex)
+    {
+        // Consume mana
+        currentMana -= hand[cardIndex].cost;
+        updateMana();
+
+        // Apply effect to all living enemies with delays
+        for (int i = 0; i < enemyManager.enemies.Length; i++)
+        {
+            Enemy targetEnemy = enemyManager.enemies[i].GetComponent<Enemy>();
+            if (targetEnemy != null && !targetEnemy.isDead)
+            {
+                yield return StartCoroutine(hand[cardIndex].doEffectWithDelay(this, targetEnemy));
+            }
+        }
+
+        // Hide cancel button
+        cancelButton.SetActive(false);
+
         // Show remaining cards
         for (int k = 0; k < 6; k++)
         {
@@ -372,7 +414,7 @@ public class Player : Entity
         usedCards++;
     }
 
-    private void playSelfCard(int cardIndex)
+    /*private void playSelfCard(int cardIndex)
     {
         // Consume mana
         currentMana -= hand[cardIndex].cost;
@@ -382,7 +424,36 @@ public class Player : Entity
         hand[cardIndex].doEffect(this, this);
 
         // Hide enemy buttons
-        
+
+        // Hide cancel button
+        cancelButton.SetActive(false);
+
+        // Show remaining cards
+        for (int k = 0; k < 6; k++)
+        {
+            if (k != cardIndex && hand[k] != null)
+            {
+                cardButtons[k].SetActive(true);
+            }
+        }
+
+        // Discard card
+        discards.Add(hand[cardIndex]);
+        cooldowns.Add(hand[cardIndex].maxCooldown);
+        cardButtons[cardIndex].SetActive(false);
+        hand[cardIndex] = null;
+        usedCards++;
+    }*/
+
+    private IEnumerator playSelfCardCoroutine(int cardIndex)
+    {
+        // Consume mana
+        currentMana -= hand[cardIndex].cost;
+        updateMana();
+
+        // Apply effect to self with delays
+        yield return StartCoroutine(hand[cardIndex].doEffectWithDelay(this, this));
+
         // Hide cancel button
         cancelButton.SetActive(false);
 

@@ -84,7 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5167434109593319018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageLabelPrefab: {fileID: 49986890526687357}
-  damageCanvas: {fileID: 2804581423734983638}
   displayLength: 1
 --- !u!1001 &5072733046733894613
 PrefabInstance:
