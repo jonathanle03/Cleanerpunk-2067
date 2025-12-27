@@ -74,8 +74,8 @@ public class PriceSet : MonoBehaviour
         balance.text = "Balance: " + player.currency.ToString();
 
 
-        HPtext.text = "+" + HPincrease + " to Health";
-        MPtext.text = "+" + MPincrease + " to Energy"; 
+        HPtext.text = "+" + HPincrease + " HP";
+        MPtext.text = "+" + MPincrease + " MP"; 
         
         HPbutton.text = "Price: " + HPprice;
         MPbutton.text = "Price: " + MPprice; 

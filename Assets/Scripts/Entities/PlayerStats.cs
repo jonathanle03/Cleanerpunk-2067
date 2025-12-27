@@ -11,6 +11,8 @@ public class PlayerStats : MonoBehaviour
     public int defense;
     public int maxMana;
     public int currency;
+    public int accuracy;
+    public int evasion;
     
     void Awake()
     {

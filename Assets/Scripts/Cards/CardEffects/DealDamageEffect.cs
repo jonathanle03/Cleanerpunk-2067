@@ -10,6 +10,6 @@ public class DealDamageEffect : CardEffect
         {
             outgoingDmg = effect.ModifyOutgoingDamage(outgoingDmg);
         }
-        target.TakeDamage(outgoingDmg, attacker.attack);
+        target.TakeDamage(outgoingDmg, attacker.attack, attacker);
     }
 }

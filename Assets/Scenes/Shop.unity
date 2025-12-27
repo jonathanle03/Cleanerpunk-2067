@@ -523,7 +523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +10 to Health
+  m_text: +1 MP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9db9e091a88b53641a4d2d58ab30ddb2, type: 2}
   m_sharedMaterial: {fileID: -8537015733757726995, guid: 9db9e091a88b53641a4d2d58ab30ddb2, type: 2}
@@ -1775,7 +1775,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 409db0d3e953ae949800da51472ae0f2, type: 2}
   - {fileID: 11400000, guid: 6a893435e1b30784b82a4cea662bd5f0, type: 2}
   HPprice: 50
-  HPincrease: 10
+  HPincrease: 100
   MPprice: 100
   MPincrease: 1
   cards:
@@ -1927,7 +1927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +10 to Health
+  m_text: +100 HP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9db9e091a88b53641a4d2d58ab30ddb2, type: 2}
   m_sharedMaterial: {fileID: -8537015733757726995, guid: 9db9e091a88b53641a4d2d58ab30ddb2, type: 2}

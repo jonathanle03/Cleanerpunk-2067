@@ -51,6 +51,8 @@ public class Player : Entity
         healthBarStartPos = healthBar.GetComponent<Transform>().localPosition;
         attack = stats.attack;
         defense = stats.defense;
+        accuracy = stats.accuracy;
+        evasion = stats.evasion;
         maxMana = stats.maxMana;
         currentMana = stats.maxMana;
 
@@ -270,6 +272,59 @@ public class Player : Entity
         for (int i = 8; i >= currentMana; i--)
         {
             currentManaIcons[i].SetActive(false);
+        }
+    }
+
+    public override void TakeDamage(float cardPower, int incomingAttack, Entity attacker)
+    {
+        // Calculate hit chance
+        if (!CalculateHit(attacker.accuracy, this.evasion))
+        {
+            Debug.Log($"{attacker.entityName}'s attack missed {entityName}!");
+            ShowMissIndicator();
+            return;
+        }
+
+        // Calculate base damage
+        float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
+        foreach (StatusEffect effect in statusEffects)
+        {
+            incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
+        }
+
+        // Calculate critical hit
+        bool isCritical = CalculateCritical(attacker.accuracy, this.evasion);
+        if (isCritical)
+        {
+            incomingDmg *= attacker.criticalDamageMultiplier;
+            Debug.Log($"CRITICAL HIT! {attacker.criticalDamageMultiplier}x damage");
+        }
+
+        int damageDealt = Mathf.CeilToInt(incomingDmg);
+        currentHealth -= damageDealt;
+        healthText.text = "" + currentHealth;
+        Debug.Log($"{entityName} takes {incomingDmg} damage{(isCritical ? " (CRITICAL)" : "")}");
+
+        // Show damage popup via SpawnsDamagePopups singleton
+        if (SpawnsDamagePopups.Instance != null)
+        {
+            SpawnsDamagePopups.Instance.DamageDone(damageDealt, transform.position, isCritical);
+        }
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Debug.Log($"{entityName} is dead");
+            EntityDead();
+        }
+    }
+
+    protected override void ShowMissIndicator()
+    {
+        // Show miss popup via SpawnsDamagePopups singleton
+        if (SpawnsDamagePopups.Instance != null)
+        {
+            SpawnsDamagePopups.Instance.ShowMiss(transform.position);
         }
     }
 

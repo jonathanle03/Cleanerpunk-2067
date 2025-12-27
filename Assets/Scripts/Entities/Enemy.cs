@@ -43,6 +43,8 @@ public class Enemy : Entity
         maxHealth = enemyData.maxHealth;
         attack = enemyData.attack;
         defense = enemyData.defense;
+        accuracy = enemyData.accuracy;
+        evasion = enemyData.evasion;
         isBoss = enemyData.isBoss;
         deck = new List<CardData>(enemyData.cards);
 
@@ -62,7 +64,7 @@ public class Enemy : Entity
     }
 
 
-    public override void TakeDamage(float cardPower, int incomingAttack)
+    public override void TakeDamage(float cardPower, int incomingAttack, Entity attacker)
     {
         // Prevent dead enemies from taking damage
         if (isDead)
@@ -70,21 +72,38 @@ public class Enemy : Entity
             return;
         }
 
+        // Calculate hit chance
+        if (!CalculateHit(attacker.accuracy, this.evasion))
+        {
+            Debug.Log($"{attacker.entityName}'s attack missed {entityName}!");
+            ShowMissIndicator();
+            return;
+        }
+
+        // Calculate base damage
         float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
         foreach (StatusEffect effect in statusEffects)
         {
             incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
         }
 
+        // Calculate critical hit
+        bool isCritical = CalculateCritical(attacker.accuracy, this.evasion);
+        if (isCritical)
+        {
+            incomingDmg *= attacker.criticalDamageMultiplier;
+            Debug.Log($"CRITICAL HIT! {attacker.criticalDamageMultiplier}x damage");
+        }
+
         int damageDealt = Mathf.CeilToInt(incomingDmg);
         currentHealth -= damageDealt;
         healthText.text = "Health: " + currentHealth;
-        Debug.Log($"{entityName} takes {incomingDmg} damage");
+        Debug.Log($"{entityName} takes {incomingDmg} damage{(isCritical ? " (CRITICAL)" : "")}");
 
         // Show damage popup via SpawnsDamagePopups singleton
         if (SpawnsDamagePopups.Instance != null)
         {
-            SpawnsDamagePopups.Instance.DamageDone(damageDealt, transform.position, false);
+            SpawnsDamagePopups.Instance.DamageDone(damageDealt, transform.position, isCritical);
         }
 
         // Animate health bar
@@ -101,7 +120,16 @@ public class Enemy : Entity
             EntityDead();
         }
 
-        StartCoroutine(turnRed()); 
+        StartCoroutine(turnRed());
+    }
+
+    protected override void ShowMissIndicator()
+    {
+        // Show miss popup via SpawnsDamagePopups singleton
+        if (SpawnsDamagePopups.Instance != null)
+        {
+            SpawnsDamagePopups.Instance.ShowMiss(transform.position);
+        }
     }
 
 

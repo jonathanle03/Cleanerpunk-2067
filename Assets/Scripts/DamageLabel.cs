@@ -9,6 +9,8 @@ public class DamageLabel : MonoBehaviour
     [SerializeField] private float normalFontSize = 50;
     [SerializeField] private float critFontSize = 64;
     [SerializeField] private Color normalFontColor = Color.white;
+    [SerializeField] private Color missFontColor = Color.gray;
+    [SerializeField] private float missFontSize = 48;
 
     [SerializeField] private float startColorFadeAtPercent = 0.8f;
     
@@ -163,5 +165,24 @@ public class DamageLabel : MonoBehaviour
     {
         yield return new WaitForSeconds(displayLength);
         _poolManager.ReturnDamageLabelToPool(this);
+    }
+
+    public void DisplayMiss(Vector3 objPosition, bool direction)
+    {
+        transform.position = objPosition;
+        _startingPositionForVisualization = objPosition;
+        _direction = direction;
+
+        damageText.SetText("MISS");
+
+        damageText.color = missFontColor;
+        damageText.enableVertexGradient = false;
+        damageText.fontSize = missFontSize;
+
+        if (_moveCoroutine != null)
+            StopCoroutine(_moveCoroutine);
+
+        _moveCoroutine = StartCoroutine(Move());
+        StartCoroutine(ReturnDamageLabelToPool(_displayDuration));
     }
 }

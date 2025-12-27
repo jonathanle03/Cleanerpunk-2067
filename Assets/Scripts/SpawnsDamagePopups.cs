@@ -67,4 +67,14 @@ public class SpawnsDamagePopups : MonoBehaviour
         {
             _damageLabelPopupPool.Release(damageLabel3d);
         }
+
+        public void ShowMiss(Vector3 position)
+        {
+            Vector3 screenPosition = _mainCamera.WorldToScreenPoint(position);
+            screenPosition.z = 0;
+            bool direction = screenPosition.x < Screen.width * 0.5f;
+
+            DamageLabel damageLabel = _damageLabelPopupPool.Get();
+            damageLabel.DisplayMiss(screenPosition, direction);
+        }
     }
