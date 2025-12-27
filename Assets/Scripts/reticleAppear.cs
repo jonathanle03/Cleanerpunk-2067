@@ -14,10 +14,19 @@ public class reticleAppear : MonoBehaviour
         reticle.SetActive(true);
     }
 
-
     private void OnMouseExit()
     {
-        reticle.SetActive(false); 
+        reticle.SetActive(false);
+    }
+
+    public void HideReticle()
+    {
+        reticle.SetActive(false);
+    }
+
+    public void ShowReticle()
+    {
+        reticle.SetActive(true);
     }
 
 }

@@ -118,7 +118,7 @@ public class Enemy : Entity
         Vector3 startScale = healthBar.GetComponent<Transform>().localScale;
         Vector3 targetScaleVector = new Vector3(targetScale, startScale.y, startScale.z);
         
-        float duration = 0.1f;
+        float duration = 0.2f;
         float elapsed = 0f;
 
         while (elapsed < duration)

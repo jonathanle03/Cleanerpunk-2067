@@ -87,7 +87,6 @@ public class Player : Entity
         Debug.Log("use card activated, pick number: " + pick); 
         if (currentMana >= hand[pick].cost)
         {
-
             for(int k = 0; k < 6; k++)
             {
                 cardButtons[k].SetActive(false);
@@ -165,7 +164,6 @@ public class Player : Entity
             currentMana -= hand[selectedCard].cost;
             updateMana();
             hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
-            HideEnemyButtons();
             for(int k = 0; k < 6; k++)
             {
                 if (hand[k] != null)
@@ -241,10 +239,8 @@ public class Player : Entity
             }
         }
         usedCards = 0;
-
         
         updateMana();
-
         nameCards();
         changeCooldowns();
         playerTurn = false;
@@ -329,7 +325,6 @@ public class Player : Entity
 
     public void cancelChoice()
     {
-        HideEnemyButtons();
         for (int k = 0; k < 6; k++)
         {
             // Only show card buttons for cards that haven't been played yet
@@ -339,14 +334,6 @@ public class Player : Entity
             }
         }
         cancelButton.SetActive(false);
-    }
-
-    private void HideEnemyButtons()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            enemyManager.enemyButtons[i].SetActive(false);
-        }
     }
 
     private void playAllEnemiesCard(int cardIndex)
@@ -364,9 +351,6 @@ public class Player : Entity
                 hand[cardIndex].doEffect(this, targetEnemy);
             }
         }
-
-        // Hide enemy buttons
-        HideEnemyButtons();
 
         // Hide cancel button
         cancelButton.SetActive(false);
@@ -398,7 +382,6 @@ public class Player : Entity
         hand[cardIndex].doEffect(this, this);
 
         // Hide enemy buttons
-        HideEnemyButtons();
         
         // Hide cancel button
         cancelButton.SetActive(false);

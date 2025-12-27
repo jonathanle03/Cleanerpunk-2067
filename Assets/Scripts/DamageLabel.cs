@@ -21,6 +21,8 @@ public class DamageLabel : MonoBehaviour
     [SerializeField] private Vector2 lowPointOffset = new Vector2(x: -100, y: -500);
     [SerializeField] private float heightVariationMax = 150;
     [SerializeField] private float heightVariationMin = 50;
+    [SerializeField] private float xVariationMax = 50;
+    [SerializeField] private float xVariationMin = -50;
 
     private Vector3 _highPointOffsetBasedOnDirection = Vector3.zero;
     private Vector3 _dropPointOffsetBasedOnDirection = Vector3.zero;
@@ -48,8 +50,9 @@ public class DamageLabel : MonoBehaviour
             start = _startingPositionForVisualization;
 
         var heightVariation = heightVariationMax - heightVariationMin;
+        var xVariation = xVariationMax - xVariationMin;
         
-        Vector3 highPoint = start + _highPointOffsetBasedOnDirection + new Vector3(x:0, y:heightVariation, z:0);
+        Vector3 highPoint = start + _highPointOffsetBasedOnDirection + new Vector3(x:xVariation, y:heightVariation, z:0);
         Vector3 dropPoint = highPoint + _dropPointOffsetBasedOnDirection;
         int colorChangeIndex = (int) (startColorFadeAtPercent * gizmoResolution);
 
@@ -129,7 +132,8 @@ public class DamageLabel : MonoBehaviour
         Vector3 start = transform.position;
 
         var heightVariation = Random.Range(heightVariationMin, heightVariationMax);
-        Vector3 variation = new Vector3(0, heightVariation, 0);
+        var xVariation = Random.Range(xVariationMin, xVariationMax);
+        Vector3 variation = new Vector3(xVariation, heightVariation, 0);
         
         Vector3 highPoint = (start + _highPointOffsetBasedOnDirection + variation);
         Vector3 dropPoint = highPoint + _dropPointOffsetBasedOnDirection;
