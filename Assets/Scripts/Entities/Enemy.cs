@@ -14,9 +14,10 @@ public class Enemy : Entity
     [SerializeField] public GameObject enemyButton;
 
     [SerializeField] private SpriteRenderer sprite;
-    [SerializeField] private float _timing; 
+    [SerializeField] private float _timing;
 
     public bool isDead;
+    private Coroutine healthBarCoroutine;
 
     private void Start()
     {
@@ -26,8 +27,6 @@ public class Enemy : Entity
     private void Update()
     {
         healthText.text = "" + currentHealth;
-        healthBar.GetComponent<Transform>().localScale = new Vector3((float)currentHealth / maxHealth * healthBarMaxWidth, healthBar.GetComponent<Transform>().localScale.y, healthBar.GetComponent<Transform>().localScale.z);
-        healthBar.GetComponent<Transform>().localPosition = new Vector3(healthBarStartPos.x - (healthBarMaxWidth - healthBar.GetComponent<Transform>().localScale.x) / 2 * healthBar.GetComponent<RectTransform>().rect.width, healthBarStartPos.y, healthBarStartPos.z);
     }
 
     public override void EntityDead()
@@ -63,17 +62,37 @@ public class Enemy : Entity
     }
 
 
-    override public void TakeDamage(float cardPower, int incomingAttack)
+    public override void TakeDamage(float cardPower, int incomingAttack)
     {
+        // Prevent dead enemies from taking damage
+        if (isDead)
+        {
+            return;
+        }
+
         float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
         foreach (StatusEffect effect in statusEffects)
         {
             incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
         }
 
-        currentHealth -= Mathf.CeilToInt(incomingDmg);
+        int damageDealt = Mathf.CeilToInt(incomingDmg);
+        currentHealth -= damageDealt;
         healthText.text = "Health: " + currentHealth;
         Debug.Log($"{entityName} takes {incomingDmg} damage");
+
+        // Show damage popup via SpawnsDamagePopups singleton
+        if (SpawnsDamagePopups.Instance != null)
+        {
+            SpawnsDamagePopups.Instance.DamageDone(damageDealt, transform.position, false);
+        }
+
+        // Animate health bar
+        if (healthBarCoroutine != null)
+        {
+            StopCoroutine(healthBarCoroutine);
+        }
+        healthBarCoroutine = StartCoroutine(AnimateHealthBar());
 
         if (currentHealth <= 0)
         {
@@ -91,6 +110,43 @@ public class Enemy : Entity
         sprite.color = new Color(1f, 0, 0, 1f);
         yield return new WaitForSeconds(_timing);
         sprite.color = Color.white; 
+    }
+
+    IEnumerator AnimateHealthBar()
+    {
+        float targetScale = (float)currentHealth / maxHealth * healthBarMaxWidth;
+        Vector3 startScale = healthBar.GetComponent<Transform>().localScale;
+        Vector3 targetScaleVector = new Vector3(targetScale, startScale.y, startScale.z);
+        
+        float duration = 0.1f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            // Lerp the scale
+            healthBar.GetComponent<Transform>().localScale = Vector3.Lerp(startScale, targetScaleVector, t);
+
+            // Update position to keep left-aligned
+            float currentScaleX = healthBar.GetComponent<Transform>().localScale.x;
+            healthBar.GetComponent<Transform>().localPosition = new Vector3(
+                healthBarStartPos.x - (healthBarMaxWidth - currentScaleX) / 2 * healthBar.GetComponent<RectTransform>().rect.width,
+                healthBarStartPos.y,
+                healthBarStartPos.z
+            );
+
+            yield return null;
+        }
+
+        // Ensure final values are exact
+        healthBar.GetComponent<Transform>().localScale = targetScaleVector;
+        healthBar.GetComponent<Transform>().localPosition = new Vector3(
+            healthBarStartPos.x - (healthBarMaxWidth - targetScale) / 2 * healthBar.GetComponent<RectTransform>().rect.width,
+            healthBarStartPos.y,
+            healthBarStartPos.z
+        );
     }
 
 }

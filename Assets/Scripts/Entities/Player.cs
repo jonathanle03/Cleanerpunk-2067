@@ -94,7 +94,7 @@ public class Player : Entity
             }
             
             selectedCard = pick;
-            //currentMana -= hand[pick].cost;
+            
             if (hand[pick].target == CardTarget.Enemy)
             {
                 cancelButton.SetActive(true);
@@ -107,48 +107,26 @@ public class Player : Entity
             }
             else if (hand[pick].target == CardTarget.AllEnemies)
             {
-                currentMana -= hand[pick].cost;
-                for (int i = 0; i < enemyManager.enemies.Length; i++)
+                // Show cancel button and all enemy buttons for confirmation
+                cancelButton.SetActive(true);
+                for (int i = 0; i < 3; i++)
                 {
-                    hand[pick].doEffect(this, enemyManager.enemies[i].GetComponent<Enemy>());
+                    enemyManager.enemyButtons[i].SetActive(true);
                 }
-
-                for (int k = 0; k < 6; k++)
-                {
-                    if(k != pick)
-                    {
-                        cardButtons[k].SetActive(true);
-                    }
-                    
-                }
-
-                discards.Add(hand[pick]);
-                cooldowns.Add(hand[pick].maxCooldown);
-
-                cardButtons[pick].SetActive(false);
-                hand[pick] = null;
-                usedCards++;
+                chosenCard = pick;
             }
             else if (hand[pick].target == CardTarget.Self)
             {
-                currentMana -= hand[pick].cost;
-                hand[pick].doEffect(this, this);
-                
-      
-                discards.Add(hand[pick]);
-                cooldowns.Add(hand[pick].maxCooldown);
-
-                cardButtons[pick].SetActive(false);
-                hand[pick] = null;
-                usedCards++;
-
-                for (int k = 0; k < 6; k++)
+                // If clicking the same card again, play it
+                if (selectedCard == pick)
                 {
-                    if(k != pick && hand[k] != null)
-                    {
-                        cardButtons[k].SetActive(true);
-                    }
-                    
+                    playSelfCard(pick);
+                }
+                else
+                {
+                    // Show cancel button for confirmation
+                    cancelButton.SetActive(true);
+                    chosenCard = pick;
                 }
             }
 
@@ -175,31 +153,33 @@ public class Player : Entity
             }
             fillHand();
 
-        }else
+        }
+        else if (hand[selectedCard].target == CardTarget.AllEnemies)
         {
+            // Play AllEnemies card (any enemy button confirms)
+            playAllEnemiesCard(selectedCard);
+        }
+        else
+        {
+            // Single enemy target card
             currentMana -= hand[selectedCard].cost;
-        updateMana();
-                hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
-                for (int i = 0; i < 3; i++)
+            updateMana();
+            hand[selectedCard].doEffect(this, enemyManager.enemies[pick].GetComponent<Enemy>());
+            HideEnemyButtons();
+            for(int k = 0; k < 6; k++)
+            {
+                if (hand[k] != null)
                 {
-                    enemyManager.enemyButtons[i].SetActive(false);
+                    cardButtons[k].SetActive(true);
+
                 }
-                for(int k = 0; k < 6; k++)
-                {
-                    if (hand[k] != null)
-                    {
-                        cardButtons[k].SetActive(true);
+            }
 
-                    }
-                }
-
-                discards.Add(hand[selectedCard]);
-                cooldowns.Add(hand[selectedCard].maxCooldown);
-                //discardCard(hand[selectedCard]);
-
-                cardButtons[chosenCard].SetActive(false);
-                hand[selectedCard] = null;
-                usedCards++;
+            discards.Add(hand[selectedCard]);
+            cooldowns.Add(hand[selectedCard].maxCooldown);
+            cardButtons[chosenCard].SetActive(false);
+            hand[selectedCard] = null;
+            usedCards++;
 
         }
         special = false;
@@ -349,14 +329,94 @@ public class Player : Entity
 
     public void cancelChoice()
     {
+        HideEnemyButtons();
+        for (int k = 0; k < 6; k++)
+        {
+            // Only show card buttons for cards that haven't been played yet
+            if (hand[k] != null)
+            {
+                cardButtons[k].SetActive(true);
+            }
+        }
+        cancelButton.SetActive(false);
+    }
+
+    private void HideEnemyButtons()
+    {
         for (int i = 0; i < 3; i++)
         {
             enemyManager.enemyButtons[i].SetActive(false);
         }
+    }
+
+    private void playAllEnemiesCard(int cardIndex)
+    {
+        // Consume mana
+        currentMana -= hand[cardIndex].cost;
+        updateMana();
+
+        // Apply effect to all living enemies
+        for (int i = 0; i < enemyManager.enemies.Length; i++)
+        {
+            Enemy targetEnemy = enemyManager.enemies[i].GetComponent<Enemy>();
+            if (targetEnemy != null && !targetEnemy.isDead)
+            {
+                hand[cardIndex].doEffect(this, targetEnemy);
+            }
+        }
+
+        // Hide enemy buttons
+        HideEnemyButtons();
+
+        // Hide cancel button
+        cancelButton.SetActive(false);
+        
+        // Show remaining cards
         for (int k = 0; k < 6; k++)
         {
-            cardButtons[k].SetActive(true);
+            if (k != cardIndex && hand[k] != null)
+            {
+                cardButtons[k].SetActive(true);
+            }
         }
+
+        // Discard card
+        discards.Add(hand[cardIndex]);
+        cooldowns.Add(hand[cardIndex].maxCooldown);
+        cardButtons[cardIndex].SetActive(false);
+        hand[cardIndex] = null;
+        usedCards++;
+    }
+
+    private void playSelfCard(int cardIndex)
+    {
+        // Consume mana
+        currentMana -= hand[cardIndex].cost;
+        updateMana();
+
+        // Apply effect to self
+        hand[cardIndex].doEffect(this, this);
+
+        // Hide enemy buttons
+        HideEnemyButtons();
+        
+        // Hide cancel button
         cancelButton.SetActive(false);
+
+        // Show remaining cards
+        for (int k = 0; k < 6; k++)
+        {
+            if (k != cardIndex && hand[k] != null)
+            {
+                cardButtons[k].SetActive(true);
+            }
+        }
+
+        // Discard card
+        discards.Add(hand[cardIndex]);
+        cooldowns.Add(hand[cardIndex].maxCooldown);
+        cardButtons[cardIndex].SetActive(false);
+        hand[cardIndex] = null;
+        usedCards++;
     }
 }
