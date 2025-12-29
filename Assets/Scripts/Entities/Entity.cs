@@ -72,13 +72,12 @@ public abstract class Entity : MonoBehaviour
 
     public bool CalculateHit(int attackerAccuracy, int targetEvasion)
     {
-
+        // Formula: Base 85% + ((Accuracy - Evasion) * 0.5%)
         // Each point of difference = 0.5% change in hit rate
-
         float hitChance = 85f + ((attackerAccuracy - targetEvasion) * 0.5f);
 
-        // Clamp between 5% and 98% to prevent guaranteed hits/misses
-        hitChance = Mathf.Clamp(hitChance, 5f, 98f);
+        // Clamp between 5% and 97% to prevent guaranteed hits/misses
+        hitChance = Mathf.Clamp(hitChance, 5f, 97f);
 
         float roll = Random.Range(0f, 100f);
 
@@ -99,7 +98,7 @@ public abstract class Entity : MonoBehaviour
         int statDifference = attackerAccuracy - targetEvasion;
         float critChance = 6f + (statDifference * 0.1f);
 
-        // Clamp just in case, although very high crit rates require min-max decks
+        // Clamp for future modification, although right now very high crit rates require absurd ACC
         critChance = Mathf.Clamp(critChance, 0f, 100f);
 
         float roll = Random.Range(0f, 100f);

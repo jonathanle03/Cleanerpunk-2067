@@ -396,7 +396,7 @@ public class Player : Entity
         }
         cancelButton.SetActive(false);
     }
-
+    // Now using Coroutine ver.
     /*private void playAllEnemiesCard(int cardIndex)
     {
         // Consume mana
@@ -468,7 +468,7 @@ public class Player : Entity
         hand[cardIndex] = null;
         usedCards++;
     }
-
+    // Now using Coroutine ver.
     /*private void playSelfCard(int cardIndex)
     {
         // Consume mana

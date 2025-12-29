@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DamageNumbers_gradient
   m_EditorClassIdentifier: 
   colorMode: 3
-  topLeft: {r: 1, g: 1, b: 1, a: 1}
-  topRight: {r: 1, g: 1, b: 1, a: 1}
-  bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-  bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  topLeft: {r: 1, g: 0.8093328, b: 0.111320674, a: 1}
+  topRight: {r: 1, g: 0.6845727, b: 0.17924517, a: 1}
+  bottomLeft: {r: 1, g: 0.329777, b: 0.1490565, a: 1}
+  bottomRight: {r: 1, g: 0.47094393, b: 0.26226407, a: 1}
