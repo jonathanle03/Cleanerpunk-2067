@@ -20,7 +20,8 @@ MonoBehaviour:
   rarity: 2
   target: 0
   cost: 7
-  power: 1.4
+  power: 1
+  damageType: 0
   maxCooldown: 4
   effects:
   - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}

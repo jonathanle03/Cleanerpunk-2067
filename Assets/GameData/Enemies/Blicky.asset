@@ -15,8 +15,10 @@ MonoBehaviour:
   enemyName: Blicky
   art: {fileID: 6018467448584526690, guid: 5a543cfd4be6ca04ab50136e777a8d0a, type: 3}
   maxHealth: 500
-  attack: 100
-  defense: 50
+  attack: 90
+  defense: 90
+  force: 80
+  shield: 40
   accuracy: 105
   evasion: 90
   isBoss: 0
