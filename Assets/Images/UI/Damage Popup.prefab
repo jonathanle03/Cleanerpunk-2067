@@ -188,6 +188,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: neuralColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: neuralColor.g
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: neuralColor.r
+      value: 0.80762917
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
       propertyPath: lowPointOffset.x
       value: 10
       objectReference: {fileID: 0}
@@ -210,6 +222,30 @@ PrefabInstance:
     - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
       propertyPath: heightVariationMin
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: piercingNeuralColor.b
+      value: 0.7961509
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: piercingNeuralColor.g
+      value: 0.58679235
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: piercingNeuralColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: piercingPhysicalColor.b
+      value: 0.65471697
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: piercingPhysicalColor.g
+      value: 0.65471697
+      objectReference: {fileID: 0}
+    - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
+      propertyPath: piercingPhysicalColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5103811049525638056, guid: 2973350577c7b454186be603a85d5699, type: 3}
       propertyPath: easeCurve.m_Curve.Array.data[1].time

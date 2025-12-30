@@ -12,6 +12,11 @@ public class DamageLabel : MonoBehaviour
     [SerializeField] private Color missFontColor = Color.gray;
     [SerializeField] private float missFontSize = 48;
 
+    [Header("Damage Type Colors")]
+    [SerializeField] private Color neuralColor = new Color(0.58f, 0.29f, 0.98f); // Purple
+    [SerializeField] private Color piercingPhysicalColor = new Color(1f, 0.4f, 0.4f); // Light red
+    [SerializeField] private Color piercingNeuralColor = new Color(1f, 0.41f, 0.71f); // Pink
+
     [SerializeField] private float startColorFadeAtPercent = 0.8f;
     
     [Header("Animation Easing")]
@@ -105,7 +110,7 @@ public class DamageLabel : MonoBehaviour
         OrientCurveBasedOnDirection();
     }
 
-    public void Display(int damage, Vector3 objPosition, bool direction, bool isCrit)
+    public void Display(int damage, Vector3 objPosition, bool direction, bool isCrit, DamageType damageType)
     {
         transform.position = objPosition;
         _startingPositionForVisualization = objPosition;
@@ -113,10 +118,29 @@ public class DamageLabel : MonoBehaviour
 
         damageText.SetText(damage.ToString());
 
-        damageText.color = normalFontColor;
+        // Set color based on damage type
+        Color baseColor = normalFontColor;
+        switch (damageType)
+        {
+            case DamageType.Neural:
+                baseColor = neuralColor;
+                break;
+            case DamageType.PiercingPhysical:
+                baseColor = piercingPhysicalColor;
+                break;
+            case DamageType.PiercingNeural:
+                baseColor = piercingNeuralColor;
+                break;
+            case DamageType.Physical:
+            default:
+                baseColor = normalFontColor;
+                break;
+        }
+
+        damageText.color = baseColor;
         damageText.enableVertexGradient = isCrit;
         damageText.fontSize = isCrit ? critFontSize : normalFontSize;
-        
+
         if (_moveCoroutine != null)
             StopCoroutine(_moveCoroutine);
 

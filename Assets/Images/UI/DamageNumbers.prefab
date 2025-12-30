@@ -62,6 +62,11 @@ MonoBehaviour:
   normalFontSize: 50
   critFontSize: 64
   normalFontColor: {r: 1, g: 1, b: 1, a: 1}
+  missFontColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  missFontSize: 48
+  neuralColor: {r: 0.80864066, g: 0.6698113, b: 1, a: 1}
+  piercingPhysicalColor: {r: 1, g: 0.72264147, b: 0.72264147, a: 1}
+  piercingNeuralColor: {r: 1, g: 0.6773585, b: 0.8408302, a: 1}
   startColorFadeAtPercent: 0.8
   easeCurve:
     serializedVersion: 2
@@ -91,6 +96,8 @@ MonoBehaviour:
   lowPointOffset: {x: -100, y: -500}
   heightVariationMax: 150
   heightVariationMin: 50
+  xVariationMax: 50
+  xVariationMin: -50
   displayGizmos: 1
   gizmoResolution: 20
 --- !u!114 &860142297223376447

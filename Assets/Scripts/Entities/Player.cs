@@ -279,8 +279,11 @@ public class Player : Entity
 
     public override void TakeDamage(float cardPower, DamageType damageType, Entity attacker)
     {
-        // Calculate hit chance
-        if (!CalculateHit(attacker.accuracy, this.evasion))
+        // Neural damage types bypass ACC/EVA and always hit
+        bool isNeuralDamage = (damageType == DamageType.Neural || damageType == DamageType.PiercingNeural);
+
+        // Calculate hit chance (skip for Neural damage types)
+        if (!isNeuralDamage && !CalculateHit(attacker.accuracy, this.evasion))
         {
             Debug.Log($"{attacker.entityName}'s attack missed {entityName}!");
             ShowMissIndicator();
@@ -296,12 +299,16 @@ public class Player : Entity
             incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
         }
 
-        // Calculate critical hit
-        bool isCritical = CalculateCritical(attacker.accuracy, this.evasion);
-        if (isCritical)
+        // Calculate critical hit (Neural damage types cannot crit)
+        bool isCritical = false;
+        if (!isNeuralDamage)
         {
-            incomingDmg *= attacker.criticalDamageMultiplier;
-            Debug.Log($"CRITICAL HIT! {attacker.criticalDamageMultiplier}x damage");
+            isCritical = CalculateCritical(attacker.accuracy, this.evasion);
+            if (isCritical)
+            {
+                incomingDmg *= attacker.criticalDamageMultiplier;
+                Debug.Log($"CRITICAL HIT! {attacker.criticalDamageMultiplier}x damage");
+            }
         }
 
         // Apply damage variance
@@ -315,7 +322,7 @@ public class Player : Entity
         // Show damage popup via SpawnsDamagePopups singleton
         if (SpawnsDamagePopups.Instance != null)
         {
-            SpawnsDamagePopups.Instance.DamageDone(damageDealt, transform.position, isCritical);
+            SpawnsDamagePopups.Instance.DamageDone(damageDealt, transform.position, isCritical, damageType);
         }
 
         if (currentHealth <= 0)
