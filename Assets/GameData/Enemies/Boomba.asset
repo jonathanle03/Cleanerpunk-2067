@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3be94c422bd25a4db58bdea4c0b11bc, type: 3}
+  m_Name: Boomba
+  m_EditorClassIdentifier: 
+  enemyName: Boomba
+  art: {fileID: 5278903091397620088, guid: 6290781bff79f8145beb9f75008b346d, type: 3}
+  maxHealth: 500
+  attack: 100
+  defense: 110
+  force: 100
+  shield: 110
+  accuracy: 110
+  evasion: 100
+  isBoss: 0
+  cards:
+  - {fileID: 11400000, guid: 62c346386effe5f4e9af4a1c682a8306, type: 2}
+  - {fileID: 11400000, guid: 6b395a14933dd724d936a688f247a777, type: 2}
+  - {fileID: 11400000, guid: b80dcd013dc462c45ad5d00779e92b23, type: 2}
+  - {fileID: 11400000, guid: 4dbef8fa1c52d114d9df87e2f548bad6, type: 2}

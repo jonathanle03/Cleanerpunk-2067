@@ -9,11 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 918f6a5bb6811a74d8f848a100026107, type: 3}
-  m_Name: Wound
+  m_Script: {fileID: 11500000, guid: a3be94c422bd25a4db58bdea4c0b11bc, type: 3}
+  m_Name: Roombita
   m_EditorClassIdentifier: 
-  effectName: Wound
-  icon: {fileID: -2698203841313665645, guid: e31f31a46e750084cbddd69b7c46736b, type: 3}
-  duration: 2
-  effectPower: 0
-  applicationChance: 0.3
+  enemyName: 
+  art: {fileID: 0}
+  maxHealth: 0
+  attack: 0
+  defense: 0
+  force: 0
+  shield: 0
+  accuracy: 0
+  evasion: 0
+  isBoss: 0
+  cards: []
