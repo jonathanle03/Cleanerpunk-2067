@@ -10,6 +10,8 @@ public class enemyStats : MonoBehaviour
     [SerializeField] int _maxEnemyHealth = 10;
 
     [SerializeField] int _enemyAttack = 1;
+    [SerializeField] int _enemyForce = 1;
+    [SerializeField] int _enemyShield = 1;
 
     private void Start()
     {
@@ -39,5 +41,15 @@ public class enemyStats : MonoBehaviour
     public int getAttack()
     {
         return _enemyAttack;
+    }
+
+    public int getForce()
+    {
+        return _enemyForce;
+    }
+
+    public int getShield()
+    {
+        return _enemyShield;
     }
 }

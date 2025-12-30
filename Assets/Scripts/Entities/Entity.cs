@@ -10,6 +10,8 @@ public abstract class Entity : MonoBehaviour
     public int currentHealth;
     public int attack;
     public int defense;
+    public int force;
+    public int shield;
     public int accuracy = 100;
     public int evasion = 100;
     public float criticalDamageMultiplier = 2.0f;
@@ -33,7 +35,7 @@ public abstract class Entity : MonoBehaviour
         uiController = GetComponentInChildren<StatusUIController>();
     }
 
-    virtual public void TakeDamage(float cardPower, int incomingAttack, Entity attacker)
+    virtual public void TakeDamage(float cardPower, DamageType damageType, Entity attacker)
     {
         // Calculate hit chance
         if (!CalculateHit(attacker.accuracy, this.evasion))
@@ -43,8 +45,10 @@ public abstract class Entity : MonoBehaviour
             return;
         }
 
-        // Calculate base damage
-        float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
+        // Calculate base damage using new damage system
+        float incomingDmg = DamageCalculator.CalculateDamage(damageType, cardPower, attacker, this);
+
+        // Apply status effect modifiers
         foreach (StatusEffect effect in statusEffects)
         {
             incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
@@ -60,7 +64,7 @@ public abstract class Entity : MonoBehaviour
 
         currentHealth -= Mathf.CeilToInt(incomingDmg);
         healthText.text = "Health: " + currentHealth;
-        Debug.Log($"{entityName} takes {incomingDmg} damage{(isCritical ? " (CRITICAL)" : "")}");
+        Debug.Log($"{entityName} takes {incomingDmg} {damageType} damage{(isCritical ? " (CRITICAL)" : "")}");
 
         if (currentHealth <= 0)
         {

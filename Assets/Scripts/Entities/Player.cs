@@ -51,6 +51,8 @@ public class Player : Entity
         healthBarStartPos = healthBar.GetComponent<Transform>().localPosition;
         attack = stats.attack;
         defense = stats.defense;
+        force = stats.force;
+        shield = stats.shield;
         accuracy = stats.accuracy;
         evasion = stats.evasion;
         maxMana = stats.maxMana;
@@ -275,7 +277,7 @@ public class Player : Entity
         }
     }
 
-    public override void TakeDamage(float cardPower, int incomingAttack, Entity attacker)
+    public override void TakeDamage(float cardPower, DamageType damageType, Entity attacker)
     {
         // Calculate hit chance
         if (!CalculateHit(attacker.accuracy, this.evasion))
@@ -285,8 +287,10 @@ public class Player : Entity
             return;
         }
 
-        // Calculate base damage
-        float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
+        // Calculate base damage using new damage system
+        float incomingDmg = DamageCalculator.CalculateDamage(damageType, cardPower, attacker, this);
+
+        // Apply status effect modifiers
         foreach (StatusEffect effect in statusEffects)
         {
             incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
@@ -303,7 +307,7 @@ public class Player : Entity
         int damageDealt = Mathf.CeilToInt(incomingDmg);
         currentHealth -= damageDealt;
         healthText.text = "" + currentHealth;
-        Debug.Log($"{entityName} takes {incomingDmg} damage{(isCritical ? " (CRITICAL)" : "")}");
+        Debug.Log($"{entityName} takes {incomingDmg} {damageType} damage{(isCritical ? " (CRITICAL)" : "")}");
 
         // Show damage popup via SpawnsDamagePopups singleton
         if (SpawnsDamagePopups.Instance != null)

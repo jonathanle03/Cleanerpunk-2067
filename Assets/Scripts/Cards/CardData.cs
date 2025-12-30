@@ -21,6 +21,7 @@ public class CardData : ScriptableObject
     [Header("Gameplay Info")]
     public int cost;
     public float power;
+    public DamageType damageType = DamageType.Physical;
     public int maxCooldown;
     public List<CardEffect> effects;
     public List<StatusEffect> targetStatusEffects;

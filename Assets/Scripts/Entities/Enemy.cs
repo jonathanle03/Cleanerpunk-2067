@@ -43,6 +43,8 @@ public class Enemy : Entity
         maxHealth = enemyData.maxHealth;
         attack = enemyData.attack;
         defense = enemyData.defense;
+        force = enemyData.force;
+        shield = enemyData.shield;
         accuracy = enemyData.accuracy;
         evasion = enemyData.evasion;
         isBoss = enemyData.isBoss;
@@ -64,7 +66,7 @@ public class Enemy : Entity
     }
 
 
-    public override void TakeDamage(float cardPower, int incomingAttack, Entity attacker)
+    public override void TakeDamage(float cardPower, DamageType damageType, Entity attacker)
     {
         // Prevent dead enemies from taking damage
         if (isDead)
@@ -80,8 +82,10 @@ public class Enemy : Entity
             return;
         }
 
-        // Calculate base damage
-        float incomingDmg = cardPower * incomingAttack * 100f / (100f + defense);
+        // Calculate base damage using new damage system
+        float incomingDmg = DamageCalculator.CalculateDamage(damageType, cardPower, attacker, this);
+
+        // Apply status effect modifiers
         foreach (StatusEffect effect in statusEffects)
         {
             incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
@@ -98,7 +102,7 @@ public class Enemy : Entity
         int damageDealt = Mathf.CeilToInt(incomingDmg);
         currentHealth -= damageDealt;
         healthText.text = "Health: " + currentHealth;
-        Debug.Log($"{entityName} takes {incomingDmg} damage{(isCritical ? " (CRITICAL)" : "")}");
+        Debug.Log($"{entityName} takes {incomingDmg} {damageType} damage{(isCritical ? " (CRITICAL)" : "")}");
 
         // Show damage popup via SpawnsDamagePopups singleton
         if (SpawnsDamagePopups.Instance != null)

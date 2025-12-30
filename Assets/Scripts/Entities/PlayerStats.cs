@@ -9,6 +9,8 @@ public class PlayerStats : MonoBehaviour
     public int maxHealth;
     public int attack;
     public int defense;
+    public int force;
+    public int shield;
     public int maxMana;
     public int currency;
     public int accuracy;
