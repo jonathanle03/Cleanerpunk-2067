@@ -12,16 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a7c5dea9ea9647bd9ba7dfb10ea15, type: 3}
   m_Name: Spin-up Saw
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Spin-up Saw
   description: 
   art: {fileID: 0}
   type: 0
   rarity: 0
   target: 0
   cost: 0
-  power: 0
+  power: 0.8
   damageType: 0
-  maxCooldown: 0
-  effects: []
+  isPiercing: 0
+  globalDamageMultiplier: 1
+  maxCooldown: 2
+  effects:
+  - {fileID: 11400000, guid: 7dc71b124b85ccf44afbc9baa7b1c43c, type: 2}
+  - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
   targetStatusEffects: []
-  selfStatusEffects: []
+  selfStatusEffects:
+  - {fileID: 11400000, guid: e4e305be6c39ae644967fc4b4610445b, type: 2}

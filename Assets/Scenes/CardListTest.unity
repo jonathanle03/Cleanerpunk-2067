@@ -1542,10 +1542,17 @@ MonoBehaviour:
   maxHealth: 1000
   attack: 100
   defense: 100
+  force: 100
+  shield: 100
   maxMana: 9
   currency: 0
   accuracy: 100
   evasion: 100
+  damageResistances:
+    slashingResistance: 1
+    impactResistance: 1
+    ballisticResistance: 1
+    neuralResistance: 1
 --- !u!4 &417510765
 Transform:
   m_ObjectHideFlags: 0
@@ -2163,8 +2170,16 @@ MonoBehaviour:
   currentHealth: 0
   attack: 10
   defense: 10
+  force: 0
+  shield: 0
   accuracy: 100
   evasion: 100
+  criticalDamageMultiplier: 2
+  damageResistances:
+    slashingResistance: 1
+    impactResistance: 1
+    ballisticResistance: 1
+    neuralResistance: 1
   isBoss: 0
   healthText: {fileID: 1973048034}
   deck:
@@ -6080,8 +6095,16 @@ MonoBehaviour:
   currentHealth: 0
   attack: 10
   defense: 10
+  force: 0
+  shield: 0
   accuracy: 100
   evasion: 100
+  criticalDamageMultiplier: 2
+  damageResistances:
+    slashingResistance: 1
+    impactResistance: 1
+    ballisticResistance: 1
+    neuralResistance: 1
   isBoss: 0
   healthText: {fileID: 1641661811}
   deck:
@@ -7256,8 +7279,16 @@ MonoBehaviour:
   currentHealth: 0
   attack: 10
   defense: 10
+  force: 0
+  shield: 0
   accuracy: 100
   evasion: 100
+  criticalDamageMultiplier: 2
+  damageResistances:
+    slashingResistance: 1
+    impactResistance: 1
+    ballisticResistance: 1
+    neuralResistance: 1
   isBoss: 0
   healthText: {fileID: 1205337630}
   deck: []
@@ -7845,8 +7876,16 @@ MonoBehaviour:
   currentHealth: 0
   attack: 10
   defense: 10
+  force: 0
+  shield: 0
   accuracy: 100
   evasion: 100
+  criticalDamageMultiplier: 2
+  damageResistances:
+    slashingResistance: 1
+    impactResistance: 1
+    ballisticResistance: 1
+    neuralResistance: 1
   isBoss: 0
   healthText: {fileID: 1702472439}
   deck:
@@ -7975,10 +8014,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 602726f5433cc5b49bbc0cec83be18e9, type: 2}
   - {fileID: 11400000, guid: 3f8766d33c29ac648a7ffea29fec36b8, type: 2}
   - {fileID: 11400000, guid: 353257b514229bd48a049e8528d24eae, type: 2}
+  - {fileID: 11400000, guid: bacb96758a9d9c741a03dc8bab95941d, type: 2}
+  - {fileID: 11400000, guid: ed492cd528a6b7546a7eb8496e27fe66, type: 2}
   player: {fileID: 1424974289}
   textLog: []
   textLogText: {fileID: 836485438}
-  timing: 2
+  timing: 1.5
 --- !u!4 &1528466905
 Transform:
   m_ObjectHideFlags: 0

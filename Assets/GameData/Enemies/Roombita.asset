@@ -12,14 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3be94c422bd25a4db58bdea4c0b11bc, type: 3}
   m_Name: Roombita
   m_EditorClassIdentifier: 
-  enemyName: 
-  art: {fileID: 0}
-  maxHealth: 0
-  attack: 0
-  defense: 0
-  force: 0
-  shield: 0
-  accuracy: 0
-  evasion: 0
+  enemyName: Roombita
+  art: {fileID: -2858458602221611548, guid: 0253bd20d2cdbde4693b169de07a39bc, type: 3}
+  maxHealth: 500
+  attack: 100
+  defense: 100
+  force: 50
+  shield: 40
+  accuracy: 100
+  evasion: 90
   isBoss: 0
-  cards: []
+  cards:
+  - {fileID: 11400000, guid: b5227eaa87b20124b809640f7445fd98, type: 2}
+  - {fileID: 11400000, guid: 16df2083ce982b34287b4b55c6e60126, type: 2}
+  - {fileID: 11400000, guid: 7d7a3379166a3914ca5e68c93fe316b7, type: 2}
+  - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  damageResistances:
+    slashingResistance: 1
+    impactResistance: 1.2
+    ballisticResistance: 1
+    neuralResistance: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a7c5dea9ea9647bd9ba7dfb10ea15, type: 3}
   m_Name: Brace
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Brace
   description: 
   art: {fileID: 0}
   type: 0
@@ -21,7 +21,10 @@ MonoBehaviour:
   cost: 0
   power: 0
   damageType: 0
+  isPiercing: 0
+  globalDamageMultiplier: 1
   maxCooldown: 0
-  effects: []
+  effects:
+  - {fileID: 0}
   targetStatusEffects: []
   selfStatusEffects: []

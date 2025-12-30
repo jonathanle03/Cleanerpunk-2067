@@ -15,5 +15,5 @@ MonoBehaviour:
   effectName: Increase Attack
   icon: {fileID: -325382492647043209, guid: e31f31a46e750084cbddd69b7c46736b, type: 3}
   duration: 3
-  effectPower: 1.5
+  effectPower: 1.25
   applicationChance: 1

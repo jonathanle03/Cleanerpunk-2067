@@ -27,3 +27,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
   - {fileID: 11400000, guid: 3f8c46a310f22ae4c9c285ce6472d451, type: 2}
+  damageResistances:
+    slashingResistance: 1
+    impactResistance: 1.2
+    ballisticResistance: 1
+    neuralResistance: 1

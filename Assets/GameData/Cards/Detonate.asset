@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a7c5dea9ea9647bd9ba7dfb10ea15, type: 3}
   m_Name: Detonate
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Detonate
   description: 
   art: {fileID: 0}
   type: 0
@@ -21,6 +21,8 @@ MonoBehaviour:
   cost: 4
   power: 3
   damageType: 1
+  isPiercing: 0
+  globalDamageMultiplier: 1
   maxCooldown: 0
   effects:
   - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}

@@ -21,7 +21,9 @@ MonoBehaviour:
   target: 0
   cost: 3
   power: 2.3
-  damageType: 0
+  damageType: 1
+  isPiercing: 0
+  globalDamageMultiplier: 1
   maxCooldown: 1
   effects:
   - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
