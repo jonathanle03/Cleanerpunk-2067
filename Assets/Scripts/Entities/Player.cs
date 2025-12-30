@@ -304,6 +304,9 @@ public class Player : Entity
             Debug.Log($"CRITICAL HIT! {attacker.criticalDamageMultiplier}x damage");
         }
 
+        // Apply damage variance
+        incomingDmg = DamageCalculator.ApplyDamageVariance(incomingDmg);
+
         int damageDealt = Mathf.CeilToInt(incomingDmg);
         currentHealth -= damageDealt;
         healthText.text = "" + currentHealth;

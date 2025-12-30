@@ -62,6 +62,9 @@ public abstract class Entity : MonoBehaviour
             Debug.Log($"CRITICAL HIT! {attacker.criticalDamageMultiplier}x damage");
         }
 
+        // Apply damage variance
+        incomingDmg = DamageCalculator.ApplyDamageVariance(incomingDmg);
+
         currentHealth -= Mathf.CeilToInt(incomingDmg);
         healthText.text = "Health: " + currentHealth;
         Debug.Log($"{entityName} takes {incomingDmg} {damageType} damage{(isCritical ? " (CRITICAL)" : "")}");

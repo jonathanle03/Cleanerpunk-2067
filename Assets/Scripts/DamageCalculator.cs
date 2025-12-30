@@ -91,4 +91,18 @@ public static class DamageCalculator
     {
         return Mathf.Pow((float)force, 0.825f);
     }
+
+    /// <summary>
+    /// Apply random variance to damage based on a flat value plus a percentage of base damage.
+    /// </summary>
+    public static float ApplyDamageVariance(float baseDamage, float flat = 5f, float pct = 0.03f)
+    {
+        if (baseDamage <= 0f) return baseDamage;
+        
+        float range = flat + pct * baseDamage;
+        float u = Random.value - Random.value;      // triangular randomness [-1,1]
+        float finalDamage = baseDamage + u * range;
+
+        return Mathf.Max(1f, finalDamage);
+    }
 }
