@@ -16,6 +16,9 @@ public abstract class Entity : MonoBehaviour
     public int evasion = 100;
     public float criticalDamageMultiplier = 2.0f;
 
+    [Header("Damage Resistances")]
+    public DamageResistances damageResistances = new DamageResistances();
+
     [Header("Additional Info")]
     public bool isBoss;
     [SerializeField] public TextMeshProUGUI healthText;
@@ -35,12 +38,12 @@ public abstract class Entity : MonoBehaviour
         uiController = GetComponentInChildren<StatusUIController>();
     }
 
-    virtual public void TakeDamage(float cardPower, DamageType damageType, Entity attacker)
+    virtual public void TakeDamage(CardData card, Entity attacker)
     {
-        // Neural damage types bypass ACC/EVA and always hit
-        bool isNeuralDamage = (damageType == DamageType.Neural || damageType == DamageType.PiercingNeural);
+        // Neural damage always hits and never crits
+        bool isNeuralDamage = (card.damageType == DamageType.Neural);
 
-        // Calculate hit chance (skip for Neural damage types)
+        // Calculate hit chance (skip for Neural damage)
         if (!isNeuralDamage && !CalculateHit(attacker.accuracy, this.evasion))
         {
             Debug.Log($"{attacker.entityName}'s attack missed {entityName}!");
@@ -49,7 +52,7 @@ public abstract class Entity : MonoBehaviour
         }
 
         // Calculate base damage using new damage system
-        float incomingDmg = DamageCalculator.CalculateDamage(damageType, cardPower, attacker, this);
+        float incomingDmg = DamageCalculator.CalculateDamage(card.damageType, card.isPiercing, card.power, card.globalDamageMultiplier, attacker, this);
 
         // Apply status effect modifiers
         foreach (StatusEffect effect in statusEffects)
@@ -57,7 +60,7 @@ public abstract class Entity : MonoBehaviour
             incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
         }
 
-        // Calculate critical hit (Neural damage types cannot crit)
+        // Calculate critical hit (Neural damage cannot crit)
         bool isCritical = false;
         if (!isNeuralDamage)
         {
@@ -74,7 +77,7 @@ public abstract class Entity : MonoBehaviour
 
         currentHealth -= Mathf.CeilToInt(incomingDmg);
         healthText.text = "Health: " + currentHealth;
-        Debug.Log($"{entityName} takes {incomingDmg} {damageType} damage{(isCritical ? " (CRITICAL)" : "")}");
+        Debug.Log($"{entityName} takes {incomingDmg} {card.damageType}{(card.isPiercing ? " (PIERCING)" : "")} damage{(isCritical ? " (CRITICAL)" : "")}");
 
         if (currentHealth <= 0)
         {

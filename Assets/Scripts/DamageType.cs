@@ -1,7 +1,7 @@
 public enum DamageType
 {
-    Physical,
-    Neural,
-    PiercingPhysical,
-    PiercingNeural
+    Slashing,
+    Impact,
+    Ballistic,
+    Neural
 }

@@ -277,12 +277,12 @@ public class Player : Entity
         }
     }
 
-    public override void TakeDamage(float cardPower, DamageType damageType, Entity attacker)
+    public override void TakeDamage(CardData card, Entity attacker)
     {
-        // Neural damage types bypass ACC/EVA and always hit
-        bool isNeuralDamage = (damageType == DamageType.Neural || damageType == DamageType.PiercingNeural);
+        // Neural damage always hits and never crits
+        bool isNeuralDamage = (card.damageType == DamageType.Neural);
 
-        // Calculate hit chance (skip for Neural damage types)
+        // Calculate hit chance (skip for Neural damage)
         if (!isNeuralDamage && !CalculateHit(attacker.accuracy, this.evasion))
         {
             Debug.Log($"{attacker.entityName}'s attack missed {entityName}!");
@@ -291,7 +291,7 @@ public class Player : Entity
         }
 
         // Calculate base damage using new damage system
-        float incomingDmg = DamageCalculator.CalculateDamage(damageType, cardPower, attacker, this);
+        float incomingDmg = DamageCalculator.CalculateDamage(card.damageType, card.isPiercing, card.power, card.globalDamageMultiplier, attacker, this);
 
         // Apply status effect modifiers
         foreach (StatusEffect effect in statusEffects)
@@ -299,7 +299,7 @@ public class Player : Entity
             incomingDmg = effect.ModifyIncomingDamage(incomingDmg);
         }
 
-        // Calculate critical hit (Neural damage types cannot crit)
+        // Calculate critical hit (Neural damage cannot crit)
         bool isCritical = false;
         if (!isNeuralDamage)
         {
@@ -317,12 +317,12 @@ public class Player : Entity
         int damageDealt = Mathf.CeilToInt(incomingDmg);
         currentHealth -= damageDealt;
         healthText.text = "" + currentHealth;
-        Debug.Log($"{entityName} takes {incomingDmg} {damageType} damage{(isCritical ? " (CRITICAL)" : "")}");
+        Debug.Log($"{entityName} takes {incomingDmg} {card.damageType}{(card.isPiercing ? " (PIERCING)" : "")} damage{(isCritical ? " (CRITICAL)" : "")}");
 
         // Show damage popup via SpawnsDamagePopups singleton
         if (SpawnsDamagePopups.Instance != null)
         {
-            SpawnsDamagePopups.Instance.DamageDone(damageDealt, transform.position, isCritical, damageType);
+            SpawnsDamagePopups.Instance.DamageDone(damageDealt, transform.position, isCritical, card);
         }
 
         if (currentHealth <= 0)

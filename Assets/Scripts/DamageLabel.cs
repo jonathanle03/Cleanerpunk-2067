@@ -110,7 +110,7 @@ public class DamageLabel : MonoBehaviour
         OrientCurveBasedOnDirection();
     }
 
-    public void Display(int damage, Vector3 objPosition, bool direction, bool isCrit, DamageType damageType)
+    public void Display(int damage, Vector3 objPosition, bool direction, bool isCrit, CardData card)
     {
         transform.position = objPosition;
         _startingPositionForVisualization = objPosition;
@@ -118,23 +118,36 @@ public class DamageLabel : MonoBehaviour
 
         damageText.SetText(damage.ToString());
 
-        // Set color based on damage type
+        // Set color based on damage type and piercing flag
         Color baseColor = normalFontColor;
-        switch (damageType)
+
+        if (card.isPiercing)
         {
-            case DamageType.Neural:
-                baseColor = neuralColor;
-                break;
-            case DamageType.PiercingPhysical:
-                baseColor = piercingPhysicalColor;
-                break;
-            case DamageType.PiercingNeural:
+            // Piercing damage uses special colors
+            if (card.damageType == DamageType.Neural)
+            {
                 baseColor = piercingNeuralColor;
-                break;
-            case DamageType.Physical:
-            default:
-                baseColor = normalFontColor;
-                break;
+            }
+            else // Physical types (Slashing, Impact, Ballistic)
+            {
+                baseColor = piercingPhysicalColor;
+            }
+        }
+        else
+        {
+            // Non-piercing damage uses type-based colors
+            switch (card.damageType)
+            {
+                case DamageType.Neural:
+                    baseColor = neuralColor;
+                    break;
+                case DamageType.Slashing:
+                case DamageType.Impact:
+                case DamageType.Ballistic:
+                default:
+                    baseColor = normalFontColor;
+                    break;
+            }
         }
 
         damageText.color = baseColor;

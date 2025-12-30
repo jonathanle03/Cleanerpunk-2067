@@ -48,19 +48,19 @@ public class SpawnsDamagePopups : MonoBehaviour
             _mainCamera = Camera.main;
         }
         
-        public void DamageDone(int damage, Vector3 position, bool isCrit, DamageType damageType)
+        public void DamageDone(int damage, Vector3 position, bool isCrit, CardData card)
         {
             Vector3 screenPosition = _mainCamera.WorldToScreenPoint(position);
             screenPosition.z = 0;
             bool direction = screenPosition.x < Screen.width * 0.5f;
 
-            SpawnDamagePopup(damage, screenPosition, direction, isCrit, damageType);
+            SpawnDamagePopup(damage, screenPosition, direction, isCrit, card);
         }
 
-        private void SpawnDamagePopup(int damage, Vector3 position, bool direction, bool isCrit, DamageType damageType)
+        private void SpawnDamagePopup(int damage, Vector3 position, bool direction, bool isCrit, CardData card)
         {
             DamageLabel damageLabel = _damageLabelPopupPool.Get();
-            damageLabel.Display(damage, position, direction, isCrit, damageType);
+            damageLabel.Display(damage, position, direction, isCrit, card);
         }
         
         public void ReturnDamageLabelToPool(DamageLabel damageLabel3d)

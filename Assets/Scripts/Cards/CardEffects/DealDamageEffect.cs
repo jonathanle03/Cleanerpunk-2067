@@ -5,11 +5,17 @@ public class DealDamageEffect : CardEffect
 {
     public override void Execute(CardData card, Entity attacker, Entity target)
     {
-        float outgoingDmg = card.power;
+        // Apply status effect modifiers to card power
+        float modifiedPower = card.power;
         foreach (StatusEffect effect in attacker.statusEffects)
         {
-            outgoingDmg = effect.ModifyOutgoingDamage(outgoingDmg);
+            modifiedPower = effect.ModifyOutgoingDamage(modifiedPower);
         }
-        target.TakeDamage(outgoingDmg, card.damageType, attacker);
+
+        // Create a modified card with the new power
+        CardData modifiedCard = Instantiate(card);
+        modifiedCard.power = modifiedPower;
+
+        target.TakeDamage(modifiedCard, attacker);
     }
 }

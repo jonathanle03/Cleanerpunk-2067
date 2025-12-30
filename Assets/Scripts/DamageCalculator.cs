@@ -3,33 +3,47 @@ using UnityEngine;
 public static class DamageCalculator
 {
     /// <summary>
-    /// Calculate damage based on damage type and stats
+    /// Calculate damage based on damage type, piercing flag, and stats
     /// </summary>
-    public static float CalculateDamage(DamageType damageType, float cardPower, Entity attacker, Entity target)
+    public static float CalculateDamage(DamageType damageType, bool isPiercing, float cardPower, float globalMultiplier, Entity attacker, Entity target)
     {
         float baseDamage = 0f;
+        bool isPhysical = (damageType == DamageType.Slashing || damageType == DamageType.Impact || damageType == DamageType.Ballistic);
 
-        switch (damageType)
+        if (isPhysical) // Physical
         {
-            case DamageType.Physical:
-                baseDamage = CalculatePhysicalDamage(attacker.attack, target.defense);
-                break;
-
-            case DamageType.Neural:
-                baseDamage = CalculateNeuralDamage(attacker.force, target.shield);
-                break;
-
-            case DamageType.PiercingPhysical:
+            if (isPiercing)
+            {
                 baseDamage = CalculatePiercingPhysicalDamage(attacker.attack);
-                break;
-
-            case DamageType.PiercingNeural:
+            }
+            else
+            {
+                baseDamage = CalculatePhysicalDamage(attacker.attack, target.defense);
+            }
+        }
+        else // Neural
+        {
+            if (isPiercing)
+            {
                 baseDamage = CalculatePiercingNeuralDamage(attacker.force);
-                break;
+            }
+            else
+            {
+                baseDamage = CalculateNeuralDamage(attacker.force, target.shield);
+            }
         }
 
         // Multiply by card power
-        return baseDamage * cardPower;
+        baseDamage *= cardPower;
+
+        // Apply global damage multiplier
+        baseDamage *= globalMultiplier;
+
+        // Apply resistance/vulnerability
+        float resistanceMultiplier = target.damageResistances.GetResistance(damageType);
+        baseDamage *= resistanceMultiplier;
+
+        return baseDamage;
     }
 
     /// <summary>
@@ -93,14 +107,14 @@ public static class DamageCalculator
     }
 
     /// <summary>
-    /// Apply random variance to damage based on a flat value plus a percentage of base damage.
+    /// Apply random variance to final damage as a flat value + percentage spread
     /// </summary>
     public static float ApplyDamageVariance(float baseDamage, float flat = 5f, float pct = 0.03f)
     {
         if (baseDamage <= 0f) return baseDamage;
-        
+
         float range = flat + pct * baseDamage;
-        float u = Random.value - Random.value;      // triangular randomness [-1,1]
+        float u = Random.value - Random.value;      // triangular [-1,1]
         float finalDamage = baseDamage + u * range;
 
         return Mathf.Max(1f, finalDamage);
