@@ -15,6 +15,9 @@ public class PlayerStats : MonoBehaviour
     public int currency;
     public int accuracy;
     public int evasion;
+
+    [Header("Damage Resistances")]
+    public DamageResistances damageResistances = new DamageResistances();
     
     void Awake()
     {

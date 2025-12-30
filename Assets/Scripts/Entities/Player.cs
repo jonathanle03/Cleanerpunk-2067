@@ -57,6 +57,8 @@ public class Player : Entity
         evasion = stats.evasion;
         maxMana = stats.maxMana;
         currentMana = stats.maxMana;
+        
+        damageResistances = stats.damageResistances;
 
         updateMana();
         for (int i = 0; i < maxMana; i++)

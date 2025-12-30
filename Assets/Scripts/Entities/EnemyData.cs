@@ -14,4 +14,7 @@ public class EnemyData : ScriptableObject
     public int evasion;
     public bool isBoss;
     public CardData[] cards;
+
+    [Header("Damage Resistances")]
+    public DamageResistances damageResistances = new DamageResistances();
 }

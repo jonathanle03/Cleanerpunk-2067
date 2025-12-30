@@ -8,7 +8,6 @@ public class enemyStats : MonoBehaviour
 
     private int _enemyHealth;
     [SerializeField] int _maxEnemyHealth = 10;
-
     [SerializeField] int _enemyAttack = 1;
     [SerializeField] int _enemyForce = 1;
     [SerializeField] int _enemyShield = 1;

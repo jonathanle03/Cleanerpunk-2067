@@ -50,8 +50,10 @@ public class Enemy : Entity
         isBoss = enemyData.isBoss;
         deck = new List<CardData>(enemyData.cards);
 
+        damageResistances = enemyData.damageResistances;
+
         SpriteRenderer thisrender = GetComponent<SpriteRenderer>();
-        thisrender.sprite = art; 
+        thisrender.sprite = art;
 
         currentHealth = maxHealth;
         healthBarMaxWidth = (int)healthBar.GetComponent<Transform>().localScale.x;
