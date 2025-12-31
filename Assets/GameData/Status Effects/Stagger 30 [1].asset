@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 918f6a5bb6811a74d8f848a100026107, type: 3}
-  m_Name: Wound 35
+  m_Script: {fileID: 11500000, guid: 255d517f4f546f54f8fcbe8f94c537a7, type: 3}
+  m_Name: 'Stagger 30 [1]'
   m_EditorClassIdentifier: 
-  effectName: Wound
-  icon: {fileID: -2698203841313665645, guid: e31f31a46e750084cbddd69b7c46736b, type: 3}
-  duration: 2
+  effectName: Stagger
+  icon: {fileID: -1752169400191645045, guid: e31f31a46e750084cbddd69b7c46736b, type: 3}
+  duration: 1
   effectPower: 0
-  applicationChance: 0.35
+  applicationChance: 0.3

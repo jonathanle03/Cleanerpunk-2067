@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255d517f4f546f54f8fcbe8f94c537a7, type: 3}
-  m_Name: Stagger 15
+  m_Script: {fileID: 11500000, guid: 90c5a7e7a09072440a7f345f65ad8fb4, type: 3}
+  m_Name: Screensaver
   m_EditorClassIdentifier: 
-  effectName: Stagger
-  icon: {fileID: -1752169400191645045, guid: e31f31a46e750084cbddd69b7c46736b, type: 3}
-  duration: 1
-  effectPower: 0
-  applicationChance: 0.15
+  enableBattleScript: 1
+  phases: []

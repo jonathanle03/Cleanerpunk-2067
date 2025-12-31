@@ -9,23 +9,30 @@ public class cardReader : MonoBehaviour
     [SerializeField] TextMeshProUGUI description;
     [SerializeField] TextMeshProUGUI cost;
     [SerializeField] TextMeshProUGUI type;
-    [SerializeField] RawImage icon; 
+    [SerializeField] RawImage icon;
     [SerializeField] RawImage backing;
     [SerializeField] RawImage image;
 
     [Header("Assets")]
     [SerializeField] Texture[] typeBackings;
     [SerializeField] Texture[] typeIcons;
-    
-
-    public CardData card; 
 
 
+    public CardData card;
+
+    // Card interactivity state
+    private CanvasGroup canvasGroup;
+    private bool isInteractable = true; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        // Get or add CanvasGroup component for alpha control
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
     }
 
     // Update is called once per frame
@@ -62,6 +69,42 @@ public class cardReader : MonoBehaviour
                 Debug.Log("Something went wrong with type applying.");
                 break;
         }
-        
+
+    }
+
+    /// <summary>
+    /// Disable card interaction and grey it out visually
+    /// </summary>
+    public void DisableCard()
+    {
+        isInteractable = false;
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 0.5f; // Grey out to 50% opacity
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+        }
+    }
+
+    /// <summary>
+    /// Enable card interaction and restore normal appearance
+    /// </summary>
+    public void EnableCard()
+    {
+        isInteractable = true;
+        if (canvasGroup != null)
+        {
+            canvasGroup.alpha = 1f; // Full opacity
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
+        }
+    }
+
+    /// <summary>
+    /// Check if the card is currently interactable
+    /// </summary>
+    public bool IsInteractable()
+    {
+        return isInteractable;
     }
 }

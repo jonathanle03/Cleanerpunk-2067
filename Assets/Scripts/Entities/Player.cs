@@ -15,6 +15,8 @@ public class Player : Entity
     [SerializeField] GameObject cancelButton;
     private int chosenCard;
 
+    private bool cardsEnabled = true;
+
     [Header("Class References")]
     public PlayerStats stats;
     [SerializeField] Enemy enemy;
@@ -91,7 +93,15 @@ public class Player : Entity
 
     public void useCard(int pick)
     {
-        Debug.Log("use card activated, pick number: " + pick); 
+        Debug.Log("use card activated, pick number: " + pick);
+
+        // Prevent card usage if cards are disabled (enemy turn)
+        if (!cardsEnabled)
+        {
+            Debug.Log("Cannot use cards during enemy turn");
+            return;
+        }
+
         if (currentMana >= hand[pick].cost)
         {
             for(int k = 0; k < 6; k++)
@@ -411,6 +421,100 @@ public class Player : Entity
             }
         }
         cancelButton.SetActive(false);
+    }
+
+    /// <summary>
+    /// Disable all player cards visually and functionally
+    /// </summary>
+    public void DisableCards()
+    {
+        cardsEnabled = false;
+        for (int i = 0; i < cardButtons.Length; i++)
+        {
+            cardReader reader = cardButtons[i].GetComponent<cardReader>();
+            if (reader != null)
+            {
+                reader.DisableCard();
+            }
+        }
+
+        // Also disable action buttons
+        if (passButton != null)
+        {
+            CanvasGroup passGroup = passButton.GetComponent<CanvasGroup>();
+            if (passGroup == null) passGroup = passButton.AddComponent<CanvasGroup>();
+            passGroup.alpha = 0.5f;
+            passGroup.interactable = false;
+            passGroup.blocksRaycasts = false;
+        }
+
+        if (attackStaticButton != null)
+        {
+            CanvasGroup atkGroup = attackStaticButton.GetComponent<CanvasGroup>();
+            if (atkGroup == null) atkGroup = attackStaticButton.AddComponent<CanvasGroup>();
+            atkGroup.alpha = 0.5f;
+            atkGroup.interactable = false;
+            atkGroup.blocksRaycasts = false;
+        }
+
+        if (defenseStaticButton != null)
+        {
+            CanvasGroup defGroup = defenseStaticButton.GetComponent<CanvasGroup>();
+            if (defGroup == null) defGroup = defenseStaticButton.AddComponent<CanvasGroup>();
+            defGroup.alpha = 0.5f;
+            defGroup.interactable = false;
+            defGroup.blocksRaycasts = false;
+        }
+    }
+
+    /// <summary>
+    /// Enable all player cards visually and functionally
+    /// </summary>
+    public void EnableCards()
+    {
+        cardsEnabled = true;
+        for (int i = 0; i < cardButtons.Length; i++)
+        {
+            cardReader reader = cardButtons[i].GetComponent<cardReader>();
+            if (reader != null)
+            {
+                reader.EnableCard();
+            }
+        }
+
+        // Also enable action buttons
+        if (passButton != null)
+        {
+            CanvasGroup passGroup = passButton.GetComponent<CanvasGroup>();
+            if (passGroup != null)
+            {
+                passGroup.alpha = 1f;
+                passGroup.interactable = true;
+                passGroup.blocksRaycasts = true;
+            }
+        }
+
+        if (attackStaticButton != null)
+        {
+            CanvasGroup atkGroup = attackStaticButton.GetComponent<CanvasGroup>();
+            if (atkGroup != null)
+            {
+                atkGroup.alpha = 1f;
+                atkGroup.interactable = true;
+                atkGroup.blocksRaycasts = true;
+            }
+        }
+
+        if (defenseStaticButton != null)
+        {
+            CanvasGroup defGroup = defenseStaticButton.GetComponent<CanvasGroup>();
+            if (defGroup != null)
+            {
+                defGroup.alpha = 1f;
+                defGroup.interactable = true;
+                defGroup.blocksRaycasts = true;
+            }
+        }
     }
     // Now using Coroutine ver.
     /*private void playAllEnemiesCard(int cardIndex)

@@ -53,7 +53,10 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
-        _isRunning = true; 
+        _isRunning = true;
+
+        // Disable player cards at the start of enemy turn
+        player.DisableCards(); 
         for (int i = 0; i < enemies.Length; i++)
         {
             Enemy enemy = enemies[i].GetComponent<Enemy>();
@@ -81,10 +84,10 @@ public class EnemyManager : MonoBehaviour
                     textLogText.text = difference;
                     yield return StartCoroutine(enemy.enemyCard.doEffectWithDelay(enemy, player));
 
-                    yield return new WaitForSeconds(timing); 
+                    yield return new WaitForSeconds(timing);
 
 
-                    enemies[i].GetComponent<Enemy>().RandomCard();
+                    enemies[i].GetComponent<Enemy>().SelectNextCard();
                 }
 
                 for (int j = enemy.statusEffects.Count - 1; j >= 0; --j)
@@ -104,6 +107,9 @@ public class EnemyManager : MonoBehaviour
         {
             effect.OnTurnStart(player);
         }
+
+        // Re-enable player cards at the end of enemy turn
+        player.EnableCards();
 
         if (player.moveable == true)
         {

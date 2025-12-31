@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c5a7e7a09072440a7f345f65ad8fb4, type: 3}
+  m_Name: Blicky
+  m_EditorClassIdentifier: 
+  enableBattleScript: 0
+  phases:
+  - hpThresholdPercent: 100
+    playMode: 1
+    weightedRandomCards: []
+    linearCards:
+    - {fileID: 11400000, guid: 23571b39d3c81874eb9f2e3cd4cdfdb5, type: 2}
+    - {fileID: 11400000, guid: 23571b39d3c81874eb9f2e3cd4cdfdb5, type: 2}
+    sequenceCards: []
+    loopCards: []
+    enableSpecialTurnCard: 0
+    specialCardTurnInterval: 0
+    specialCardMode: 0
+    specialCard: {fileID: 0}
+    specialRandomCards: []
+  - hpThresholdPercent: 40
+    playMode: 0
+    weightedRandomCards: []
+    linearCards: []
+    sequenceCards: []
+    loopCards: []
+    enableSpecialTurnCard: 0
+    specialCardTurnInterval: 0
+    specialCardMode: 0
+    specialCard: {fileID: 0}
+    specialRandomCards: []

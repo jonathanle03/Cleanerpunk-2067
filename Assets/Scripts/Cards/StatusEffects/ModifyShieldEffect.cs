@@ -1,11 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Status Effects/Increase Attack")]
-public class IncreaseAttackEffect : StatusEffect
+[CreateAssetMenu(menuName = "Status Effects/Modify Shield")]
+public class ModifyShieldEffect : StatusEffect
 {
     public override void ApplyEffect(Entity target)
     {
-        target.attack = Mathf.CeilToInt(target.attack * effectPower);
+        target.shield = Mathf.CeilToInt(target.shield * effectPower);
     }
 
     public override void OnTurnEnd(Entity target)
@@ -19,6 +19,6 @@ public class IncreaseAttackEffect : StatusEffect
 
     public override void OnExpire(Entity target)
     {
-        target.attack = Mathf.FloorToInt(target.attack / effectPower);
+        target.shield = Mathf.FloorToInt(target.shield / effectPower);
     }
 }

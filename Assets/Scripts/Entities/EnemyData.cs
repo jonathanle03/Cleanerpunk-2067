@@ -15,6 +15,10 @@ public class EnemyData : ScriptableObject
     public bool isBoss;
     public CardData[] cards;
 
+    [Header("Battle Script")]
+    [Tooltip("Optional battle script for advanced enemy AI")]
+    public BattleScript battleScript;
+
     [Header("Damage Resistances")]
     public DamageResistances damageResistances = new DamageResistances();
 }

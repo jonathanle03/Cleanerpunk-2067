@@ -93,8 +93,8 @@ public abstract class Entity : MonoBehaviour
         // Each point of difference = 0.5% change in hit rate
         float hitChance = 85f + ((attackerAccuracy - targetEvasion) * 0.5f);
 
-        // Clamp between 5% and 97% to prevent guaranteed hits/misses
-        hitChance = Mathf.Clamp(hitChance, 5f, 97f);
+        // Clamp between 10% and 100% to prevent guaranteed misses
+        hitChance = Mathf.Clamp(hitChance, 10f, 100f);
 
         float roll = Random.Range(0f, 100f);
 
@@ -105,15 +105,15 @@ public abstract class Entity : MonoBehaviour
 
     public bool CalculateCritical(int attackerAccuracy, int targetEvasion)
     {
-        // Formula: Base 6% + (Accuracy - Evasion) * 0.1%
-        // At equal stats (100 vs 100): 6% crit rate
+        // Formula: Base 5% + (Accuracy - Evasion) * 0.1%
+        // At equal stats (100 vs 100): 5% crit rate
         // Each point of difference = 0.1% change (lesser influence than hit rate)
-        // Example: 105 Acc vs 100 Eva = 6% + (5 * 0.1%) = 6.5%
-        // Example: 110 Acc vs 100 Eva = 6% + (10 * 0.1%) = 7%
-        // Example: 100 Acc vs 107 Eva = 6% + (-7 * 0.1%) = 5.3%
+        // Example: 105 Acc vs 100 Eva = 5% + (5 * 0.1%) = 5.5%
+        // Example: 110 Acc vs 100 Eva = 5% + (10 * 0.1%) = 6%
+        // Example: 100 Acc vs 107 Eva = 5% + (-7 * 0.1%) = 4.3%
 
         int statDifference = attackerAccuracy - targetEvasion;
-        float critChance = 6f + (statDifference * 0.1f);
+        float critChance = 5f + (statDifference * 0.1f);
 
         // Clamp for future modification, although right now very high crit rates require absurd ACC
         critChance = Mathf.Clamp(critChance, 0f, 100f);

@@ -19,6 +19,11 @@ public class Enemy : Entity
     public bool isDead;
     private Coroutine healthBarCoroutine;
 
+    // Battle Script System
+    private BattleScript battleScript;
+    private BattlePhase currentPhase;
+    private float lastPhaseHpPercent = 100f;
+
     private void Start()
     {
         
@@ -52,6 +57,18 @@ public class Enemy : Entity
 
         damageResistances = enemyData.damageResistances;
 
+        // Initialize battle script system
+        battleScript = enemyData.battleScript;
+        if (battleScript != null && battleScript.enableBattleScript)
+        {
+            lastPhaseHpPercent = 100f;
+            currentPhase = battleScript.GetCurrentPhase(lastPhaseHpPercent);
+            if (currentPhase != null)
+            {
+                currentPhase.ResetPhase();
+            }
+        }
+
         SpriteRenderer thisrender = GetComponent<SpriteRenderer>();
         thisrender.sprite = art;
 
@@ -59,12 +76,46 @@ public class Enemy : Entity
         healthBarMaxWidth = (int)healthBar.GetComponent<Transform>().localScale.x;
         healthBarStartPos = healthBar.GetComponent<Transform>().localPosition;
         healthText.text = "Health: " + currentHealth;
-        RandomCard();
+        SelectNextCard();
     }
 
     public void RandomCard()
     {
         enemyCard = deck[Random.Range(0, deck.Count)];
+    }
+
+    /// <summary>
+    /// Select the next card based on battle script or fallback to random
+    /// </summary>
+    public void SelectNextCard()
+    {
+        // Check if HP phase has changed
+        float currentHpPercent = (float)currentHealth / maxHealth * 100f;
+
+        if (battleScript != null && battleScript.enableBattleScript)
+        {
+            BattlePhase newPhase = battleScript.GetCurrentPhase(currentHpPercent);
+
+            // If phase changed, reset the new phase
+            if (newPhase != currentPhase)
+            {
+                Debug.Log($"{entityName} entering new phase at {currentHpPercent}% HP");
+                battleScript.OnPhaseChange(newPhase);
+                currentPhase = newPhase;
+                lastPhaseHpPercent = currentHpPercent;
+            }
+
+            // Select card using battle script
+            CardData selectedCard = battleScript.SelectCard(currentPhase, deck);
+            if (selectedCard != null)
+            {
+                enemyCard = selectedCard;
+                return;
+            }
+        }
+
+        // Fallback to random card from deck
+        RandomCard();
     }
 
 
