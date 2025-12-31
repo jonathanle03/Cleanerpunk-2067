@@ -82,6 +82,10 @@ public class EnemyManager : MonoBehaviour
                         difference += ("\n" + textLog[k]);
                     }
                     textLogText.text = difference;
+
+                    // Show card name popup above enemy
+                    enemy.ShowCardPopup();
+
                     yield return StartCoroutine(enemy.enemyCard.doEffectWithDelay(enemy, player));
 
                     yield return new WaitForSeconds(timing);

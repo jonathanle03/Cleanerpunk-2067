@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c287dd7c54cd249ba900e2c8e48892, type: 3}
   m_Name: 'ATK x1.25 [2]'
   m_EditorClassIdentifier: 
-  effectName: 
+  effectName: ATK +25%
   icon: {fileID: 0}
-  duration: 0
-  effectPower: 0
-  applicationChance: 0
+  duration: 2
+  effectPower: 1.25
+  applicationChance: 1

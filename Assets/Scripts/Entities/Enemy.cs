@@ -16,6 +16,10 @@ public class Enemy : Entity
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private float _timing;
 
+    [Header("Card Popup")]
+    [SerializeField] private EnemyCardPopup cardPopup;
+    [SerializeField] private Vector3 popupOffset = new Vector3(0, 1.5f, 0);
+
     public bool isDead;
     private Coroutine healthBarCoroutine;
 
@@ -116,6 +120,18 @@ public class Enemy : Entity
 
         // Fallback to random card from deck
         RandomCard();
+    }
+
+    /// <summary>
+    /// Display card name popup above enemy
+    /// </summary>
+    public void ShowCardPopup()
+    {
+        if (cardPopup != null && enemyCard != null)
+        {
+            Vector3 popupPosition = transform.position + popupOffset;
+            cardPopup.ShowCardName(enemyCard.cardName, popupPosition);
+        }
     }
 
 

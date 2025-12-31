@@ -13,4 +13,33 @@ MonoBehaviour:
   m_Name: Screensaver
   m_EditorClassIdentifier: 
   enableBattleScript: 1
-  phases: []
+  phases:
+  - hpThresholdPercent: 40
+    playMode: 1
+    weightedRandomCards: []
+    linearCards:
+    - {fileID: 11400000, guid: 3f8c46a310f22ae4c9c285ce6472d451, type: 2}
+    - {fileID: 11400000, guid: 68bb23a0f2f2d7646b5f47a1fba9cd15, type: 2}
+    - {fileID: 11400000, guid: 81393ee2e36e03442a7cb874cb0620a3, type: 2}
+    - {fileID: 11400000, guid: a53e6fe4a617c484b882bca5d0f81637, type: 2}
+    sequenceCards: []
+    loopCards: []
+    enableSpecialTurnCard: 0
+    specialCardTurnInterval: 0
+    specialCardMode: 0
+    specialCard: {fileID: 0}
+    specialRandomCards: []
+  - hpThresholdPercent: 40
+    playMode: 2
+    weightedRandomCards: []
+    linearCards: []
+    sequenceCards:
+    - {fileID: 11400000, guid: 81393ee2e36e03442a7cb874cb0620a3, type: 2}
+    loopCards:
+    - {fileID: 11400000, guid: 68bb23a0f2f2d7646b5f47a1fba9cd15, type: 2}
+    - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+    enableSpecialTurnCard: 0
+    specialCardTurnInterval: 0
+    specialCardMode: 0
+    specialCard: {fileID: 0}
+    specialRandomCards: []

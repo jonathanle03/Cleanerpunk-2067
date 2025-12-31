@@ -27,6 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 16df2083ce982b34287b4b55c6e60126, type: 2}
   - {fileID: 11400000, guid: 7d7a3379166a3914ca5e68c93fe316b7, type: 2}
   - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+  battleScript: {fileID: 11400000, guid: 7825b9b72df8ffe4daa867343a513500, type: 2}
   damageResistances:
     slashingResistance: 1
     impactResistance: 1.2

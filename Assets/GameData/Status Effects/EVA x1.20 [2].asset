@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f91aa1b08343934da229e2a1b4b0398, type: 3}
   m_Name: 'EVA x1.20 [2]'
   m_EditorClassIdentifier: 
-  effectName: 
+  effectName: EVA +20%
   icon: {fileID: 0}
-  duration: 0
-  effectPower: 0
-  applicationChance: 0
+  duration: 2
+  effectPower: 1.2
+  applicationChance: 1

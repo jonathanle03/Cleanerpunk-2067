@@ -26,7 +26,7 @@ MonoBehaviour:
   maxCooldown: 2
   effects:
   - {fileID: 11400000, guid: 7dc71b124b85ccf44afbc9baa7b1c43c, type: 2}
-  - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
+  - {fileID: 11400000, guid: 488d89f9d7e6f9545b0ed731a2f8bf50, type: 2}
   targetStatusEffects: []
   selfStatusEffects:
   - {fileID: 11400000, guid: e4e305be6c39ae644967fc4b4610445b, type: 2}

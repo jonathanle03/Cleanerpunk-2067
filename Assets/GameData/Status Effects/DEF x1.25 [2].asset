@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a5fccbfdbf87f48a82e71c0e398033, type: 3}
   m_Name: 'DEF x1.25 [2]'
   m_EditorClassIdentifier: 
-  effectName: DEF x1.25
+  effectName: DEF +25%
   icon: {fileID: 0}
   duration: 2
   effectPower: 1.25

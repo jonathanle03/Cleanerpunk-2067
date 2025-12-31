@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c287dd7c54cd249ba900e2c8e48892, type: 3}
   m_Name: 'ATK x1.50 [3]'
   m_EditorClassIdentifier: 
-  effectName: Increase Attack
+  effectName: ATK +50%
   icon: {fileID: -325382492647043209, guid: e31f31a46e750084cbddd69b7c46736b, type: 3}
   duration: 3
   effectPower: 1.5

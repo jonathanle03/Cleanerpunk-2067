@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255d517f4f546f54f8fcbe8f94c537a7, type: 3}
   m_Name: 'Stun 20 [2]'
   m_EditorClassIdentifier: 
-  effectName: 'Stun 20 [2]'
+  effectName: Stun
   icon: {fileID: 0}
   duration: 2
   effectPower: 0

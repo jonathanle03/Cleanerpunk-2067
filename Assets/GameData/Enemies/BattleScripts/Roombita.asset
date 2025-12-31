@@ -13,4 +13,31 @@ MonoBehaviour:
   m_Name: Roombita
   m_EditorClassIdentifier: 
   enableBattleScript: 1
-  phases: []
+  phases:
+  - hpThresholdPercent: 40
+    playMode: 1
+    weightedRandomCards: []
+    linearCards:
+    - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
+    - {fileID: 11400000, guid: b5227eaa87b20124b809640f7445fd98, type: 2}
+    - {fileID: 11400000, guid: 7d7a3379166a3914ca5e68c93fe316b7, type: 2}
+    sequenceCards: []
+    loopCards: []
+    enableSpecialTurnCard: 0
+    specialCardTurnInterval: 0
+    specialCardMode: 0
+    specialCard: {fileID: 0}
+    specialRandomCards: []
+  - hpThresholdPercent: 40
+    playMode: 2
+    weightedRandomCards: []
+    linearCards: []
+    sequenceCards:
+    - {fileID: 11400000, guid: 16df2083ce982b34287b4b55c6e60126, type: 2}
+    loopCards:
+    - {fileID: 11400000, guid: 7d7a3379166a3914ca5e68c93fe316b7, type: 2}
+    enableSpecialTurnCard: 0
+    specialCardTurnInterval: 0
+    specialCardMode: 0
+    specialCard: {fileID: 0}
+    specialRandomCards: []

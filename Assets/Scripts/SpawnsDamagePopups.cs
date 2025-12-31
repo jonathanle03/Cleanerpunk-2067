@@ -23,7 +23,14 @@ public class SpawnsDamagePopups : MonoBehaviour
             }
             else
                 Destroy(gameObject);
-            
+
+            // Validate that the damage label prefab is assigned
+            if (damageLabelPrefab == null)
+            {
+                Debug.LogError("SpawnsDamagePopups: damageLabelPrefab is not assigned! Please assign it in the Inspector.");
+                return;
+            }
+
             _damageLabelPopupPool = new ObjectPool<DamageLabel>(
                 () =>
                 {
@@ -34,7 +41,7 @@ public class SpawnsDamagePopups : MonoBehaviour
                 damageLabel => damageLabel.gameObject.SetActive(true),
                 damageLabel => damageLabel.gameObject.SetActive(false)
             );
-            
+
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
@@ -50,6 +57,13 @@ public class SpawnsDamagePopups : MonoBehaviour
         
         public void DamageDone(int damage, Vector3 position, bool isCrit, CardData card)
         {
+            // Safety check for null pool
+            if (_damageLabelPopupPool == null)
+            {
+                Debug.LogWarning("SpawnsDamagePopups: Damage label pool is not initialized. Skipping damage popup.");
+                return;
+            }
+
             Vector3 screenPosition = _mainCamera.WorldToScreenPoint(position);
             screenPosition.z = 0;
             bool direction = screenPosition.x < Screen.width * 0.5f;
@@ -70,6 +84,13 @@ public class SpawnsDamagePopups : MonoBehaviour
 
         public void ShowMiss(Vector3 position)
         {
+            // Safety check for null pool
+            if (_damageLabelPopupPool == null)
+            {
+                Debug.LogWarning("SpawnsDamagePopups: Damage label pool is not initialized. Skipping miss popup.");
+                return;
+            }
+
             Vector3 screenPosition = _mainCamera.WorldToScreenPoint(position);
             screenPosition.z = 0;
             bool direction = screenPosition.x < Screen.width * 0.5f;

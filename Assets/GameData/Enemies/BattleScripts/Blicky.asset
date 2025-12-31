@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c5a7e7a09072440a7f345f65ad8fb4, type: 3}
   m_Name: Blicky
   m_EditorClassIdentifier: 
-  enableBattleScript: 0
+  enableBattleScript: 1
   phases:
-  - hpThresholdPercent: 100
+  - hpThresholdPercent: 40
     playMode: 1
     weightedRandomCards: []
     linearCards:
+    - {fileID: 11400000, guid: c7f0969de766fe043968dad902ab36be, type: 2}
     - {fileID: 11400000, guid: 23571b39d3c81874eb9f2e3cd4cdfdb5, type: 2}
-    - {fileID: 11400000, guid: 23571b39d3c81874eb9f2e3cd4cdfdb5, type: 2}
+    - {fileID: 11400000, guid: c049abffe1e61cd45b0015e7b212ddef, type: 2}
+    - {fileID: 11400000, guid: df33930cd4267174699d565b5417eb7b, type: 2}
     sequenceCards: []
     loopCards: []
     enableSpecialTurnCard: 0
@@ -28,11 +30,14 @@ MonoBehaviour:
     specialCard: {fileID: 0}
     specialRandomCards: []
   - hpThresholdPercent: 40
-    playMode: 0
+    playMode: 2
     weightedRandomCards: []
     linearCards: []
-    sequenceCards: []
-    loopCards: []
+    sequenceCards:
+    - {fileID: 11400000, guid: fe137362f05c5cf4db0332270954ea96, type: 2}
+    loopCards:
+    - {fileID: 11400000, guid: c049abffe1e61cd45b0015e7b212ddef, type: 2}
+    - {fileID: 11400000, guid: 23571b39d3c81874eb9f2e3cd4cdfdb5, type: 2}
     enableSpecialTurnCard: 0
     specialCardTurnInterval: 0
     specialCardMode: 0

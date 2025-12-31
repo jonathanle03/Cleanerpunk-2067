@@ -12,18 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a7c5dea9ea9647bd9ba7dfb10ea15, type: 3}
   m_Name: Screen Shot
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Screen Shot
   description: 
   art: {fileID: 0}
   type: 0
   rarity: 0
   target: 0
   cost: 0
-  power: 0
-  damageType: 0
+  power: 1
+  damageType: 3
   isPiercing: 0
   globalDamageMultiplier: 1
   maxCooldown: 0
-  effects: []
-  targetStatusEffects: []
+  effects:
+  - {fileID: 11400000, guid: 2a92d2677d7fef34abeb1c3b68e7a6e9, type: 2}
+  - {fileID: 11400000, guid: 86022e2b631a559459dbc25900b5f55e, type: 2}
+  targetStatusEffects:
+  - {fileID: 11400000, guid: 20dd5d8ddd344cf428708adb76c186c9, type: 2}
   selfStatusEffects: []
