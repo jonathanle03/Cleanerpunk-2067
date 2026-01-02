@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableBattleScript: 1
   phases:
-  - hpThresholdPercent: 40
+  - hpThresholdPercent: 100
     playMode: 1
     weightedRandomCards: []
     linearCards:

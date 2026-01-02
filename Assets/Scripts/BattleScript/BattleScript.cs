@@ -36,20 +36,23 @@ public class BattleScript : ScriptableObject
     /// <summary>
     /// Select the next card based on the current phase's rules
     /// </summary>
-    public CardData SelectCard(BattlePhase phase, List<CardData> fallbackDeck)
+    /// <param name="phase">The current battle phase</param>
+    /// <param name="phaseState">The per-instance state for this phase</param>
+    /// <param name="fallbackDeck">Fallback deck to use if battle script is disabled</param>
+    public CardData SelectCard(BattlePhase phase, BattlePhaseState phaseState, List<CardData> fallbackDeck)
     {
-        if (phase == null || !enableBattleScript)
+        if (phase == null || phaseState == null || !enableBattleScript)
         {
             // Fallback to random card from deck
             if (fallbackDeck != null && fallbackDeck.Count > 0)
                 return fallbackDeck[Random.Range(0, fallbackDeck.Count)];
             return null;
         }
-        phase.turnCounter++;
+        phaseState.turnCounter++;
 
         // Check if it's time for a special turn card
-        if (phase.enableSpecialTurnCard && 
-            phase.turnCounter % phase.specialCardTurnInterval == 0)
+        if (phase.enableSpecialTurnCard &&
+            phaseState.turnCounter % phase.specialCardTurnInterval == 0)
         {
             CardData specialCard = GetSpecialCard(phase);
             if (specialCard != null)
@@ -62,9 +65,9 @@ public class BattleScript : ScriptableObject
             case PhasePlayMode.Random:
                 return GetRandomCard(phase);
             case PhasePlayMode.Linear:
-                return GetLinearCard(phase);
+                return GetLinearCard(phase, phaseState);
             case PhasePlayMode.SequenceLoop:
-                return GetSequenceLoopCard(phase);
+                return GetSequenceLoopCard(phase, phaseState);
             default:
                 return GetRandomCard(phase);
         }
@@ -124,32 +127,32 @@ public class BattleScript : ScriptableObject
         return phase.weightedRandomCards[0].card;
     }
 
-    private CardData GetLinearCard(BattlePhase phase)
+    private CardData GetLinearCard(BattlePhase phase, BattlePhaseState phaseState)
     {
         if (phase.linearCards.Count == 0)
             return null;
 
-        CardData card = phase.linearCards[phase.linearCardIndex];
-        phase.linearCardIndex = (phase.linearCardIndex + 1) % phase.linearCards.Count;
+        CardData card = phase.linearCards[phaseState.linearCardIndex];
+        phaseState.linearCardIndex = (phaseState.linearCardIndex + 1) % phase.linearCards.Count;
         return card;
     }
 
-    private CardData GetSequenceLoopCard(BattlePhase phase)
+    private CardData GetSequenceLoopCard(BattlePhase phase, BattlePhaseState phaseState)
     {
         // First play through sequence cards
-        if (!phase.sequenceComplete && phase.sequenceCards.Count > 0)
+        if (!phaseState.sequenceComplete && phase.sequenceCards.Count > 0)
         {
-            int index = phase.linearCardIndex;
+            int index = phaseState.linearCardIndex;
             if (index < phase.sequenceCards.Count)
             {
                 CardData card = phase.sequenceCards[index];
-                phase.linearCardIndex++;
-                
+                phaseState.linearCardIndex++;
+
                 // Check if sequence is complete
-                if (phase.linearCardIndex >= phase.sequenceCards.Count)
+                if (phaseState.linearCardIndex >= phase.sequenceCards.Count)
                 {
-                    phase.sequenceComplete = true;
-                    phase.loopCardIndex = 0;
+                    phaseState.sequenceComplete = true;
+                    phaseState.loopCardIndex = 0;
                 }
                 return card;
             }
@@ -158,8 +161,8 @@ public class BattleScript : ScriptableObject
         // Then loop through loop cards
         if (phase.loopCards.Count > 0)
         {
-            CardData card = phase.loopCards[phase.loopCardIndex];
-            phase.loopCardIndex = (phase.loopCardIndex + 1) % phase.loopCards.Count;
+            CardData card = phase.loopCards[phaseState.loopCardIndex];
+            phaseState.loopCardIndex = (phaseState.loopCardIndex + 1) % phase.loopCards.Count;
             return card;
         }
         return null;
@@ -182,7 +185,7 @@ public class BattleScript : ScriptableObject
                 cards.AddRange(phase.linearCards);
                 break;
             case PhasePlayMode.SequenceLoop:
-                if (!phase.sequenceComplete)
+                if (phase.sequenceCards != null)
                     cards.AddRange(phase.sequenceCards);
                 else
                     cards.AddRange(phase.loopCards);
@@ -191,14 +194,4 @@ public class BattleScript : ScriptableObject
         return cards;
     }
 
-    /// <summary>
-    /// Reset all phase tracking when phase changes
-    /// </summary>
-    public void OnPhaseChange(BattlePhase newPhase)
-    {
-        if (newPhase != null)
-        {
-            newPhase.ResetPhase();
-        }
-    }
 }

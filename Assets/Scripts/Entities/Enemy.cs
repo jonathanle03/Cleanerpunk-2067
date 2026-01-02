@@ -26,6 +26,7 @@ public class Enemy : Entity
     // Battle Script System
     private BattleScript battleScript;
     private BattlePhase currentPhase;
+    private BattlePhaseState currentPhaseState;
     private float lastPhaseHpPercent = 100f;
 
     private void Start()
@@ -69,7 +70,8 @@ public class Enemy : Entity
             currentPhase = battleScript.GetCurrentPhase(lastPhaseHpPercent);
             if (currentPhase != null)
             {
-                currentPhase.ResetPhase();
+                // Create a new per-instance phase state
+                currentPhaseState = new BattlePhaseState();
             }
         }
 
@@ -100,17 +102,18 @@ public class Enemy : Entity
         {
             BattlePhase newPhase = battleScript.GetCurrentPhase(currentHpPercent);
 
-            // If phase changed, reset the new phase
+            // If phase changed, reset the phase state for this instance
             if (newPhase != currentPhase)
             {
                 Debug.Log($"{entityName} entering new phase at {currentHpPercent}% HP");
-                battleScript.OnPhaseChange(newPhase);
                 currentPhase = newPhase;
                 lastPhaseHpPercent = currentHpPercent;
+                // Create a fresh state for the new phase
+                currentPhaseState = new BattlePhaseState();
             }
 
-            // Select card using battle script
-            CardData selectedCard = battleScript.SelectCard(currentPhase, deck);
+            // Select card using battle script with this instance's state
+            CardData selectedCard = battleScript.SelectCard(currentPhase, currentPhaseState, deck);
             if (selectedCard != null)
             {
                 enemyCard = selectedCard;

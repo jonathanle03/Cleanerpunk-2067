@@ -10,6 +10,27 @@ public class WeightedCard
     public float weight = 1f;
 }
 
+/// <summary>
+/// Per-instance runtime state for a BattlePhase
+/// Each enemy instance should maintain its own BattlePhaseState
+/// </summary>
+[System.Serializable]
+public class BattlePhaseState
+{
+    public int linearCardIndex = 0;
+    public bool sequenceComplete = false;
+    public int loopCardIndex = 0;
+    public int turnCounter = 0;
+
+    public void Reset()
+    {
+        linearCardIndex = 0;
+        sequenceComplete = false;
+        loopCardIndex = 0;
+        turnCounter = 0;
+    }
+}
+
 [System.Serializable]
 public class BattlePhase
 {
@@ -44,20 +65,6 @@ public class BattlePhase
     public CardData specialCard;
     [Tooltip("Random cards for special turns (picks one randomly)")]
     public List<CardData> specialRandomCards = new List<CardData>();
-
-    // Runtime tracking
-    [System.NonSerialized] public int linearCardIndex = 0;
-    [System.NonSerialized] public bool sequenceComplete = false;
-    [System.NonSerialized] public int loopCardIndex = 0;
-    [System.NonSerialized] public int turnCounter = 0;
-
-    public void ResetPhase()
-    {
-        linearCardIndex = 0;
-        sequenceComplete = false;
-        loopCardIndex = 0;
-        turnCounter = 0;
-    }
 }
 
 public enum PhasePlayMode
