@@ -140,8 +140,8 @@ public class Enemy : Entity
 
     public override void TakeDamage(CardData card, Entity attacker)
     {
-        // Prevent dead enemies from taking damage
-        if (isDead)
+        // Prevent dead, inactive, or unassigned enemies from taking damage
+        if (isDead || !gameObject.activeSelf)
         {
             return;
         }

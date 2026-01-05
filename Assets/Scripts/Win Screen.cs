@@ -32,20 +32,28 @@ public class WinScreen : MonoBehaviour
         scrapCounter.text = "Current Scrap: " + playerStats.currency;
         if (winup == false) {
             int check = 0;
+            int activeEnemies = 0;
+
+            // Count active and dead enemies
             for (int i = 0; i < 3; i++)
             {
-                if (enemyManager.enemies[i].GetComponent<Enemy>().isDead == true)
+                if (enemyManager.enemies[i] != null && enemyManager.enemies[i].activeSelf)
                 {
-                    check++;
+                    activeEnemies++;
+                    if (enemyManager.enemies[i].GetComponent<Enemy>().isDead == true)
+                    {
+                        check++;
+                    }
                 }
-                if (check == 3)
-                {
-                    winup = true;
-                    attackbutton.SetActive(false);
-                    defenseButton.SetActive(false);
-                    gameWin();
-                    
-                }
+            }
+
+            // Win when all active enemies are dead
+            if (activeEnemies > 0 && check == activeEnemies)
+            {
+                winup = true;
+                attackbutton.SetActive(false);
+                defenseButton.SetActive(false);
+                gameWin();
             }
         }
 
@@ -54,10 +62,44 @@ public class WinScreen : MonoBehaviour
     public void gameWin()
     {
         winScreenUI.SetActive(true);
+
+        // Display loot for enemies that were defeated (dead enemies)
         for(int i = 0; i < spareList.Length; i++)
         {
-            spareList[i].GetComponent<cardReader>().card = (enemyManager.enemies[i].GetComponent<Enemy>().enemyData.cards[0]);
-            spareList[i].GetComponent<cardReader>().setCard();
+            if (enemyManager.enemies[i] != null)
+            {
+                Enemy enemy = enemyManager.enemies[i].GetComponent<Enemy>();
+                // Check if enemy was in battle (dead enemies that dropped loot)
+                if (enemy != null && enemy.isDead)
+                {
+                    spareList[i].GetComponent<cardReader>().card = (enemy.enemyData.cards[0]);
+                    spareList[i].GetComponent<cardReader>().setCard();
+                }
+                else
+                {
+                    // Hide buttons for enemy slots that were never used
+                    if (spareButtons[i] != null)
+                    {
+                        spareButtons[i].SetActive(false);
+                    }
+                    if (scrapButtons[i] != null)
+                    {
+                        scrapButtons[i].SetActive(false);
+                    }
+                }
+            }
+            else
+            {
+                // Hide buttons for null enemy slots
+                if (spareButtons[i] != null)
+                {
+                    spareButtons[i].SetActive(false);
+                }
+                if (scrapButtons[i] != null)
+                {
+                    scrapButtons[i].SetActive(false);
+                }
+            }
         }
     }
 

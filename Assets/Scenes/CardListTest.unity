@@ -3863,7 +3863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.54986, y: -1.46062}
+  m_AnchoredPosition: {x: 0.14, y: -1.46062}
   m_SizeDelta: {x: 263.7068, y: 342.52325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!65 &716252121
@@ -8275,6 +8275,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 353257b514229bd48a049e8528d24eae, type: 2}
   - {fileID: 11400000, guid: bacb96758a9d9c741a03dc8bab95941d, type: 2}
   - {fileID: 11400000, guid: ed492cd528a6b7546a7eb8496e27fe66, type: 2}
+  useRandomEnemyCount: 0
+  minEnemyCount: 3
+  maxEnemyCount: 3
   player: {fileID: 1424974289}
   textLog: []
   textLogText: {fileID: 836485438}

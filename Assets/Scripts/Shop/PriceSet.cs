@@ -18,7 +18,20 @@ public class PriceSet : MonoBehaviour
     [SerializeField] int HPincrease;
     [SerializeField] int MPprice;
     [SerializeField] int MPincrease;
-    
+
+    [Header("Stat Upgrade Stuff")]
+    [SerializeField] int ATKprice = 25;
+    [SerializeField] int ATKincrease = 5;
+    [SerializeField] int DEFprice = 25;
+    [SerializeField] int DEFincrease = 5;
+    [SerializeField] int FRCprice = 25;
+    [SerializeField] int FRCincrease = 5;
+    [SerializeField] int SHDprice = 25;
+    [SerializeField] int SHDincrease = 5;
+    [SerializeField] int ACCprice = 25;
+    [SerializeField] int ACCincrease = 1;
+    [SerializeField] int EVAprice = 25;
+    [SerializeField] int EVAincrease = 1;
 
     [SerializeField] List<GameObject> cards = new List<GameObject>();
 
@@ -27,14 +40,28 @@ public class PriceSet : MonoBehaviour
     private int[] prices = new int[3];
 
     [Header("Text Attributes")]
-    public TextMeshProUGUI balance; 
+    public TextMeshProUGUI balance;
     public TextMeshProUGUI attackPrice;
     public TextMeshProUGUI defensePrice;
     public TextMeshProUGUI supportPrice;
     public TextMeshProUGUI HPbutton;
     public TextMeshProUGUI MPbutton;
     public TextMeshProUGUI HPtext;
-    public TextMeshProUGUI MPtext; 
+    public TextMeshProUGUI MPtext;
+
+    [Header("Stat Upgrade UI")]
+    public TextMeshProUGUI ATKbutton;
+    public TextMeshProUGUI DEFbutton;
+    public TextMeshProUGUI FRCbutton;
+    public TextMeshProUGUI SHDbutton;
+    public TextMeshProUGUI ACCbutton;
+    public TextMeshProUGUI EVAbutton;
+    public TextMeshProUGUI ATKtext;
+    public TextMeshProUGUI DEFtext;
+    public TextMeshProUGUI FRCtext;
+    public TextMeshProUGUI SHDtext;
+    public TextMeshProUGUI ACCtext;
+    public TextMeshProUGUI EVAtext; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -75,10 +102,25 @@ public class PriceSet : MonoBehaviour
 
 
         HPtext.text = "+" + HPincrease + " HP";
-        MPtext.text = "+" + MPincrease + " MP"; 
-        
+        MPtext.text = "+" + MPincrease + " MP";
+
         HPbutton.text = "Price: " + HPprice;
-        MPbutton.text = "Price: " + MPprice; 
+        MPbutton.text = "Price: " + MPprice;
+
+        // Initialize stat upgrade UI
+        if (ATKtext != null) ATKtext.text = "ATK: " + player.attack + " (+" + ATKincrease + ")";
+        if (DEFtext != null) DEFtext.text = "DEF: " + player.defense + " (+" + DEFincrease + ")";
+        if (FRCtext != null) FRCtext.text = "FRC: " + player.force + " (+" + FRCincrease + ")";
+        if (SHDtext != null) SHDtext.text = "SHD: " + player.shield + " (+" + SHDincrease + ")";
+        if (ACCtext != null) ACCtext.text = "ACC: " + player.accuracy + " (+" + ACCincrease + ")";
+        if (EVAtext != null) EVAtext.text = "EVA: " + player.evasion + " (+" + EVAincrease + ")";
+
+        if (ATKbutton != null) ATKbutton.text = "Price: " + ATKprice;
+        if (DEFbutton != null) DEFbutton.text = "Price: " + DEFprice;
+        if (FRCbutton != null) FRCbutton.text = "Price: " + FRCprice;
+        if (SHDbutton != null) SHDbutton.text = "Price: " + SHDprice;
+        if (ACCbutton != null) ACCbutton.text = "Price: " + ACCprice;
+        if (EVAbutton != null) EVAbutton.text = "Price: " + EVAprice;
 
     }
 
@@ -124,13 +166,89 @@ public class PriceSet : MonoBehaviour
         
     }
 
+    public void levelATK()
+    {
+        if (player.currency >= ATKprice)
+        {
+            player.currency -= ATKprice;
+            player.attack += ATKincrease;
+            if (ATKtext != null) ATKtext.text = "ATK: " + player.attack + " (+" + ATKincrease + ")";
+            Debug.Log("Upgraded ATK to " + player.attack);
+        }
+    }
+
+    public void levelDEF()
+    {
+        if (player.currency >= DEFprice)
+        {
+            player.currency -= DEFprice;
+            player.defense += DEFincrease;
+            if (DEFtext != null) DEFtext.text = "DEF: " + player.defense + " (+" + DEFincrease + ")";
+            Debug.Log("Upgraded DEF to " + player.defense);
+        }
+    }
+
+    public void levelFRC()
+    {
+        if (player.currency >= FRCprice)
+        {
+            player.currency -= FRCprice;
+            player.force += FRCincrease;
+            if (FRCtext != null) FRCtext.text = "FRC: " + player.force + " (+" + FRCincrease + ")";
+            Debug.Log("Upgraded FRC to " + player.force);
+        }
+    }
+
+    public void levelSHD()
+    {
+        if (player.currency >= SHDprice)
+        {
+            player.currency -= SHDprice;
+            player.shield += SHDincrease;
+            if (SHDtext != null) SHDtext.text = "SHD: " + player.shield + " (+" + SHDincrease + ")";
+            Debug.Log("Upgraded SHD to " + player.shield);
+        }
+    }
+
+    public void levelACC()
+    {
+        if (player.currency >= ACCprice)
+        {
+            player.currency -= ACCprice;
+            player.accuracy += ACCincrease;
+            if (ACCtext != null) ACCtext.text = "ACC: " + player.accuracy + " (+" + ACCincrease + ")";
+            Debug.Log("Upgraded ACC to " + player.accuracy);
+        }
+    }
+
+    public void levelEVA()
+    {
+        if (player.currency >= EVAprice)
+        {
+            player.currency -= EVAprice;
+            player.evasion += EVAincrease;
+            if (EVAtext != null) EVAtext.text = "EVA: " + player.evasion + " (+" + EVAincrease + ")";
+            Debug.Log("Upgraded EVA to " + player.evasion);
+        }
+    }
+
     public void toBattle()
     {
         if(player.maxMana < 9)
         {
             player.maxMana += 1;
         }
-        
+
         SceneManager.LoadScene(1);
+    }
+    
+    public void toBoss()
+    {
+        if(player.maxMana < 9)
+        {
+            player.maxMana += 1;
+        }
+
+        SceneManager.LoadScene(3);
     }
 }

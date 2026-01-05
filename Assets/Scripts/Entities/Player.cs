@@ -114,9 +114,18 @@ public class Player : Entity
             if (hand[pick].target == CardTarget.Enemy)
             {
                 cancelButton.SetActive(true);
+                // First deactivate all enemy buttons
                 for (int i = 0; i < 3; i++)
                 {
-                    enemyManager.enemyButtons[i].SetActive(true);
+                    enemyManager.enemyButtons[i].SetActive(false);
+                }
+                // Then only activate buttons for active enemies
+                for (int i = 0; i < 3; i++)
+                {
+                    if (enemyManager.enemies[i] != null && enemyManager.enemies[i].activeSelf && !enemyManager.enemies[i].GetComponent<Enemy>().isDead)
+                    {
+                        enemyManager.enemyButtons[i].SetActive(true);
+                    }
                 }
 
                 chosenCard = pick;
@@ -125,9 +134,18 @@ public class Player : Entity
             {
                 // Show cancel button and all enemy buttons for confirmation
                 cancelButton.SetActive(true);
+                // First deactivate all enemy buttons
                 for (int i = 0; i < 3; i++)
                 {
-                    enemyManager.enemyButtons[i].SetActive(true);
+                    enemyManager.enemyButtons[i].SetActive(false);
+                }
+                // Then only activate buttons for active enemies
+                for (int i = 0; i < 3; i++)
+                {
+                    if (enemyManager.enemies[i] != null && enemyManager.enemies[i].activeSelf && !enemyManager.enemies[i].GetComponent<Enemy>().isDead)
+                    {
+                        enemyManager.enemyButtons[i].SetActive(true);
+                    }
                 }
                 chosenCard = pick;
             }
@@ -153,6 +171,13 @@ public class Player : Entity
     public void enemySelect(int pick)
     {
         cancelButton.SetActive(false);
+
+        // Hide all enemy buttons after selection
+        for (int i = 0; i < 3; i++)
+        {
+            enemyManager.enemyButtons[i].SetActive(false);
+        }
+
         if(special && selectedCard == 6)
         {
             if(currentMana < stats.maxMana)
@@ -367,9 +392,18 @@ public class Player : Entity
 
     public void staticAttack()
     {
+        // First deactivate all enemy buttons
         for(int i = 0; i < 3; i++)
         {
-            enemyManager.enemyButtons[i].SetActive(true);
+            enemyManager.enemyButtons[i].SetActive(false);
+        }
+        // Then only activate buttons for active enemies
+        for(int i = 0; i < 3; i++)
+        {
+            if (enemyManager.enemies[i] != null && enemyManager.enemies[i].activeSelf && !enemyManager.enemies[i].GetComponent<Enemy>().isDead)
+            {
+                enemyManager.enemyButtons[i].SetActive(true);
+            }
         }
         for(int k = 0; k < 6; k++)
         {
@@ -559,13 +593,17 @@ public class Player : Entity
         currentMana -= hand[cardIndex].cost;
         updateMana();
 
-        // Apply effect to all living enemies with delays
+        // Apply effect to all active, living enemies with delays
         for (int i = 0; i < enemyManager.enemies.Length; i++)
         {
-            Enemy targetEnemy = enemyManager.enemies[i].GetComponent<Enemy>();
-            if (targetEnemy != null && !targetEnemy.isDead)
+            // Check if enemy exists, is active, and is alive
+            if (enemyManager.enemies[i] != null && enemyManager.enemies[i].activeSelf)
             {
-                yield return StartCoroutine(hand[cardIndex].doEffectWithDelay(this, targetEnemy));
+                Enemy targetEnemy = enemyManager.enemies[i].GetComponent<Enemy>();
+                if (targetEnemy != null && !targetEnemy.isDead)
+                {
+                    yield return StartCoroutine(hand[cardIndex].doEffectWithDelay(this, targetEnemy));
+                }
             }
         }
 
